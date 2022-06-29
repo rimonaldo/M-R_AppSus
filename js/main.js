@@ -10,7 +10,7 @@ const options = {
         <router-view>
             
         </router-view>
-        
+        <app-footer></app-footer>
    </section>
     `,
     data(){
