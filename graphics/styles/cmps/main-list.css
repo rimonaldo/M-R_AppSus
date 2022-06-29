@@ -16,3 +16,7 @@
     justify-content: space-between;
     width: 90%;
 }
+
+.list .read{
+    background-color: #c2dbff;
+}

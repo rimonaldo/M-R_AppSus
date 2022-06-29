@@ -4,12 +4,20 @@ import {appService} from '../../services/main-app-service/main-app-service.js'
 export default {
 	props: ['email'],
 	template: `
-    <section class="preview">
+    <section class="preview" >
   
-        <h1>preview</h1>
-        
-        <router-link to="/email"><button>back</button></router-link>
-       
+        <li  v-for="email in emails">
+            <div class="actions">
+                <input  type="checkbox" v-model="email.isRead">
+                <input type="checkbox">
+            </div>
+            <router-link :to="'/email/'+email.id">
+                <span >{{email.sentBy.split('@')[0]}}</span>
+                <span >{{email.subject}}</span>
+                <span >{{email.body}}</span>
+                <span>18:06</span>
+            </router-link>
+        </li>
     </section>
 `,
 	data() {
@@ -17,7 +25,11 @@ export default {
 			emails: null,
 		}
 	},
-	methods: {},
+	methods: {
+		log(){
+
+		}
+	},
 	computed: {},
 	created() {
 		appService.query(emailService.EMAILS_KEY).then((emails) => {

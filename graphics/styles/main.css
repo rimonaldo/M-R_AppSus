@@ -11,7 +11,7 @@
 @import 'pages/home-app.css';
 @import 'pages/email-app.css';
 @import 'pages/keep-app.css';
-@import 'pages/email-preview.css';
+@import 'pages/email-details.css';
 
 /* MAIN COMPONENTS */
 @import 'cmps/main-list.css';

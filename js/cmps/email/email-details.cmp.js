@@ -1,48 +1,42 @@
-import {emailService} from '../../services/email-service/email-service.js'
-import {appService} from '../../services/main-app-service/main-app-service.js'
+import { emailService } from '../../services/email-service/email-service.js'
+import { appService } from '../../services/main-app-service/main-app-service.js'
 
 export default {
     props: [],
     template: `
-    <section class="preview">
-  
-        <h1>Details</h1>
-        
+    <section class="details" >
+        <h1>Details</h1>    
         <router-link to="/email"><button>back</button></router-link>
-
-        <ul v-if="email">
-            <li>{{email.subject}}</li>
-        </ul>
+        <div v-if="email">
+            <div class="subject">{{email.subject}}</div>
+            <span>{{email.sentBy}}</span>
+            <div class="body">{{email.body}}</div>
+            <div class="action-btns">
+                <button class="replay">Reply</button>
+                <button class="forward">Forward</button>
+            </div>
+        </div>
        
     </section>
 `,
     data() {
         return {
-            emails:null,
-            email:null,
+            email: null,
         };
     },
     methods: {},
     computed: {},
-    created() { 
-        appService.query(emailService.EMAILS_KEY).then((emails)=>{
-            this.emails = emails 
-        })
+    created() {
+
     },
     mounted() {
         console.log(this.$route.params.emailId);
         const id = this.$route.params.emailId
         appService.get(emailService.EMAILS_KEY, id)
-            .then((email)=>{
-                console.log(email);
-                this.email = email
-            })
-     },
+            .then(email => { this.email = email })
+    },
     unmounted() { },
     components: {
-        emailService,
-        appService,
-        emailService,
-        
+
     },
 }

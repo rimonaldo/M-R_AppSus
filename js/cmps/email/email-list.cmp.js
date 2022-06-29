@@ -1,26 +1,19 @@
 import {emailService} from '../../services/email-service/email-service.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
+import emailPreview from './email-preview.cmp.js'
 
 export default {
 	props: [],
 	template: `
-    <section class="list">
-       
-        <ul class="mail" v-for="email in emails" v-if="emails">
+    <section class="list" >
+        <ul  class="mail" v-if="emails">
             <li>
-            <div class="actions">
-                <input type="checkbox">
-                <input type="checkbox">
-            </div>
-            <router-link :to="'/email/'+email.id">
-                <span >{{email.sentBy.split('@')[0]}}</span>
-                <span >{{email.subject}}</span>
-                <span >{{email.body}}</span>
-                <span>18:06</span>
-            </router-link>
-        </li>
-        <!-- <li >{{email.sentAt}}</li> -->
-    </ul>
+				<div class="btns">
+					<input type="checkbox">
+				</div>
+			</li>
+                <email-preview/>          
+        </ul>
     <router-view></router-view>
     </section>
 `,
@@ -38,5 +31,7 @@ export default {
 	},
 	mounted() {},
 	unmounted() {},
-	components: {},
+	components: {
+        emailPreview
+    },
 }
