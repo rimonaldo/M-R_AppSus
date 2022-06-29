@@ -1,3 +1,5 @@
+import emailNav from "../../cmps/email/email-nav.cmp.js";
+
 export default {
     props: [],
     template: `
@@ -7,12 +9,19 @@ export default {
     </section>
 `,
     data() {
-        return {};
+        return {
+            email:false,
+            note: false,
+        };
     },
-    methods: {},
+    methods: {
+       
+    },
     computed: {},
     created() { },
     mounted() { },
     unmounted() { },
-    components: {},
+    components: {
+        emailNav
+    },
 }

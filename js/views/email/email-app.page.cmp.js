@@ -2,7 +2,7 @@ import { emailService } from "../../services/email-service/email-service.js";
 import { noteService } from "../../services/note-service/note-service.js";
 import { appService } from "../../services/main-app-service/main-app-service.js";
 
-import emailNav from "../../cmps/email/email-nav.js";
+import emailNav from "../../cmps/email/email-nav.cmp.js";
 import emailFilter from "../../cmps/email/email-filter.cmp.js";
 import emailFolderList from "../../cmps/email/email-folder-list.cmp.js";
 import emailList from "../../cmps/email/email-list.cmp.js";
