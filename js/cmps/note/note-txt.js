@@ -1,11 +1,10 @@
 export default {
-	props: ['note'],
+	props: [],
 	template: `
-    <br>
-<p>{{note}}</p>
-<h1></h1>
-<br>
-
+<section class="note-txt">
+<p>text note</p>
+<textarea placeholder=" type"></textarea>
+</section>
 `,
 	data() {
 		return {}
