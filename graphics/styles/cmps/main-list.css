@@ -1,0 +1,8 @@
+.list ul li{
+    list-style-type: none;
+    border: 1px black solid;
+    display: flex;  
+    justify-content: space-between;
+}
+
+

@@ -3,12 +3,13 @@ import {utilService} from '../main-app-service/util-service.js'
 import {storageService} from '../main-app-service/async-storage-service.js'
 
 
-const EMAILS_KEY = 'mails'
+const EMAILS_KEY = 'emails'
 const loggedinUser = {
 	email: 'user@appsus.com',
 	fullname: 'Mahatma Appsus',
 }
 _createEmails()
+
 
 export const emailService = {
 	EMAILS_KEY,
@@ -54,19 +55,20 @@ function getEmptyEmail() {
 }
 
 function _createEmails() {
-	let emails = utilService.loadFromStorage(EMAILS_KEY)
-	if (!emails || !emails.length) {
-		emails = []
-		emails.push(_createEmail())
-		emails.push(_createEmail())
-		emails.push(_createEmail())
-		emails.push(_createEmail())
-		utilService.saveToStorage(EMAILS_KEY, emails)
-	}
-	appService.save(EMAILS_KEY,emails)
+    let email = utilService.loadFromStorage(EMAILS_KEY);
+    if (!email || !email.length) {
+        email = [];
+        email.push(_createEmail());
+        email.push(_createEmail());
+        email.push(_createEmail());
+        email.push(_createEmail());
+        utilService.saveToStorage(EMAILS_KEY, email);
+    }
+    return email;
 }
 
-function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!') {
+
+function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!', to=null) {
 	const id = utilService.makeId()
 	return {
 		id,
@@ -74,7 +76,8 @@ function _createEmail(subject = 'Miss you!', body = 'Would love to catch up some
 		body,
 		isRead:false,
 		sentAt: Date.now(),
-		to: 'momo@momo.com',
+		sentBy: 'momo@momo.com',
+		to,
 	}
 }
 

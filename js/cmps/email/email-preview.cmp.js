@@ -1,17 +1,35 @@
+import {emailService} from '../../services/email-service/email-service.js'
+import {appService} from '../../services/main-app-service/main-app-service.js'
+
 export default {
-    props: [],
+    props: ['email'],
     template: `
     <section class="preview">
-        <h1>preview</h1>
+  
+    
+       
     </section>
 `,
     data() {
-        return {};
+        return {
+            emails:null,
+        };
     },
     methods: {},
     computed: {},
-    created() { },
-    mounted() { },
+    created() { 
+        appService.query(emailService.EMAILS_KEY).then((emails)=>{
+            this.emails = emails 
+        })
+    },
+    mounted() {
+        console.log(this.email);
+     },
     unmounted() { },
-    components: {},
+    components: {
+        emailService,
+        appService,
+        emailService,
+        
+    },
 }
