@@ -18,23 +18,25 @@ export default {
         <email-nav></email-nav>
         <email-filter></email-filter>
         <email-folder-list></email-folder-list>
-        <email-side-menu></email-side-menu>
-        <section class="list">
-        <ul>
-            <li>
-                <div>
-                   <button>^ Unread</button>
-                </div>
-                <div class="pagination">
-                    <span>1-25</span>
-                    <span>of 120</span>
-                </div>
-    
-            </li>
-        </ul>
-        </section>
-        <email-list></email-list>
-        <email-preview></email-preview>
+        <div class="email-container">
+            <email-side-menu></email-side-menu>
+            <section class="list">
+                <ul>
+                    <li>
+                        <div>
+                        <button>^ Unread</button>
+                        </div>
+                        <div class="pagination">
+                            <span>1-25</span>
+                            <span>of 120</span>
+                        </div>
+            
+                    </li>
+                </ul>
+                <email-list></email-list>
+            </section>
+        </div>
+            <!-- <email-preview></email-preview> -->
         <email-compose></email-compose>
     </section>
 `,

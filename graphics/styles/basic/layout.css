@@ -1,5 +1,14 @@
+
 /* LAYOUTS*/
 .main-layout{
     min-height: 95vh;
     background-color: aliceblue;
+}
+
+
+.email-container{
+    display: flex;
+    /* border: 1px red solid; */
+    max-width: 100%;
+    justify-content: flex-start;
 }

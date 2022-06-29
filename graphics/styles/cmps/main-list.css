@@ -1,8 +1,18 @@
-.list ul li{
-    list-style-type: none;
-    border: 1px black solid;
-    display: flex;  
-    justify-content: space-between;
+.list {
+    width: 100%;
+    line-height: 2rem;
 }
 
+.list ul.mail li {
+    border-bottom: 1px black solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.list a{
+    /* border: 1px black solid; */
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
