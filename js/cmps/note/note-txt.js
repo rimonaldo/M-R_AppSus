@@ -1,5 +1,5 @@
 export default {
-	props: [],
+	props: ['info'],
 	template: `
 <section class="note-txt">
 <p>text note</p>

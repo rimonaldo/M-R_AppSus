@@ -6,6 +6,10 @@ export default {
     <section class="note-list">
         <ul>
             <li v-for="(note,idx) in notes" :key="note.id" class="note-preview-container">
+            <component :is="cmp.type"  
+                        :info="cmp.info" 
+                        @setVal="setAns($event, idx)">
+                    </component>
                 <note-preview   :note="note"/>
             </li>
         </ul>
