@@ -65,13 +65,17 @@ function getPrevNoteId(noteId) {
 	})
 }
 
-function getEmptyNote() {
-	const id = utilService.makeId()
+function getEmptyNote(type) {
+	let id = utilService.makeId()
+	let info
+	if (type === 'note-txt') {
+		info = {txt: 'enter txt '}
+	}
 	return {
 		type,
 		id,
-		// msg,
-		// sentBy: null,
+		isPinned: false,
+		info,
 		crateAt: Date.now(),
 	}
 }
@@ -90,14 +94,12 @@ function createNotes() {
 	return notes
 }
 
-function _createNote(type = 'note-txt') {
+function _createNote(type, info) {
 	const note = {
 		id: utilService.makeId(),
 		type,
 		isPinned: false,
-		info: {
-			txt: 'Note',
-		},
+		info,
 		crateAt: Date.now(),
 	}
 	return note

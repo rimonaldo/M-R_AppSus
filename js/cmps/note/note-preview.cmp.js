@@ -2,7 +2,7 @@ export default {
 	props: ['note'],
 	template: `
     <br>
-<p>{{note.type}}</p>
+<p></p>
 <h1></h1>
 <br>
 

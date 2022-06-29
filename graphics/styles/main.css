@@ -23,9 +23,9 @@
 @import 'cmps/footer.css';
 @import 'cmps/email-side-menu.css';
 
-
 /* NOTES COMPONENTS */
 @import 'cmps/note-txt.css';
+@import 'cmps/note-list.css';
 
 /* Media Queries */
 @import 'mq/mq.css';
