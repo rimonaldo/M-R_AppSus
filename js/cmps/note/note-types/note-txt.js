@@ -4,6 +4,7 @@ export default {
 <section class="note-txt">
 <p>text note</p>
 <textarea :style="{height:textareaHight +'px' }" :placeholder=" noteTxt" required  @keyup="reSize"></textarea>
+<button @click="deleteNote">X</button>
 </section>
 `,
 	data() {
@@ -19,7 +20,10 @@ export default {
 			this.$emit('setVal', this.val)
 		},
 
-		reportVal() {},
+		deleteNote(ev) {
+			let id = this.note.id
+			this.$emit('deleteNote', id)
+		},
 	},
 
 	computed: {

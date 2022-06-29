@@ -1,0 +1,30 @@
+.note-txt {
+	/* min-width: 400px; */
+	max-width: 300px;
+	background-color: rgb(172, 144, 144);
+	/* max-height: 600px; */
+	/* margin: 0.8rem; */
+	/* padding: 5px; */
+}
+
+textarea {
+	width: 100%;
+	height: 60px;
+	padding: 15px;
+	outline: none;
+	resize: none;
+	border-radius: 10px;
+}
+.note-list {
+	border: 1px black solid;
+	display: flex;
+	padding: 10px;
+	flex-wrap: wrap;
+	/* flex-direction: column; */
+	width: fit-content;
+	margin: 0 auto;
+	width: 80%;
+}
+.note {
+	padding: 10px;
+}

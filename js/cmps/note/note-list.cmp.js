@@ -6,17 +6,18 @@ import noteTxt from '../../cmps/note/note-types/note-txt.js'
 export default {
 	props: ['notes'],
 	template: `
-    <section class="note-list">
+    <section >
         <ul>
-            <li v-for="(note,idx) in notes" :key="note.id" class="note-preview-container">
+            <li v-for="(note,idx) in notes" :key="note.id" class="note">
             <component :is="note.type"  
                         :info="note.info" 
 												:note="note"
+												@deleteNote="deleteNote($event,id)"
                         @setVal="setAns($event, idx)">
                     </component>
 										
-										<p>{{answers[idx]  }}</p>
-										<p>{{notes[0].info.txt}}</p>
+										<p></p>
+										<p></p>
                 <note-preview   :note="note"/>
             </li>
         </ul>
@@ -43,10 +44,13 @@ export default {
 	},
 	methods: {
 		setAns(ans, idx) {
-			console.log('this.answers:', this.answers)
-			// this.answers[idx].txt = ans
-			// this.idx = idx
-			// this.$emit('setNote', this.answers[idx])
+			this.answers[idx].txt = ans
+			this.idx = idx
+			let res = {ans, idx: this.idx}
+			this.$emit('setNote', res)
+		},
+		deleteNote(id) {
+			this.$emit('removeNote', id)
 		},
 	},
 	computed: {},
