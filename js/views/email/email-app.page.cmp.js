@@ -8,6 +8,7 @@ import emailFolderList from "../../cmps/email/email-folder-list.cmp.js";
 import emailList from "../../cmps/email/email-list.cmp.js";
 import emailPreview from "../../cmps/email/email-preview.cmp.js";
 import emailCompose from "../../cmps/email/email-compose.cmp.js";
+import emailSideMenu from "../../cmps/email/email-side-menu.cmp.js"
 
 
 export default {
@@ -17,6 +18,21 @@ export default {
         <email-nav></email-nav>
         <email-filter></email-filter>
         <email-folder-list></email-folder-list>
+        <email-side-menu></email-side-menu>
+        <section class="list">
+        <ul>
+            <li>
+                <div>
+                   <button>^ Unread</button>
+                </div>
+                <div class="pagination">
+                    <span>1-25</span>
+                    <span>of 120</span>
+                </div>
+    
+            </li>
+        </ul>
+        </section>
         <email-list></email-list>
         <email-preview></email-preview>
         <email-compose></email-compose>
@@ -36,6 +52,6 @@ export default {
         emailList,
         emailPreview,
         emailCompose,
-        
+        emailSideMenu, 
     },
 }

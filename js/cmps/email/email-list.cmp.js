@@ -5,7 +5,7 @@ export default {
     props: [],
     template: `
     <section class="list">
-
+       
         <ul v-for="email in emails" v-if="emails">
             <li>
             <div class="actions">
