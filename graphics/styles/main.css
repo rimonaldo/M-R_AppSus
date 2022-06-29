@@ -17,8 +17,10 @@
 @import 'cmps/main-item.css';
 @import 'cmps/main-details.css';
 @import 'cmps/header.css';
+@import 'cmps/email-header.css';
 @import 'cmps/screen.css';
 @import 'cmps/footer.css';
+
 
 /* NOTES COMPONENTS */
 @import 'cmps/note-txt.css';
