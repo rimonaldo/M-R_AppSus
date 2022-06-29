@@ -13,7 +13,7 @@ export default {
     <section class="main-layout">
         <note-filter></note-filter>
         <note-folder-list></note-folder-list>
-        <note-list  @setNote="setNotes($event,ans )"  :notes="notes" ></note-list>
+        <note-list v-if="notes" @setNote="setNotes($event,ans )"  :notes="notes" ></note-list>
         <note-compose></note-compose>
     </section>
 `,

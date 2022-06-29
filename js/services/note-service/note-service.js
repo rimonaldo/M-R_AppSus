@@ -76,6 +76,7 @@ function getEmptyNote() {
 	}
 }
 
+createNotes()
 function createNotes() {
 	let notes = utilService.loadFromStorage(NOTES_KEY)
 	if (!notes || !notes.length) {
