@@ -1,4 +1,86 @@
+.header.email-nav > *{
+    /* border: 1px black solid; */
+}
+
 .header.email-nav {
+    position: relative;
+
+}
+
+.header.email-nav .open-side{
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-inline-end: 1rem;
+    
+}
+
+.header.email-nav .open-side::before{
+    font-family: fa-solid;
+    content: "\f0c9";
+    color: rgb(86, 127, 204);
+}
+
+
+.header .logo::before{
+    font-family: fa-solid;
+    content: "\f2b6";
+    font-size: 2rem;
+    color:#ea4335 ;
+    
+    /* background-image: url(../../images/gmail.png);
+    
+    width: 40px;
+    height: 30px;
+    background-position: center;
+    background-size: contain; */
+}
+
+.header .search{
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.header .search input{
+    border: none;
+    border-radius: 3px;
+}
+
+.header .search .icon::before{
+    font-family: fa-solid;
+    content: "\f002";
+    position: relative;
+    right: 1.5rem;
+    color: #4285f4;
+}
+
+.header .side-actions{
+    /* background-color: green; */
+    /* border: 1px black solid; */
+    display: flex;
+    font-family: fa-solid;
+    color: #9b9da0;
+}
+.header .side-actions > *{
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.header .side-actions .about::before{
+    content: "\f059";
+}
+
+.header .side-actions .settings::before{
+    content: "\f013";
+    
+}
+
+.header .side-actions .integration::before{
+    content: "\f1b3";
     
 }
 
