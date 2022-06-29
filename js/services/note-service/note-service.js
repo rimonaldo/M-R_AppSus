@@ -35,18 +35,13 @@ const gNotes = [
 	},
 ]
 
-createNotes()
 export const noteService = {
+	NOTES_KEY,
 	getEmptyNote,
 	getNextNoteId,
 	getPrevNoteId,
 	createNote,
 	createNotes,
-	getById,
-}
-
-function getById() {
-	return Promise.resolve(survey)
 }
 
 function createNote(type) {
@@ -82,7 +77,6 @@ function getEmptyNote() {
 }
 
 function createNotes() {
-	return gNotes
 	let notes = utilService.loadFromStorage(NOTES_KEY)
 	if (!notes || !notes.length) {
 		notes = []
@@ -90,7 +84,7 @@ function createNotes() {
 		notes.push(_createNote())
 		notes.push(_createNote())
 		notes.push(_createNote())
-		utilService.saveToStorage(NOTES_KEY, notes)
+		utilService.saveToStorage(NOTES_KEY, gNotes)
 	}
 	return notes
 }
@@ -105,7 +99,6 @@ function _createNote(type = 'note-txt') {
 		},
 		crateAt: Date.now(),
 	}
-	console.log('note:', note)
 	return note
 }
 

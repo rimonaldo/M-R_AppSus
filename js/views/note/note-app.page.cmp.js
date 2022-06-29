@@ -13,7 +13,7 @@ export default {
     <section class="main-layout">
         <note-filter></note-filter>
         <note-folder-list></note-folder-list>
-        <note-list   :notes="notes" ></note-list>
+        <note-list  @setNote="setNotes($event,ans )"  :notes="notes" ></note-list>
         <note-compose></note-compose>
     </section>
 `,
@@ -25,13 +25,21 @@ export default {
 	},
 	data() {
 		return {
-			notes: [],
+			notes: null,
 		}
 	},
-	methods: {},
+	methods: {
+		setNotes(ev, ans) {
+			// console.log('ev,ans ,idx:', ev, ans)
+		},
+	},
 	computed: {},
 	created() {
-		this.notes = noteService.createNotes()
+		appService.query(noteService.NOTES_KEY).then((notes) => {
+			console.log('notes:', notes)
+			this.notes = notes
+			console.log('this.notes :', this.notes)
+		})
 	},
 
 	unmounted() {},

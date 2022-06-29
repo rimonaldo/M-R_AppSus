@@ -14,11 +14,13 @@ export default {
 												:note="note"
                         @setVal="setAns($event, idx)">
                     </component>
+										
 										<p>{{answers[idx]  }}</p>
 										<p>{{notes[0].info.txt}}</p>
                 <note-preview   :note="note"/>
             </li>
         </ul>
+				
     </section>
 `,
 
@@ -36,12 +38,15 @@ export default {
 			idx: 0,
 		}
 	},
-	created() {},
+	created() {
+		console.log(this.notes)
+	},
 	methods: {
 		setAns(ans, idx) {
-			this.answers[idx].txt = ans
-			this.idx = idx
-			this.$emit('setNotes', this.val)
+			console.log('this.answers:', this.answers)
+			// this.answers[idx].txt = ans
+			// this.idx = idx
+			// this.$emit('setNote', this.answers[idx])
 		},
 	},
 	computed: {},

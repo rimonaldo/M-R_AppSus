@@ -2,8 +2,8 @@ import {emailService} from '../../services/email-service/email-service.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
 
 export default {
-    props: [],
-    template: `
+	props: [],
+	template: `
     <section class="list">
        
         <ul v-for="email in emails" v-if="emails">
@@ -21,25 +21,19 @@ export default {
         </ul>
     </section>
 `,
-    data() {
-        return {
-            emails:null
-        };
-    },
-    methods: {},
-    computed: {
-    },
-    created() {
-        appService.query(emailService.EMAILS_KEY).then((emails)=>{
-            console.log(emails);
-            this.emails = emails
-            
-        })
-
-     },
-    mounted() { },
-    unmounted() { },
-    components: {
-
-    },
+	data() {
+		return {
+			emails: null,
+		}
+	},
+	methods: {},
+	computed: {},
+	created() {
+		appService.query(emailService.EMAILS_KEY).then((emails) => {
+			this.emails = emails
+		})
+	},
+	mounted() {},
+	unmounted() {},
+	components: {},
 }
