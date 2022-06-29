@@ -1,10 +1,13 @@
+import { emailService } from "../../services/email-service";
+import { noteService } from "../services/keep-service";
+
+
 export default {
+    components: {},
     props: [],
     template: `
-    <section class="main-layout">
-        <h1>Home-Page</h1>
-
-        <router-link to="/email">email app</router-link>
+    <section>
+        <h1>email</h1>
     </section>
 `,
     data() {
@@ -13,7 +16,5 @@ export default {
     methods: {},
     computed: {},
     created() { },
-    mounted() { },
     unmounted() { },
-    components: {},
 }

@@ -1,10 +1,8 @@
 export default {
     props: [],
     template: `
-    <section class="main-layout">
-        <h1>Home-Page</h1>
-
-        <router-link to="/email">email app</router-link>
+ <section>
+        <h1>keep</h1>
     </section>
 `,
     data() {
