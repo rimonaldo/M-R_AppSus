@@ -1,15 +1,11 @@
 export default {
-    props: [],
-    template: `
-
+	template: `
 `,
-    data() {
-        return {};
-    },
-    methods: {},
-    computed: {},
-    created() { },
-    mounted() { },
-    unmounted() { },
-    components: {},
+	data() {
+		return {}
+	},
+	created() {},
+	methods: {},
+	computed: {},
+	unmounted() {},
 }

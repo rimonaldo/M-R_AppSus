@@ -58,7 +58,7 @@ function _createNotes() {
 function _createNote(type = 'note-txt') {
 	const note = {
 		id: utilService.makeId(),
-		type: 'note-txt',
+		type,
 		isPinned: false,
 		info: {
 			txt: 'Note',
