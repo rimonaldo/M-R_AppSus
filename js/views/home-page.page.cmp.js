@@ -5,7 +5,7 @@ export default {
 	props: [],
 	template: `
     <section class="main-layout">
-        
+        <app-header></app-header>
         <h1>Home-Page</h1>
 
         <router-link to="/email">email app</router-link>
@@ -22,5 +22,8 @@ export default {
 	created() {},
 	mounted() {},
 	unmounted() {},
-	components: {},
+	components: {
+        appHeader,
+        appFooter
+    },
 }
