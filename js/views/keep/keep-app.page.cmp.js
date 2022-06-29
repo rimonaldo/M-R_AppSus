@@ -6,7 +6,7 @@ import { appService } from "../../services/main-app-service/main-app-service.js"
 export default {
     props: [],
     template: `
- <section>
+ <section class="main-layout">
         <h1>keep</h1>
     </section>
 `,

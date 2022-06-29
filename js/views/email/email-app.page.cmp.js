@@ -7,8 +7,9 @@ export default {
     components: {},
     props: [],
     template: `
-    <section>
+    <section class="main-layout">
         <h1>email</h1>
+        
     </section>
 `,
     data() {
