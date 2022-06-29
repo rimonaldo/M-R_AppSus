@@ -9,7 +9,7 @@ export default {
         <li  v-for="email in emails" :class="{read:email.isRead}">
             <div class="actions">
                 <input  type="checkbox" v-model="email.isRead">
-                <input type="checkbox">
+                <input @click="log" :class="{star:email.isStarred}" type="checkbox" >
             </div>
             <router-link :to="'/email/'+email.id">
                 <span >{{email.sentBy}}</span>
@@ -27,7 +27,7 @@ export default {
 	},
 	methods: {
 		log(){
-
+			console.log(this.email);
 		}
 	},
 	computed: {},

@@ -34,10 +34,11 @@ export default {
                     </li>
                 </ul>
                 <email-list></email-list>
-            </section>
+                <router-link to="/email/compose">
+                    <div class="compose-icon" @click="compose"></div>
+                    </router-link>
+                </section>
         </div>
-            <!-- <email-preview></email-preview> -->
-        <email-compose></email-compose>
     </section>
 `,
     data() {

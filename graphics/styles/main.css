@@ -16,6 +16,7 @@
 /* MAIN COMPONENTS */
 @import 'cmps/main-list.css';
 @import 'cmps/main-item.css';
+@import 'cmps/email-compose.css';
 @import 'cmps/main-details.css';
 @import 'cmps/header.css';
 @import 'cmps/email-header.css';

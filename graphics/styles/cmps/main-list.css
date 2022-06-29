@@ -20,3 +20,7 @@
 .list .read{
     background-color: #c2dbff;
 }
+
+.star{
+    border: 5px yellow solid;
+}
