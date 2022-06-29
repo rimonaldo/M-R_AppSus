@@ -1,6 +1,6 @@
 import { emailService } from "../../services/email-service/email-service.js";
 import { noteService } from "../../services/note-service/note-service.js";
-import { mainService } from "../../services/main-app-service/main-app-service.js";
+import { appService } from "../../services/main-app-service/main-app-service.js";
 
 
 export default {

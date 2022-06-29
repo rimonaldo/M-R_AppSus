@@ -1,5 +1,5 @@
-// import {utilService} from '.'
-// import {storageService} from '../async-storage-service'
+import {utilService} from '../main-app-service/util-service.js'
+import {storageService} from '../main-app-service/async-storage-service.js'
 
 const NOTES_KEY = 'notes'
 _createNotes()

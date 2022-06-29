@@ -11,11 +11,7 @@ _createEmails()
 export const emailService = {
 	EMAILS_KEY,
 	loggedinUser,
-	query,
-	remove,
-	save,
 	getEmptyEmail,
-	get,
 	getNextEemailId,
 	getPrevEemailId,
 	createEmail,
