@@ -1,17 +1,45 @@
+import {emailService} from '../../services/email-service/email-service.js'
+import {appService} from '../../services/main-app-service/main-app-service.js'
+
 export default {
     props: [],
     template: `
     <section class="list">
-        <h1>list</h1>
+
+        <ul v-for="email in emails" v-if="emails">
+            <li>
+            <div class="actions">
+                <input type="checkbox">
+                <input type="checkbox">
+            </div>
+            <span >{{email.sentBy.split('@')[0]}}</span>
+            <span >{{email.subject}}</span>
+            <span >{{email.body}}</span>
+            <span>18:06</span>
+            </li>
+            <!-- <li >{{email.sentAt}}</li> -->
+        </ul>
     </section>
 `,
     data() {
-        return {};
+        return {
+            emails:null
+        };
     },
     methods: {},
-    computed: {},
-    created() { },
+    computed: {
+    },
+    created() {
+        appService.query(emailService.EMAILS_KEY).then((emails)=>{
+            console.log(emails);
+            this.emails = emails
+            
+        })
+
+     },
     mounted() { },
     unmounted() { },
-    components: {},
+    components: {
+
+    },
 }

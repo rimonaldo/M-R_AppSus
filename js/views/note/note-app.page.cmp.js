@@ -1,7 +1,7 @@
 import {emailService} from '../../services/email-service/email-service.js'
 import {noteService} from '../../services/note-service/note-service.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
-import {appService} from '../../services/main-app-service/main-app-service'
+// import {appService} from '../../services/main-app-service/main-app-service'
 
 import noteFilter from '../../cmps/note/note-filter.cmp.js'
 import noteFolderList from '../../cmps/note/note-folder-list.cmp.js'
