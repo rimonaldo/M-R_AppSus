@@ -4,6 +4,7 @@ import { storageService } from './async-storage-service'
 const NOTES_KEY = 'notes';
 _createNotes()
 export const noteService = {
+    NOTES_KEY,
     query,
     remove,
     save,
@@ -11,7 +12,7 @@ export const noteService = {
     get,
     getNextNoteId,
     getPrevNoteId,
-    createNote
+    createNote,
 }
 
  

@@ -1,7 +1,9 @@
 export default {
     props: [],
     template: `
-    <h1>Home-Page</h1>
+    <section class="main-layout">
+        <h1>Home-Page</h1>
+    </section>
 `,
     data() {
         return {};

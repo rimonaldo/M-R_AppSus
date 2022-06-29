@@ -7,11 +7,13 @@ import appFooter from './cmps/app-footer.cmp.js'
 
 const options = {
     template: `
+   <section>
     <app-header/>
-    <router-view>
-        
-    </router-view>
-    <app-footer/>
+        <router-view>
+            
+        </router-view>
+        <app-footer/>
+   </section>
     `,
     components: {
         appHeader,
