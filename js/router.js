@@ -1,4 +1,4 @@
-import homePage from "./cmps/home-page.cmp.js"
+import homePage from "./views/home-page.page.cmp.js"
 
 const routes = [
      {

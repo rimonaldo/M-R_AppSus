@@ -1,7 +1,9 @@
 export default {
     props: [],
     template: `
-    <h1>header</h1>
+    <section class="header">
+        <h1>header</h1>
+    </section>
 `,
     data() {
         return {};
