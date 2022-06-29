@@ -6,13 +6,13 @@ export default {
 	template: `
     <section class="preview" >
   
-        <li  v-for="email in emails">
+        <li  v-for="email in emails" :class="{read:email.isRead}">
             <div class="actions">
                 <input  type="checkbox" v-model="email.isRead">
                 <input type="checkbox">
             </div>
             <router-link :to="'/email/'+email.id">
-                <span >{{email.sentBy.split('@')[0]}}</span>
+                <span >{{email.sentBy}}</span>
                 <span >{{email.subject}}</span>
                 <span >{{email.body}}</span>
                 <span>18:06</span>
