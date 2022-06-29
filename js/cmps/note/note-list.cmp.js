@@ -18,7 +18,9 @@ export default {
 	data() {
 		return {}
 	},
-	created() {},
+	created() {
+		console.log(this.notes)
+	},
 	methods: {},
 	computed: {},
 	unmounted() {},

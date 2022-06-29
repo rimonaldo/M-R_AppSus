@@ -12,14 +12,16 @@
 @import 'pages/email-app.css';
 @import 'pages/keep-app.css';
 
-
-/* COMPONENTS */
+/* MAIN COMPONENTS */
 @import 'cmps/main-list.css';
 @import 'cmps/main-item.css';
 @import 'cmps/main-details.css';
 @import 'cmps/header.css';
 @import 'cmps/screen.css';
 @import 'cmps/footer.css';
+
+/* NOTES COMPONENTS */
+@import 'cmps/note-txt.css';
 
 /* Media Queries */
 @import 'mq/mq.css';

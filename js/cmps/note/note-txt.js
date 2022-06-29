@@ -3,13 +3,20 @@ export default {
 	template: `
 <section class="note-txt">
 <p>text note</p>
-<textarea placeholder=" type"></textarea>
+<textarea :style="{height:textareaHight +'px' }" placeholder=" type" required  @keyup="reSize"></textarea>
 </section>
 `,
 	data() {
-		return {}
+		return {
+			textareaHight: null,
+		}
 	},
-	methods: {},
+	methods: {
+		reSize(ev) {
+			console.log('ev.target:', ev.target)
+			this.textareaHight = ev.target.scrollHeight
+		},
+	},
 	computed: {},
 	created() {},
 	mounted() {},
