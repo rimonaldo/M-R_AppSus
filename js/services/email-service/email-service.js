@@ -1,5 +1,7 @@
+import { appService } from '../main-app-service/main-app-service.js'
 import {utilService} from '../main-app-service/util-service.js'
 import {storageService} from '../main-app-service/async-storage-service.js'
+
 
 const EMAILS_KEY = 'mails'
 const loggedinUser = {
@@ -25,27 +27,6 @@ function createEmail(title, msg, user = 'puki') {
 	save(email.id)
 }
 
-// returns a promise
-// function query() {
-//     return storageService.query(EMAILS_KEY)
-// }
-
-// remove item from model and storage
-// function remove(emailId) {
-//     return storageService.remove(EMAILS_KEY, emailId)
-// }
-
-// returns a promise
-// function get(emailId) {
-//     return storageService.get(EMAILS_KEY, emailId)
-// }
-
-// saves new item or updates existing item
-// function save(mail) {
-//     if (mail.id) return storageService.put(EMAILS_KEY, mail)
-//     else return storageService.post(EMAILS_KEY, mail)
-// }
-
 function getNextEemailId(emailId) {
 	return storageService.query(EMAILS_KEY).then((emails) => {
 		const idx = emails.findIndex((email) => email.id === emailId)
@@ -63,11 +44,12 @@ function getPrevEemailId(emailId) {
 function getEmptyEmail() {
 	const id = utilService.makeId()
 	return {
-		title,
 		id,
-		msg,
-		sentBy: null,
+		subject,
+		body,
+		isRead:false,
 		sentAt: Date.now(),
+		to: 'momo@momo.com',
 	}
 }
 
@@ -75,24 +57,25 @@ function _createEmails() {
 	let emails = utilService.loadFromStorage(EMAILS_KEY)
 	if (!emails || !emails.length) {
 		emails = []
-		emails.push(_createEmail('Audu Mea'))
-		emails.push(_createEmail('Fiak Ibasa'))
-		emails.push(_createEmail('Subali Pesha'))
-		emails.push(_createEmail('Mitsu Bashi'))
+		emails.push(_createEmail())
+		emails.push(_createEmail())
+		emails.push(_createEmail())
+		emails.push(_createEmail())
 		utilService.saveToStorage(EMAILS_KEY, emails)
 	}
-	return emails
+	appService.save(EMAILS_KEY,emails)
 }
 
-function _createEmail(title = 'New mail!', msg) {
+function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!') {
 	const id = utilService.makeId()
-	const mail = {
+	return {
 		id,
-		title,
-		msg,
+		subject,
+		body,
+		isRead:false,
 		sentAt: Date.now(),
+		to: 'momo@momo.com',
 	}
-	return mail
 }
 
 const criteria = {

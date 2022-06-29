@@ -13,6 +13,7 @@ export default {
         <router-link to="/note">note app</router-link>
     </section>
     <app-footer></app-footer>
+    
 `,
 	data() {
 		return {}

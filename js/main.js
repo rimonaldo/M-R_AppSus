@@ -1,5 +1,5 @@
 const {createApp} = Vue
-
+import appFooter from './cmps/main-app/app-footer.cmp.js'
 import {router} from './router.js'
 
 
@@ -10,6 +10,7 @@ const options = {
         <router-view>
             
         </router-view>
+        
    </section>
     `,
     data(){
@@ -20,6 +21,7 @@ const options = {
 
     },
 	components: {
+        appFooter
 	},
 }
 

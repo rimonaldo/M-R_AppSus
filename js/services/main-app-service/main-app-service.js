@@ -1,3 +1,5 @@
+import { storageService } from "./async-storage-service.js"
+
 export const appService = {
 	remove,
 	save,
@@ -21,6 +23,6 @@ function get(key, id) {
 
 // saves new item or updates existing item
 function save(key, id) {
-	if (note.id) return storageService.put(key, id)
+	if (id) return storageService.put(key, id)
 	else return storageService.post(key, id)
 }
