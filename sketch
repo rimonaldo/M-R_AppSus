@@ -1,0 +1,75 @@
+
+Header {
+    side menu{} open
+    logo-icon/branding
+    search input + search icon
+    nav action bar{
+        abut
+        setting
+        integration{ 
+            notes
+            missBooks
+        } 
+    }
+    avatar
+}
+
+
+Side_menu {
+    add icon,opens by hover{
+        unopened , income mail,
+        marked/starred,
+        sent mail
+        notes
+        drafts
+        avatar
+    }
+}
+
+
+Mail_list {
+    toggle select all{
+        mark read
+        delete
+    }
+
+    optional* i18n / accessability
+
+    list{
+        list header{
+            sort by{
+                not opened
+                date
+                string
+            }
+
+            optional*{
+                pagingation{
+                    show more/less items
+                    or
+                    next/previous page
+                }    
+            } 
+            
+        }
+    }
+
+    mail item{
+        action checkbox{
+            select item
+            star item
+        }
+
+        item{
+            sender
+            title
+            time mail was sent
+
+            optional*{
+                mail opening text
+                action buttons on hover
+            }             
+        }
+
+    }
+}

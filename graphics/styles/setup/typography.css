@@ -1,0 +1,16 @@
+
+/* FONTS */
+@font-face{
+    font-family: eurof;
+    src: url(../../fonts/eurof55.ttf);
+}
+
+@font-face{
+    font-family: fa-brands;
+    src: url(../../fonts/fa/fa-brands-400.ttf);
+}
+
+@font-face{
+    font-family: fa-solid;
+    src: url(../../fonts/fa/fa-solid-900.ttf);
+}

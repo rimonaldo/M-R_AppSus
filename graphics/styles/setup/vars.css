@@ -1,0 +1,19 @@
+:root {
+    /* p */
+    --clr1: #606060;
+    /* card h */
+    --clr2: #4F4E4E;
+    /* nav background */
+    --clr3: #292929;
+    /* button */
+    --clr4: #C2C1C1;
+    /* green */
+    --clr5: #58C93A;
+
+    /* sizes */
+    --mobile:350px;
+    --tablet:650px;
+    --desktop:980px;
+}
+
+
