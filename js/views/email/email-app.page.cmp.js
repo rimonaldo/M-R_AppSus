@@ -3,8 +3,8 @@ import { noteService } from "../../services/note-service/note-service.js";
 import { appService } from "../../services/main-app-service/main-app-service.js";
 
 
+
 export default {
-    components: {},
     props: [],
     template: `
     <section class="main-layout">
@@ -19,4 +19,7 @@ export default {
     computed: {},
     created() { },
     unmounted() { },
+    components: {
+        
+    },
 }
