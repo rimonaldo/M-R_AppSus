@@ -1,6 +1,6 @@
 import homePage from './views/home-page.page.cmp.js'
 import emailApp from './views/email/email-app.page.cmp.js'
-import keepApp from './views/note/note-app.page.cmp.js'
+import noteApp from './views/note/note-app.page.cmp.js'
 
 const routes = [
 	{
@@ -12,8 +12,8 @@ const routes = [
 		component: emailApp,
 	},
 	{
-		path: '/keep',
-		component: keepApp,
+		path: '/note',
+		component: noteApp,
 	},
 ]
 

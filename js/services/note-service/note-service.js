@@ -4,44 +4,18 @@ import {storageService} from '../main-app-service/async-storage-service.js'
 const NOTES_KEY = 'notes'
 _createNotes()
 export const noteService = {
-	// query,
-	// remove,
-	// save,
 	getEmptyNote,
-	// get,
 	getNextNoteId,
 	getPrevNoteId,
 	createNote,
 }
 
-function createNote(title, msg, user = 'puki') {
+function createNote(type) {
 	let note = getEmptyNote()
-	note.title = title
-	note.msg = msg
-	note.user = user
+	note.type = type
+
 	save(note.id)
 }
-
-// returns a promise
-// function query() {
-//     return storageService.query(NOTES_KEY)
-// }
-
-// remove item from model and storage
-// function remove(noteId) {
-//     return storageService.remove(NOTES_KEY, noteId)
-// }
-
-// returns a promise
-// function get(noteId) {
-//     return storageService.get(NOTES_KEY, noteId)
-// }
-
-// saves new item or updates existing item
-// function save(note) {
-//     if (note.id) return storageService.put(NOTES_KEY, note)
-//     else return storageService.post(NOTES_KEY, note)
-// }
 
 function getNextNoteId(noteId) {
 	return storageService.query(NOTES_KEY).then((notes) => {
@@ -60,11 +34,11 @@ function getPrevNoteId(noteId) {
 function getEmptyNote() {
 	const id = utilService.makeId()
 	return {
-		title,
+		type,
 		id,
-		msg,
-		sentBy: null,
-		sentAt: Date.now(),
+		// msg,
+		// sentBy: null,
+		crateAt: Date.now(),
 	}
 }
 
@@ -72,21 +46,25 @@ function _createNotes() {
 	let notes = utilService.loadFromStorage(NOTES_KEY)
 	if (!notes || !notes.length) {
 		notes = []
-		notes.push(_createNote('Audu Mea'))
-		notes.push(_createNote('Fiak Ibasa'))
-		notes.push(_createNote('Subali Pesha'))
-		notes.push(_createNote('Mitsu Bashi'))
+		notes.push(_createNote())
+		notes.push(_createNote())
+		notes.push(_createNote())
+		notes.push(_createNote())
 		utilService.saveToStorage(NOTES_KEY, notes)
 	}
 	return notes
 }
 
-function _createNote(title = 'New note!', msg) {
+function _createNote(type = 'note-txt') {
 	const note = {
 		id: utilService.makeId(),
-		title,
-		msg,
-		sentAt: Date.now(),
+		type: 'note-txt',
+		isPinned: false,
+		info: {
+			txt: 'Note',
+		},
+		crateAt: Date.now(),
 	}
+	console.log('note:', note)
 	return note
 }
