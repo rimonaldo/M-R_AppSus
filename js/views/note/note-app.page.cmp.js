@@ -6,7 +6,6 @@ import {storageService} from '../../services/main-app-service/async-storage-serv
 import noteFilter from '../../cmps/note/note-filter.cmp.js'
 import noteFolderList from '../../cmps/note/note-folder-list.cmp.js'
 import noteList from '../../cmps/note/note-list.cmp.js'
-import noteTxt from '../../cmps/note/note-txt.js'
 import noteCompose from '../../cmps/note/note-compose.cmp.js'
 
 export default {
@@ -14,8 +13,7 @@ export default {
     <section class="main-layout">
         <note-filter></note-filter>
         <note-folder-list></note-folder-list>
-        <note-list  :notes="notes" ></note-list>
-				<note-txt></note-txt>
+        <note-list   :notes="notes" ></note-list>
         <note-compose></note-compose>
     </section>
 `,
@@ -24,7 +22,6 @@ export default {
 		noteFolderList,
 		noteList,
 		noteCompose,
-		noteTxt,
 	},
 	data() {
 		return {

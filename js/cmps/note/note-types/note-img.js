@@ -13,7 +13,6 @@ export default {
 	},
 	methods: {
 		reSize(ev) {
-			console.log('ev.target:', ev.target)
 			this.textareaHight = ev.target.scrollHeight
 		},
 	},

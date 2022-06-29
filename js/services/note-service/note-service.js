@@ -2,7 +2,7 @@ import {utilService} from '../main-app-service/util-service.js'
 import {storageService} from '../main-app-service/async-storage-service.js'
 
 const NOTES_KEY = 'notes'
-const notes = [
+const gNotes = [
 	{
 		id: 'n101',
 		type: 'note-txt',
@@ -42,6 +42,11 @@ export const noteService = {
 	getPrevNoteId,
 	createNote,
 	createNotes,
+	getById,
+}
+
+function getById() {
+	return Promise.resolve(survey)
 }
 
 function createNote(type) {
@@ -77,6 +82,7 @@ function getEmptyNote() {
 }
 
 function createNotes() {
+	return gNotes
 	let notes = utilService.loadFromStorage(NOTES_KEY)
 	if (!notes || !notes.length) {
 		notes = []

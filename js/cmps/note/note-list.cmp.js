@@ -1,4 +1,7 @@
 import notePreview from '../../cmps/note/note-preview.cmp.js'
+import noteTodos from '../../cmps/note/note-types/note-todos.js'
+import noteImg from '../../cmps/note/note-types/note-img.js'
+import noteTxt from '../../cmps/note/note-types/note-txt.js'
 
 export default {
 	props: ['notes'],
@@ -6,10 +9,13 @@ export default {
     <section class="note-list">
         <ul>
             <li v-for="(note,idx) in notes" :key="note.id" class="note-preview-container">
-            <component :is="cmp.type"  
-                        :info="cmp.info" 
+            <component :is="note.type"  
+                        :info="note.info" 
+												:note="note"
                         @setVal="setAns($event, idx)">
                     </component>
+										<p>{{answers[idx]  }}</p>
+										<p>{{notes[0].info.txt}}</p>
                 <note-preview   :note="note"/>
             </li>
         </ul>
@@ -18,14 +24,26 @@ export default {
 
 	components: {
 		notePreview,
+		noteTxt,
+		noteImg,
+		noteTxt,
+		noteTodos,
 	},
 	data() {
-		return {}
+		return {
+			survey: null,
+			answers: this.notes,
+			idx: 0,
+		}
 	},
-	created() {
-		console.log(this.notes)
+	created() {},
+	methods: {
+		setAns(ans, idx) {
+			this.answers[idx].txt = ans
+			this.idx = idx
+			this.$emit('setNotes', this.val)
+		},
 	},
-	methods: {},
 	computed: {},
 	unmounted() {},
 }
