@@ -3,6 +3,8 @@ export default {
     template: `
     <section class="main-layout">
         <h1>Home-Page</h1>
+
+        <router-link to="/email">email app</router-link>
     </section>
 `,
     data() {

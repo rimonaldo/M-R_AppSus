@@ -6,7 +6,9 @@ export default {
     components: {},
     props: [],
     template: `
-    
+    <section>
+        <h1>email</h1>
+    </section>
 `,
     data() {
         return {};
