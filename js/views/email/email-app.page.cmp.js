@@ -1,5 +1,5 @@
-import { mailService } from "../services/email-service";
-import { noteService } from "../services/note-service";
+import { emailService } from "../../services/email-service";
+import { noteService } from "../services/keep-service";
 
 
 export default {

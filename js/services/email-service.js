@@ -2,8 +2,15 @@ import { utilService } from './util-service'
 import { storageService } from './async-storage-service'
 
 const EMAILS_KEY = 'mails';
+const loggedinUser = {
+    email:'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
 _createEmails()
-export const mailService = {
+
+export const emailService = {
+    EMAILS_KEY,
+    loggedinUser,
     query,
     remove,
     save,
@@ -11,10 +18,11 @@ export const mailService = {
     get,
     getNextEemailId,
     getPrevEemailId,
-    createEmail: createEmail
+    createEmail,
+
 }
 
-function createEmail(title,msg,user='puki'){
+function createEmail(title, msg, user = 'puki') {
     let email = getEmptyEmail()
     email.title = title
     email.msg = msg
@@ -56,7 +64,7 @@ function getPrevEemailId(emailId) {
     return storageService.query(EMAILS_KEY)
         .then(emails => {
             const idx = emails.findIndex(email => email.id === emailId)
-            return (idx < emails.length - 1 || idx >=0 ) ? emails[idx - 1].id : emails[0].id
+            return (idx < emails.length - 1 || idx >= 0) ? emails[idx - 1].id : emails[0].id
         })
 }
 
@@ -66,7 +74,7 @@ function getEmptyEmail() {
         title,
         id,
         msg,
-        sentBy:null,
+        sentBy: null,
         sentAt: Date.now()
     }
 }
@@ -85,11 +93,20 @@ function _createEmails() {
 }
 
 function _createEmail(title = "New mail!", msg) {
+    const id = utilService.makeId()
     const mail = {
-        id: utilService.makeId(),
+        id,
         title,
         msg,
         sentAt: Date.now(),
     };
     return mail;
+}
+
+const criteria = {
+    status: {inbox:false , sent:false , trash:false , draft:true},
+    txt:'puki',
+    isRead:false,
+    isStared:false,
+    lables: ['important']
 }
