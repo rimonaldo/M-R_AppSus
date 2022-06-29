@@ -3,10 +3,16 @@
     line-height: 2rem;
 }
 
-.list ul li {
-    list-style-type: none;
+.list ul.mail li {
     border-bottom: 1px black solid;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.list a{
+    /* border: 1px black solid; */
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
 }

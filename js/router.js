@@ -2,6 +2,7 @@ import homePage from './views/home-page.page.cmp.js'
 import emailApp from './views/email/email-app.page.cmp.js'
 import noteApp from './views/note/note-app.page.cmp.js'
 import emailPreview from './cmps/email/email-preview.cmp.js'
+import emailDetails from './cmps/email/email-details.cmp.js'
 
 const routes = [
 	{
@@ -13,8 +14,8 @@ const routes = [
 		component: emailApp,
 		children:[
 			{
-				path: ':id',
-				component:emailPreview
+				path: ':emailId',
+				component:emailDetails
 			}
 		]
 		

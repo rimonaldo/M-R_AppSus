@@ -6,7 +6,7 @@ export default {
     template: `
     <section class="list">
        
-        <ul v-for="email in emails" v-if="emails">
+        <ul class="mail" v-for="email in emails" v-if="emails">
             <li>
             <div class="actions">
                 <input type="checkbox">
@@ -22,7 +22,6 @@ export default {
         <!-- <li >{{email.sentAt}}</li> -->
     </ul>
     <router-view></router-view>
-    <router-link to="/email/id">Email</router-link> 
     </section>
 `,
     data() {
