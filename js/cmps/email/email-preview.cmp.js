@@ -6,7 +6,9 @@ export default {
     template: `
     <section class="preview">
   
-    
+        <h1>preview</h1>
+        
+        <router-link to="/email"><button>back</button></router-link>
        
     </section>
 `,

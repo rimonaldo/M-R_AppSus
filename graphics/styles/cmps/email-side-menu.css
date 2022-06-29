@@ -1,0 +1,6 @@
+.side-menu{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}

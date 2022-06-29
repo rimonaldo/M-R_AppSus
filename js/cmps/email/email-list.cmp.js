@@ -12,13 +12,17 @@ export default {
                 <input type="checkbox">
                 <input type="checkbox">
             </div>
-            <span >{{email.sentBy.split('@')[0]}}</span>
-            <span >{{email.subject}}</span>
-            <span >{{email.body}}</span>
-            <span>18:06</span>
-            </li>
-            <!-- <li >{{email.sentAt}}</li> -->
-        </ul>
+            <router-link :to="'/email/'+email.id">
+                <span >{{email.sentBy.split('@')[0]}}</span>
+                <span >{{email.subject}}</span>
+                <span >{{email.body}}</span>
+                <span>18:06</span>
+            </router-link>
+        </li>
+        <!-- <li >{{email.sentAt}}</li> -->
+    </ul>
+    <router-view></router-view>
+    <router-link to="/email/id">Email</router-link> 
     </section>
 `,
     data() {

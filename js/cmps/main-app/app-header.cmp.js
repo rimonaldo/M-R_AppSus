@@ -6,6 +6,7 @@ export default {
     <section class="header">
         <h1>header</h1>
         <router-link to="/">home</router-link>
+
     </section>
 `,
     data() {
