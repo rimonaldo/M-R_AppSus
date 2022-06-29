@@ -7,13 +7,19 @@
 @import 'basic/layout.css';
 @import 'basic/helpers.css';
 
+/* PAGES */
+@import 'pages/home-app.css';
+@import 'pages/email-app.css';
+@import 'pages/keep-app.css';
+
+
 /* COMPONENTS */
-@import 'components/main-list.css';
-@import 'components/main-item.css';
-@import 'components/main-details.css';
-@import 'components/header.css';
-@import 'components/screen.css';
-@import 'components/footer.css';
+@import 'cmps/main-list.css';
+@import 'cmps/main-item.css';
+@import 'cmps/main-details.css';
+@import 'cmps/header.css';
+@import 'cmps/screen.css';
+@import 'cmps/footer.css';
 
 /* Media Queries */
 @import 'mq/mq.css';
