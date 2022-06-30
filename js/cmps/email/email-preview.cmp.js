@@ -1,11 +1,10 @@
-import {emailService} from '../../services/email-service/email-service.js'
-import {appService} from '../../services/main-app-service/main-app-service.js'
+import { emailService } from '../../services/email-service/email-service.js'
+import { appService } from '../../services/main-app-service/main-app-service.js'
 
 export default {
 	props: ['email'],
 	template: `
     <section class="preview" >
-  
         <li  v-for="email in emails" :class="{read:email.isRead}">
             <div class="actions">
                 <input  type="checkbox" v-model="email.isRead">
@@ -17,6 +16,7 @@ export default {
                 <span >{{email.body}}</span>
                 <span>18:06</span>
             </router-link>
+			<button @click.stop="remove(email.id)">x</button>
         </li>
     </section>
 `,
@@ -26,8 +26,17 @@ export default {
 		}
 	},
 	methods: {
-		log(){
+		log() {
 			console.log(this.email);
+		},
+		remove(id) {
+			emailService.remove(emailService.EMAILS_KEY, id)
+				.then(() => {
+					console.log('deleted');
+					const idx = this.emails.findIndex((email) => email.id === id)
+					this.emails.splice(idx, 1)
+				})
+
 		}
 	},
 	computed: {},
@@ -36,11 +45,22 @@ export default {
 			this.emails = emails
 		})
 	},
-	mounted() {},
-	unmounted() {},
+	mounted() { },
+	unmounted() { },
 	components: {
 		emailService,
 		appService,
 		emailService,
 	},
+	watch: {
+		'$route.params': {
+			handler() {
+				emailService.query(emailService.EMAILS_KEY)
+					.then((sent) => {
+						this.emails = sent
+					})
+			},
+			immediate: true
+		}
+	}
 }

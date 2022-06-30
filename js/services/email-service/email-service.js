@@ -25,12 +25,25 @@ export const emailService = {
 	getPrevEemailId,
 	createEmail,
 	getNewEmail,
+	query,
+	get,
+	remove,
+	save,
+	composeEmail,
+	saveEmails,
+	saveSentEmails,
+
+
 }
 
 // getNewEmail()
 
-function getNewEmail(){
-	console.log('new:',_createSentEmail());
+function composeEmail() {
+	return _createSentEmail()
+}
+
+function getNewEmail() {
+	console.log('new:', _createSentEmail());
 }
 
 function createEmail(title, msg, user = 'puki') {
@@ -64,7 +77,7 @@ function getEmptyEmail() {
 		isRead: false,
 		sentAt: Date.now(),
 		to: 'momo@momo.com',
-		
+
 	}
 }
 
@@ -108,23 +121,8 @@ const criteria = {
 
 
 
-
-// _createSentEmails()
-// function _createSentEmails() {
-// 	let sentEmails = utilService.loadFromStorage(GMAILS_KEY).sent || []
-// 	if (!sentEmails || !sentEmails.length) {
-// 		sentEmails = [];
-// 		sentEmails.push(_createSentEmail());
-// 		sentEmails.push(_createSentEmail());
-// 		sentEmails.push(_createSentEmail());
-// 		sentEmails.push(_createSentEmail());
-// 		utilService.saveToStorage(GMAILS_KEY, sentEmails);
-// 	}
-// 	return sentEmails;
-// }
-
 function _createSentEmails() {
-	let email = utilService.loadFromStorage(SENT_KEY)||{};
+	let email = utilService.loadFromStorage(SENT_KEY) || {};
 	if (!email || !email.length) {
 		email = [];
 		email.push(_createSentEmail());
@@ -138,10 +136,9 @@ function _createSentEmails() {
 
 
 
-function _createSentEmail(subject = 'ME TOO!', body = 'Would love to catch up sometimes!', to = 'momo@momo.com') {
-	const id = utilService.makeId()
+function _createSentEmail(subject, body, to) {
 	return {
-		id,
+		id: null,
 		subject,
 		body,
 		isRead: false,
@@ -150,11 +147,43 @@ function _createSentEmail(subject = 'ME TOO!', body = 'Would love to catch up so
 		to,
 	}
 }
+
+
+
 saveGmails
 function saveGmails() {
 	let gmails = {
-		sent: [_createSentEmail(),_createSentEmail()], 
+		sent: [_createSentEmail(), _createSentEmail()],
 		recived: utilService.loadFromStorage(EMAILS_KEY)
 	}
 	utilService.saveToStorage(GMAILS_KEY, gmails)
+}
+
+// returns a promise
+function query(entityType) {
+	return storageService.query(entityType)
+}
+
+// remove item from model and storage
+function remove(entityType, entityId) {
+	return storageService.remove(entityType, entityId)
+}
+
+// returns a promise
+function get(entityType, entityId) {
+	return storageService.get(entityType, entityId)
+}
+
+// saves new item or updates existing item
+function save(entityType, newEntity) {
+	if (newEntity.id) return storageService.put(entityType, newEntity)
+	else return storageService.post(entityType, newEntity)
+}
+
+function saveEmails(emails){
+	return storageService.post(EMAILS_KEY, emails)
+}
+
+function saveSentEmails(emails){
+	return storageService.post(SENT_KEY, emails)
 }

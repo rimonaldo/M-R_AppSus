@@ -22,6 +22,12 @@ const routes = [
 			{
 				path: 'compose',
 				component: emailCompose,
+				children:[
+					{
+						path: ':composeId',
+						component: emailCompose
+					}
+				]
 			},
 		],
 	},
