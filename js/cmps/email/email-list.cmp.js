@@ -13,17 +13,18 @@ export default {
 					<input type="checkbox">
 				</div>
 			</li>
-                <email-preview @remove="removeEmail"/>   
+                <email-preview @remove="removeEmail" v-if="!showSent"/>   
 				
-				<sent-preview ></sent-preview>
+				
+				<router-view></router-view>
         </ul>
-    <router-view></router-view>
     </section>
 `,
 	data() {
 		return {
 			emails: null,
 			sent:null,
+			showSent:false
 		}
 	},
 	methods: {
@@ -32,7 +33,7 @@ export default {
 				.then(()=>{
 					console.log('deleted');
 					const idx = this.emails.findIndex((email)=> email.id === id)
-					this.emails = this.emails.splice(idx,1)
+					this.emails.splice(idx,1)
 					
 				})
 		}
@@ -49,5 +50,24 @@ export default {
         emailPreview,
 		sentPreview
     },
+	watch: {
+		'$route.params': {
+			handler() {	
+				// if (this.$route.params.sent){
+				// 	console.log('this.$route.params.sent',this.$route.params.sent);
+				// 	this.showSent = true
+				// } else{	
+				// 	this.showSent = false
+				// }
+				if (this.$route.params.show){
+					this.showSent = true
+				} else this.showSent = false
+
+				
+			},
+			
+		},
+	
+	}
 	
 }

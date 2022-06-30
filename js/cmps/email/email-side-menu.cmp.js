@@ -3,18 +3,22 @@ export default {
     template: `
     <section class="side-menu">
         
+        <router-link to="/email">
         <div class="inbox">
             <span>inbox</span>
             
         </div>
+        </router-link>
         
         <div class="starred">
             <span>Starred</span>
         </div>
         
+        <router-link :to="'/email/show/'+'sent'">
         <div class="sent">
             <span>Sent</span>
         </div>
+        </router-link>
         
         <div class="drafts">
             <span>Drafts</span>

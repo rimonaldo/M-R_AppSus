@@ -5,6 +5,8 @@ import noteList from './cmps/note/note-list.cmp.js'
 import emailPreview from './cmps/email/email-preview.cmp.js'
 import emailDetails from './cmps/email/email-details.cmp.js'
 import emailCompose from './cmps/email/email-compose.cmp.js'
+import sentPreview from './cmps/email/sent-preview.cmp.js'
+
 
 const routes = [
 	{
@@ -29,8 +31,14 @@ const routes = [
 					}
 				]
 			},
+			{
+				path: 'show/:show',
+				component: sentPreview
+			},
+			
 		],
 	},
+	
 	{
 		path: '/note',
 		component: noteApp,

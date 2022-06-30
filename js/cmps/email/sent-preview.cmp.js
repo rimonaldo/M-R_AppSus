@@ -5,7 +5,7 @@ export default {
     props: [],
     template: `
     <section class="sent">
-        <h1>sent</h1>
+
 
         <ul>
         <li  v-for="email in emails" :class="{read:email.isRead}">
