@@ -13,7 +13,7 @@ import noteCompose from '../../cmps/note/note-compose.cmp.js'
 
 export default {
 	template: `
-    <section  class="main-layout  ">
+    <section class="main-layout  ">
 			<note-nav></note-nav>
         <note-filter></note-filter>
 				<note-add :notes="notes" @newNote="cerateNote($event,type)"></note-add>
@@ -43,13 +43,14 @@ export default {
 	},
 	methods: {
 		setNotes(ans) {
-			console.log('ans:', ans)
 			this.notes[ans.idx].info.txt = ans.ans
 
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
 		cerateNote(note) {
 			console.log('note:', note)
+			let x = note.info
+			console.log('x:', x)
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 			console.log('this.notes:', this.notes)
@@ -91,11 +92,9 @@ export default {
 		eventBus.on('changeTodo', (data) => {
 			console.log('data:', data)
 			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
-			this.notes[noteIdx].info.todos[data.idx]
-			console.log(
-				'	this.notes[noteIdx].info.todos[data.idx] :',
-				(this.notes[noteIdx].info.todos[data.idx].txt = data.txt)
-			)
+			this.notes[noteIdx].info.todos[data.idx].txt = data.txt
+
+			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
 	},
 

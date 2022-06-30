@@ -9,7 +9,7 @@ export default {
     <input 
     v-model="value"
      type="text" 
-      :placeholder="info.label"> 
+     :placeholder="info.label"> 
     
   </label>
 	<button @click="addTodo">Add</button>
@@ -20,7 +20,6 @@ export default {
 						:key="note.id"
 						  >
          <note-todos  
-				 v-if="info"
 				 :idx="idx"
 				  :todo="todo"
 					:id="note.id"
@@ -28,9 +27,9 @@ export default {
 										
             </li>
         </ul>
-			</section>
-			<button  @click="deleteNote">X</button>
+	</section>
 	
+	<button @click="deleteNote">X</button>
  </section>
 `,
 	components: {
@@ -44,9 +43,7 @@ export default {
 		}
 	},
 
-	created() {
-		console.log(this.note)
-	},
+	created() {},
 
 	methods: {
 		deleteNote(ev) {
@@ -58,12 +55,7 @@ export default {
 			const id = this.note.id
 			const newTodo = {txt: this.value, id}
 			newTodo.id = id
-			// const obj = {id, new: newTodo}
 			eventBus.emit('addTodo', newTodo)
-
-			// const newTodos = this.info.todos
-			// newTodos.push(newTodo)
-			// this.$emit('addTodo', newTodos)
 		},
 	},
 

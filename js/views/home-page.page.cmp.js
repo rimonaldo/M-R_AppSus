@@ -24,7 +24,7 @@ export default {
 	mounted() {},
 	unmounted() {},
 	components: {
-        appHeader,
-        appFooter
-    },
+		appHeader,
+		appFooter,
+	},
 }

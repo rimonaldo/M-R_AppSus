@@ -9,9 +9,8 @@ import {noteService} from '../../services/note-service/note-service.js'
 export default {
 	props: ['notes'],
 	template: `
-    <section v-if="notes" >
-        <ul>
-            <li v-for="(note,idx) in notes" :key="note.id" class="note">
+    <section v-if="notes " class="note-list-container " >
+            <div v-for="(note,idx) in notes" :key="note.id" >
             <component :is="note.type"  
                         :info="note.info" 
 												:note="note"
@@ -20,12 +19,8 @@ export default {
                         @setVal="setAns($event, idx)"
 												class="note-container">
                     </component>
-										
-										<p></p>
-										<p></p>
                 <note-preview   :note="note"/>
-            </li>
-        </ul>
+            </div>
 				
     </section>
 `,

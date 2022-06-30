@@ -11,10 +11,11 @@ export default {
 		type="text"
 		placeholder="new note"
 		>
-		<button @click="chooseTxt">txt</button>
-		<button @click="chooseImg">img</button>
-		<button @click="chooseTodo">Todo</button>
-		<button @click="createNote">create</button>
+
+			<button @click="chooseTxt">txt</button>
+			<button @click="chooseImg">img</button>
+			<button @click="chooseTodo">Todo</button>
+			<button @click="createNote">create</button>
 	</section>
 `,
 	data() {
@@ -38,10 +39,9 @@ export default {
 		chooseTodo() {
 			this.type = 'note-todos'
 			this.info = {
-				title: this.title,
 				info: {
 					label: this.title,
-					todos: [{txt: this.value}],
+					todos: [{txt: this.value, doneAt: new Date()}],
 				},
 			}
 		},
