@@ -1,6 +1,7 @@
 import {emailService} from '../../services/email-service/email-service.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
 import emailPreview from './email-preview.cmp.js'
+import sentPreview from './sent-preview.cmp.js'
 
 export default {
 	props: [],
@@ -12,7 +13,9 @@ export default {
 					<input type="checkbox">
 				</div>
 			</li>
-                <email-preview/>          
+                <email-preview @remove="removeEmail"/>   
+				
+				<sent-preview ></sent-preview>
         </ul>
     <router-view></router-view>
     </section>
@@ -20,9 +23,20 @@ export default {
 	data() {
 		return {
 			emails: null,
+			sent:null,
 		}
 	},
-	methods: {},
+	methods: {
+		removeEmail(id){
+			emailService.remove(emailService.EMAILS_KEY,id)
+				.then(()=>{
+					console.log('deleted');
+					const idx = this.emails.findIndex((email)=> email.id === id)
+					this.emails = this.emails.splice(idx,1)
+					
+				})
+		}
+	},
 	computed: {},
 	created() {
 		appService.query(emailService.EMAILS_KEY).then((emails) => {
@@ -32,6 +46,8 @@ export default {
 	mounted() {},
 	unmounted() {},
 	components: {
-        emailPreview
+        emailPreview,
+		sentPreview
     },
+	
 }

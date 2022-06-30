@@ -15,17 +15,19 @@ export default {
                 </div>   
             </header>
 
-            <div class="inputs">
-                <input placeholder="Recipiants" type="text">
-                <input placeholder="Subject" type="text">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+            <div  class="inputs">
+                <input placeholder="Recipiants" type="text" v-model="newEmail.to">
+                <input  placeholder="Subject" type="text" v-model="newEmail.subject">
+                <textarea v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
             </div>
 
             <div class="bottom action-btns">
-                <button @click="logEmail" class="send">
-                    <span>send</span>
-                    <span></span>
-                </button>
+                <router-link to="/email">
+                    <button @click="send" class="send">
+                        <span>send</span>
+                        <span></span>
+                    </button>
+                </router-link>
             </div>
         </div>
 
@@ -33,22 +35,31 @@ export default {
 `,
     data() {
         return {
-            email:null,
-
+            newEmail: null
+            
         };
     },
     methods: {
-        logEmail(){
-
+        log(){
+            console.log(this.newEmail.subject);
+        },
+        send(){
+            console.log('sent');
+            emailService.save(emailService.SENT_KEY,this.newEmail)
+                .then((email)=>{
+                    console.log('theres ur promise', email);
+                    
+                })
+           
         }
     },
     computed: {},
     created() { 
-        appService.get(emailService.SENT_KEY)
-            .then((sent)=>{
-                console.log(sent);
-            })
-        this.mail = emailService.getNewEmail()
+
+        this.newEmail = emailService.composeEmail()
+        
+        console.log(this.newEmail);
+       
     },
     mounted() { },
     unmounted() { },

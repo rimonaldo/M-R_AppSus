@@ -1,9 +1,10 @@
 .compose-icon {
     position: absolute;
-    bottom: 8vh;
-    left: 2rem;
+    top: 28vh;
+    left: 1rem;
     font-family: fa-solid;
     cursor: pointer;
+    z-index: 10;
 }
 
 .compose-icon::before {
@@ -23,8 +24,8 @@
 
 
     z-index: 20;
-    position: absolute;
-    bottom: 5vh;
+    position: fixed;
+    bottom: 0;
     left: 1rem;
     width: 350px;
     height: 400px;
