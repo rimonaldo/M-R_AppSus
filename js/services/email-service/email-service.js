@@ -24,6 +24,13 @@ export const emailService = {
 	getNextEemailId,
 	getPrevEemailId,
 	createEmail,
+	getNewEmail,
+}
+
+// getNewEmail()
+
+function getNewEmail(){
+	console.log('new:',_createSentEmail());
 }
 
 function createEmail(title, msg, user = 'puki') {
@@ -57,6 +64,7 @@ function getEmptyEmail() {
 		isRead: false,
 		sentAt: Date.now(),
 		to: 'momo@momo.com',
+		
 	}
 }
 
