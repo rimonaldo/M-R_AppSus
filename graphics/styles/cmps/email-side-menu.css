@@ -16,7 +16,8 @@
 
 .side-menu div {
     margin-inline-start: 0.2em;
-    margin-block-start: 1.1em;
+    /* margin-block-start: 1.1em; */
+    line-height: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

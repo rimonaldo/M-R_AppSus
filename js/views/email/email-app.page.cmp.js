@@ -16,20 +16,20 @@ export default {
     template: `
     <section class="main-layout">
         <email-nav></email-nav>
-        <email-filter></email-filter>
-        <email-folder-list></email-folder-list>
+        <!-- <email-filter></email-filter> -->
+        <!-- <email-folder-list></email-folder-list> -->
         <div class="email-container">
             <email-side-menu></email-side-menu>
             <section class="list">
                 <ul>
                     <li>
                         <div>
-                        <button>^ Unread</button>
+                        <!-- <button>^ Unread</button> -->
                         </div>
-                        <div class="pagination">
+                        <!-- <div class="pagination">
                             <span>1-25</span>
                             <span>of 120</span>
-                        </div>
+                        </div> -->
             
                     </li>
                 </ul>
