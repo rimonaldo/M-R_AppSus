@@ -2,7 +2,7 @@ import { emailService } from '../../services/email-service/email-service.js'
 import { appService } from '../../services/main-app-service/main-app-service.js'
 
 export default {
-	props: ['email'],
+	props: ['emails'],
 	template: `
     <section class="preview" >
         <li  v-for="email in emails" :class="{read:email.isRead}">
@@ -11,18 +11,18 @@ export default {
                 <input @click="log" :class="{star:email.isStarred}" type="checkbox" >
             </div>
             <router-link :to="'/email/'+email.id">
-                <span >{{email.sentBy}}</span>
+                <span >{{email.sentBy.fullname}}</span>
                 <span >{{email.subject}}</span>
                 <span >{{email.body}}</span>
                 <span>18:06</span>
             </router-link>
-			<button @click.stop="remove(email.id)">x</button>
+			<button @click.stop="remove(email.id)" @click="">x</button>
         </li>
     </section>
 `,
 	data() {
 		return {
-			emails: null,
+			
 		}
 	},
 	methods: {
@@ -36,31 +36,25 @@ export default {
 					const idx = this.emails.findIndex((email) => email.id === id)
 					this.emails.splice(idx, 1)
 				})
-
 		}
 	},
 	computed: {},
 	created() {
-		appService.query(emailService.EMAILS_KEY).then((emails) => {
-			this.emails = emails
-		})
 	},
 	mounted() { },
 	unmounted() { },
 	components: {
-		emailService,
-		appService,
-		emailService,
+	
 	},
-	watch: {
-		'$route.params': {
-			handler() {
-				emailService.query(emailService.EMAILS_KEY)
-					.then((sent) => {
-						this.emails = sent
-					})
-			},
-			immediate: true
-		}
-	}
+	// watch: {
+	// 	'$route.params': {
+	// 		handler() {
+	// 			emailService.query(emailService.EMAILS_KEY)
+	// 				.then((sent) => {
+	// 					this.emails = sent
+	// 				})
+	// 		},
+	// 		immediate: true
+	// 	}
+	// }
 }

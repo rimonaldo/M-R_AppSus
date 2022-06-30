@@ -34,17 +34,28 @@ export default {
                     </li>
                 </ul>
                 <email-list></email-list>
-                <router-link to="/email/compose">
-                    <div class="compose-icon" @click="compose"></div>
-                    </router-link>
+                
+                    <div @click="compose=!compose" class="compose-icon" ></div>
+                    
                 </section>
+                <email-compose v-if="compose" @close="closeCompose"/>
+                <!-- <router-view></router-view> -->
         </div>
     </section>
 `,
     data() {
-        return {};
+        return {
+            compose:false
+        };
     },
-    methods: {},
+    methods: {
+        closeCompose(){
+           this.compose = false
+        },
+        sendMail(){
+            this.compose = false
+        }
+    },
     computed: {},
     created() { },
     unmounted() { },

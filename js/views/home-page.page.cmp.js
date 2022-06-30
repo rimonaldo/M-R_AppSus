@@ -8,7 +8,7 @@ export default {
         <app-header></app-header>
         <h1>Home-Page</h1>
 
-        <router-link to="/email">email app</router-link>
+        <router-link :to="'/email/show/'+'inbox'">email app</router-link>
         <br>
         <router-link to="/note">note app</router-link>
     </section>
