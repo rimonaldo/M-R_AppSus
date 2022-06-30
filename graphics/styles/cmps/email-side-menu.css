@@ -3,4 +3,52 @@
     display: flex;
     flex-direction: column;
     z-index: 10;
+    padding-right: 0;
+    transition: 0.2s;
+    width: 1.4em;
+    overflow-x: hidden;
+}
+
+.side-menu:hover{
+    width: 4em;
+    padding-right: 5em;
+}
+
+.side-menu div {
+    margin-inline-start: 0.2em;
+    margin-block-start: 1.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.side-menu span{
+    margin-inline-start: 0.2em;
+}
+
+.side-menu .inbox::before{
+    font-family: fa-solid;
+    content: "\f01c";
+}
+
+.side-menu .starred::before{
+    font-family: fa-regular;
+    content: "\f005";
+}
+.side-menu .sent::before{
+    font-family: fa-regular;
+    content: "\f1d8";
+}
+.side-menu .drafts::before{
+    font-family: fa-regular;
+    content: "\f07b";
+}
+.side-menu .notes::before{
+    font-family: fa-regular;
+    content: "\f249";
+}
+.side-menu .trash::before{
+    font-family: fa-regular;
+    content: "\f2ed";
 }

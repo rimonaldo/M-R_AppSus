@@ -2,12 +2,31 @@ export default {
     props: [],
     template: `
     <section class="side-menu">
-        <span>Inbox #</span>
-        <span>Starred#</span>
-        <span>Sent#</span>
-        <span>Drafts#</span>
-        <span>Notes#</span>
-        <span>Trash#</span>
+        
+        <div class="inbox">
+            <span>inbox</span>
+            
+        </div>
+        
+        <div class="starred">
+            <span>Starred</span>
+        </div>
+        
+        <div class="sent">
+            <span>Sent</span>
+        </div>
+        
+        <div class="drafts">
+            <span>Drafts</span>
+        </div>
+        
+        <div class="notes">
+            <span>Notes</span>            
+        </div>
+        
+        <div class="trash">
+            <span>Trash</span>
+        </div>
     </section>
 `,
     data() {
