@@ -15,22 +15,30 @@ const gNotes = [
 		id: 'n102',
 		type: 'note-img',
 		info: {
-			url: 'http://some-img/me',
+			url: 'https://upload.wikimedia.org/wikipedia/en/1/1c/LightningBoltSkull.gif',
 			title: 'Bobi and Me',
 		},
 		style: {
 			backgroundColor: '#00d',
 		},
 	},
+	// {
+	// 	id: 'n103',
+	// 	type: 'note-todos',
+	// 	info: {
+	// 		label: 'Get my stuff together',
+	// 		todos: [
+	// 			{txt: 'Driving liscence', doneAt: null},
+	// 			{txt: 'Coding power', doneAt: 187111111},
+	// 		],
+	// 	},
+	// },
 	{
-		id: 'n103',
-		type: 'note-todos',
+		id: 'n10aassd',
+		type: 'note-video',
 		info: {
-			label: 'Get my stuff together',
-			todos: [
-				{txt: 'Driving liscence', doneAt: null},
-				{txt: 'Coding power', doneAt: 187111111},
-			],
+			url: 'https://www.youtube.com/watch?v=mzvk0fWtCs0',
+			title: 'the best song in the world',
 		},
 	},
 ]
@@ -65,12 +73,9 @@ function getPrevNoteId(noteId) {
 	})
 }
 
-function getEmptyNote(type) {
+function getEmptyNote(type, info) {
 	let id = utilService.makeId()
-	let info
-	if (type === 'note-txt') {
-		info = {txt: 'enter txt '}
-	}
+
 	return {
 		type,
 		id,

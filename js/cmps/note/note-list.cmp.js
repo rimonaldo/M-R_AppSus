@@ -1,7 +1,9 @@
 import notePreview from '../../cmps/note/note-preview.cmp.js'
-import noteTodos from '../../cmps/note/note-types/note-todos.js'
+import noteVideo from './note-types/note-video.js'
 import noteImg from '../../cmps/note/note-types/note-img.js'
 import noteTxt from '../../cmps/note/note-types/note-txt.js'
+import {appService} from '../../services/main-app-service/main-app-service.js'
+import {noteService} from '../../services/note-service/note-service.js'
 
 export default {
 	props: ['notes'],
@@ -13,7 +15,8 @@ export default {
                         :info="note.info" 
 												:note="note"
 												@deleteNote="deleteNote($event,id)"
-                        @setVal="setAns($event, idx)">
+                        @setVal="setAns($event, idx)"
+												class="note-container">
                     </component>
 										
 										<p></p>
@@ -30,7 +33,7 @@ export default {
 		noteTxt,
 		noteImg,
 		noteTxt,
-		noteTodos,
+		noteVideo,
 	},
 	data() {
 		return {
@@ -39,9 +42,7 @@ export default {
 			idx: 0,
 		}
 	},
-	created() {
-		console.log(this.notes)
-	},
+	created() {},
 	methods: {
 		setAns(ans, idx) {
 			this.answers[idx].txt = ans
@@ -54,5 +55,11 @@ export default {
 		},
 	},
 	computed: {},
-	unmounted() {},
+
+	mounted() {
+		const id = this.$route.params.noteId
+		appService.get(noteService.NOTES_KEY, id).then((note) => {
+			this.note = note
+		})
+	},
 }

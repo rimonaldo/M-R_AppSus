@@ -1,12 +1,18 @@
+import noteActions from '../note-actions.cmp.js'
+
 export default {
 	props: ['info', 'note'],
 	template: `
-<section class="note-txt">
+<section class="note-txt" v-if="note">
 <p>text note</p>
 <textarea :style="{height:textareaHight +'px' }" :placeholder=" noteTxt" required  @keyup="reSize"></textarea>
+
 <button @click="deleteNote">X</button>
 </section>
 `,
+	components: {
+		noteActions,
+	},
 	data() {
 		return {
 			val: '',
@@ -36,5 +42,4 @@ export default {
 	created() {},
 	mounted() {},
 	unmounted() {},
-	components: {},
 }

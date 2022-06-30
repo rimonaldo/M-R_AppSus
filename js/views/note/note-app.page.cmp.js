@@ -15,7 +15,7 @@ export default {
     <section class="main-layout ">
 			<note-nav></note-nav>
         <note-filter></note-filter>
-				<note-add :notes="notes" @newTxt="cerateNote($event,type)"></note-add>
+				<note-add :notes="notes" @newNote="cerateNote($event,type)"></note-add>
         <note-folder-list></note-folder-list>
         <note-list 
 				v-if="notes"
@@ -45,13 +45,17 @@ export default {
 
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
-		cerateNote(type) {
-			this.notes.push(noteService.getEmptyNote(type))
+		cerateNote(note) {
+			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
 
 		deleteNote(id) {
 			appService.remove(noteService.NOTES_KEY, id)
+			storageService.query(noteService.NOTES_KEY)
+			appService.query(noteService.NOTES_KEY).then((notes) => {
+				this.notes = notes
+			})
 		},
 	},
 	computed: {},

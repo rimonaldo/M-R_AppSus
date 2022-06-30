@@ -26,6 +26,7 @@
 /* NOTES COMPONENTS */
 @import 'cmps/note-txt.css';
 @import 'cmps/note-list.css';
+@import 'cmps/note-img.css';
 
 /* Media Queries */
 @import 'mq/mq.css';

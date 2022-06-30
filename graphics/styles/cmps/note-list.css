@@ -28,3 +28,12 @@ textarea {
 .note {
 	padding: 10px;
 }
+.note-container {
+	border: 1px black solid;
+	max-width: 300px;
+	text-align: center;
+}
+.note-photo {
+	width: fit-content;
+	max-width: 300px;
+}
