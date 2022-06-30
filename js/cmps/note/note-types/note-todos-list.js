@@ -1,15 +1,22 @@
 import {eventBus} from '../../../services/main-app-service/eventBus-service.js'
 export default {
 	template: `
+	
 	<div  v-if="todo">
-{{displayTodo}}
+		<input type="text"
+		v-model="val"
+		:placeholder="displayTodo">
+<!-- {{displayTodo}} -->
 <button @click="doneTodo">Done</button>
+<button @click="changeTodo">Change</button>
 </div>
 `,
 
 	props: ['todo', 'idx', 'id'],
 	data() {
-		return {}
+		return {
+			val: null,
+		}
 	},
 	created() {},
 
@@ -17,6 +24,10 @@ export default {
 		doneTodo(ev) {
 			const obj = {id: this.id, idx: this.idx}
 			eventBus.emit('doneTodo', obj)
+		},
+		changeTodo(ev) {
+			const obj = {id: this.id, idx: this.idx, txt: this.val}
+			eventBus.emit('changeTodo', obj)
 		},
 	},
 

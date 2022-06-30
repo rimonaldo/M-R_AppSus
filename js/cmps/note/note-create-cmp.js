@@ -1,7 +1,7 @@
 export default {
 	props: ['notes'],
 	template: `
-	<section>
+	<section v-if="notes">
 		<label >
 			Note title
 			<input v-model="title"  type="text">
@@ -13,6 +13,7 @@ export default {
 		>
 		<button @click="chooseTxt">txt</button>
 		<button @click="chooseImg">img</button>
+		<button @click="chooseTodo">Todo</button>
 		<button @click="createNote">create</button>
 	</section>
 `,
@@ -33,6 +34,16 @@ export default {
 		chooseImg() {
 			this.type = 'note-img'
 			this.info = {url: this.value, title: this.title}
+		},
+		chooseTodo() {
+			this.type = 'note-todos'
+			this.info = {
+				title: this.title,
+				info: {
+					label: this.title,
+					todos: [{txt: this.value}],
+				},
+			}
 		},
 		createNote() {
 			let ans = {type: this.type, info: this.info}

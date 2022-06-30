@@ -13,7 +13,7 @@ import noteCompose from '../../cmps/note/note-compose.cmp.js'
 
 export default {
 	template: `
-    <section class="main-layout ">
+    <section  class="main-layout  ">
 			<note-nav></note-nav>
         <note-filter></note-filter>
 				<note-add :notes="notes" @newNote="cerateNote($event,type)"></note-add>
@@ -43,13 +43,16 @@ export default {
 	},
 	methods: {
 		setNotes(ans) {
+			console.log('ans:', ans)
 			this.notes[ans.idx].info.txt = ans.ans
 
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
 		cerateNote(note) {
+			console.log('note:', note)
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
+			console.log('this.notes:', this.notes)
 		},
 
 		deleteNote(id) {
@@ -69,7 +72,30 @@ export default {
 	},
 	mounted() {
 		eventBus.on('doneTodo', (data) => {
+			console.log(' this.notes:', this.notes)
+			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
+			const currentNoteTodos = this.notes[noteIdx].info.todos
+			currentNoteTodos.splice(data.idx, 1)
+			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
+		})
+		eventBus.on('addTodo', (data) => {
+			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
+			const currentNote = this.notes[noteIdx]
+			const obj = {txt: data.txt, doneAt: new Date()}
+			currentNote.info.todos.push(obj)
+			this.notes[noteIdx] = currentNote
+			console.log('this.notes:', this.notes)
+			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
+		})
+
+		eventBus.on('changeTodo', (data) => {
 			console.log('data:', data)
+			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
+			this.notes[noteIdx].info.todos[data.idx]
+			console.log(
+				'	this.notes[noteIdx].info.todos[data.idx] :',
+				(this.notes[noteIdx].info.todos[data.idx].txt = data.txt)
+			)
 		})
 	},
 

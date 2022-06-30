@@ -9,9 +9,9 @@ import {noteService} from '../../services/note-service/note-service.js'
 export default {
 	props: ['notes'],
 	template: `
-    <section >
+    <section v-if="notes" >
         <ul>
-            <li v-for="(note,idx) in notes" :key="note.id" v-if="notes" class="note">
+            <li v-for="(note,idx) in notes" :key="note.id" class="note">
             <component :is="note.type"  
                         :info="note.info" 
 												:note="note"

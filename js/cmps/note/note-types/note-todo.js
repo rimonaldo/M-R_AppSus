@@ -1,4 +1,5 @@
 import noteTodos from './note-todos-list.js'
+import {eventBus} from '../../../services/main-app-service/eventBus-service.js'
 
 export default {
 	template: `
@@ -8,7 +9,7 @@ export default {
     <input 
     v-model="value"
      type="text" 
-     :placeholder="info.label"> 
+      :placeholder="info.label"> 
     
   </label>
 	<button @click="addTodo">Add</button>
@@ -18,13 +19,18 @@ export default {
 						v-for="(todo,idx) in todos" 
 						:key="note.id"
 						  >
-         <note-todos  :idx="idx" :todo="todo"></note-todos>
+         <note-todos  
+				 v-if="info"
+				 :idx="idx"
+				  :todo="todo"
+					:id="note.id"
+					></note-todos>
 										
             </li>
         </ul>
-	</section>
+			</section>
+			<button  @click="deleteNote">X</button>
 	
-	<button @click="deleteNote">X</button>
  </section>
 `,
 	components: {
@@ -38,7 +44,9 @@ export default {
 		}
 	},
 
-	created() {},
+	created() {
+		console.log(this.note)
+	},
 
 	methods: {
 		deleteNote(ev) {
@@ -47,8 +55,15 @@ export default {
 		},
 
 		addTodo() {
-			const newTodo = {txt: this.value}
-			this.info.todos.push(newTodo)
+			const id = this.note.id
+			const newTodo = {txt: this.value, id}
+			newTodo.id = id
+			// const obj = {id, new: newTodo}
+			eventBus.emit('addTodo', newTodo)
+
+			// const newTodos = this.info.todos
+			// newTodos.push(newTodo)
+			// this.$emit('addTodo', newTodos)
 		},
 	},
 
