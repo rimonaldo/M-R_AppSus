@@ -1,7 +1,7 @@
 export default {
 	props: [],
 	template: `
-  <section  class="header email-nav">
+  <section  class="header ">
       <button class="open-side"></button>
           <div class="search">
               <input type="serach">

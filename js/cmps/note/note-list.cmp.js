@@ -1,4 +1,3 @@
-import notePreview from '../../cmps/note/note-preview.cmp.js'
 import noteVideo from './note-types/note-video.js'
 import noteImg from '../../cmps/note/note-types/note-img.js'
 import noteTxt from '../../cmps/note/note-types/note-txt.js'
@@ -9,7 +8,7 @@ import {noteService} from '../../services/note-service/note-service.js'
 export default {
 	props: ['notes'],
 	template: `
-    <section v-if="notes " class="note-list-container " >
+    <section v-if="notes " >
             <div v-for="(note,idx) in notes" :key="note.id" >
             <component :is="note.type"  
                         :info="note.info" 
@@ -19,14 +18,12 @@ export default {
                         @setVal="setAns($event, idx)"
 												class="note-container">
                     </component>
-                <note-preview   :note="note"/>
             </div>
 				
     </section>
 `,
 
 	components: {
-		notePreview,
 		noteTxt,
 		noteImg,
 		noteTxt,
@@ -43,7 +40,8 @@ export default {
 	created() {},
 	methods: {
 		setAns(ans, idx) {
-			this.answers[idx].txt = ans
+			console.log('ans:', ans)
+			this.answers[idx].txt = ans.val
 			this.idx = idx
 			let res = {ans, idx: this.idx}
 			this.$emit('setNote', res)

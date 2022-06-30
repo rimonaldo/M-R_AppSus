@@ -3,7 +3,7 @@ import noteActions from '../note-actions.cmp.js'
 export default {
 	template: `
 <section class="note-txt" v-if="info">
-	<p>text note</p>
+	<p>{{info.title}}</p>
 	<textarea :style="{height:textareaHight +'px' }" :placeholder=" noteTxt" required  @keyup="reSize"></textarea>
 	
 	<button @click="deleteNote">X</button>
@@ -16,14 +16,14 @@ export default {
 	data() {
 		return {
 			val: '',
-			textareaHight: null,
+			textareaHight: 300,
 		}
 	},
 	methods: {
 		reSize(ev) {
 			this.val = ev.target.value
 			this.textareaHight = ev.target.scrollHeight
-			this.$emit('setVal', this.val)
+			this.$emit('setVal', {val: this.val, hight: this.textareaHight})
 		},
 
 		deleteNote(ev) {

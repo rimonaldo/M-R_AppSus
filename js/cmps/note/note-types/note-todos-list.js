@@ -7,8 +7,11 @@ export default {
 		v-model="val"
 		:placeholder="displayTodo">
 <!-- {{displayTodo}} -->
-<button @click="doneTodo">Done</button>
-<button @click="changeTodo">Change</button>
+<div class="buttons">
+
+	<button @click="doneTodo">Done</button>
+	<button @click="changeTodo">Change</button>
+</div>
 </div>
 `,
 

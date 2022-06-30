@@ -25,7 +25,6 @@
 @import 'cmps/email-side-menu.css';
 
 /* NOTES COMPONENTS */
-@import 'cmps/note-txt.css';
 @import 'cmps/note-list.css';
 @import 'cmps/note-img.css';
 
@@ -35,4 +34,3 @@
 /* *{
     background-color: blue;
 } */
-

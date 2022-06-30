@@ -1,21 +1,21 @@
 export default {
 	props: ['notes'],
 	template: `
-	<section v-if="notes">
-		<label >
-			Note title
-			<input v-model="title"  type="text">
-		</label>
+	<section v-if="notes"	>
+	
+			<input  placeholder="Title" v-model="title"  type="text">
+		
 		<input 
 		v-model="value"
 		type="text"
-		placeholder="new note"
+		placeholder="New Note"
 		>
-
-			<button @click="chooseTxt">txt</button>
-			<button @click="chooseImg">img</button>
-			<button @click="chooseTodo">Todo</button>
-			<button @click="createNote">create</button>
+<div class="buttons">
+	<button @click="chooseTxt">txt</button>
+	<button @click="chooseImg">img</button>
+	<button @click="chooseTodo">Todo</button>
+	<button @click="createNote">create</button>
+</div>
 	</section>
 `,
 	data() {
@@ -30,7 +30,7 @@ export default {
 	methods: {
 		chooseTxt() {
 			this.type = 'note-txt'
-			this.info = {txt: this.value}
+			this.info = {txt: this.value, title: this.title}
 		},
 		chooseImg() {
 			this.type = 'note-img'

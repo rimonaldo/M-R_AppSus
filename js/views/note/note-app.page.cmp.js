@@ -7,32 +7,27 @@ import {storageService} from '../../services/main-app-service/async-storage-serv
 import noteAdd from '../../cmps/note/note-create-cmp.js'
 import noteNav from '../../cmps/note/note-nav-cmp.js'
 import noteFilter from '../../cmps/note/note-filter.cmp.js'
-import noteFolderList from '../../cmps/note/note-folder-list.cmp.js'
 import noteList from '../../cmps/note/note-list.cmp.js'
-import noteCompose from '../../cmps/note/note-compose.cmp.js'
 
 export default {
 	template: `
     <section class="main-layout  ">
 			<note-nav></note-nav>
         <note-filter></note-filter>
-				<note-add :notes="notes" @newNote="cerateNote($event,type)"></note-add>
-        <note-folder-list></note-folder-list>
+				<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
         <note-list 
+				class="list"
 				v-if="notes"
 				@removeNote="deleteNote($event,id )"
 				 @setNote="setNotes($event,ans )" 
 				 
 				  :notes="notes" >
 				</note-list>
-        <note-compose></note-compose>
     </section>
 `,
 	components: {
 		noteFilter,
-		noteFolderList,
 		noteList,
-		noteCompose,
 		noteNav,
 		noteAdd,
 	},
@@ -48,12 +43,9 @@ export default {
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
 		cerateNote(note) {
-			console.log('note:', note)
 			let x = note.info
-			console.log('x:', x)
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
-			console.log('this.notes:', this.notes)
 		},
 
 		deleteNote(id) {
