@@ -11,7 +11,7 @@ export default {
                 <div class="action-btns">
                     <div class="min-max">-</div>
                     <div class="full">^</div>
-                    <router-link to="/email"> <div class="close">x</div> </router-link>
+                    <router-link :to="'/email/show/'+'inbox'"> <div class="close">x</div> </router-link>
                 </div>   
             </header>
 
@@ -22,7 +22,7 @@ export default {
             </div>
 
             <div class="bottom action-btns">
-                <router-link to="/email">
+                <router-link :to="'/email/show/'+'inbox'">
                     <button @click="send" class="send">
                         <span>send</span>
                         <span></span>

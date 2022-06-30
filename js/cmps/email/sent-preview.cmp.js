@@ -60,8 +60,8 @@ export default {
             immediate: true
         },
         emails(newEmails, oldEmails) {
-            console.log('old:', oldEmails);
-            console.log('new:',newEmails);
+            // console.log('old:', oldEmails);
+            // console.log('new:',newEmails);
             
         }
         

@@ -3,7 +3,7 @@ export default {
     template: `
     <section class="side-menu">
         
-        <router-link to="/email">
+        <router-link :to="'/email/show/'+'inbox'">
         <div class="inbox">
             <span>inbox</span>
             

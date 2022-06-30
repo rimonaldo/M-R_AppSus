@@ -13,8 +13,8 @@ export default {
 					<input type="checkbox">
 				</div>
 			</li>
-                <email-preview @remove="removeEmail" v-if="!show.sent"/>   
-				<router-view></router-view>
+                <email-preview @remove="removeEmail" v-if="show.inbox"/>   
+				<router-view v-if="show.sent"></router-view>
         </ul>
     </section>
 `,
@@ -22,7 +22,6 @@ export default {
 		return {
 			emails: null,
 			sent:null,
-			showSent:false,
 			show:{
 				inbox:false,
 				starred:false,
@@ -58,18 +57,12 @@ export default {
 			handler() {	
 				if (this.$route.params.show){
 					const page = this.$route.params.show
-					// this.show.forEach((show)=>{
-					// 	show === false
-					// })
-					// this.show[page] === true
-
 					for(let show in this.show){
-						show === false
+						show === page ? this.show[show] = true : this.show[show] = false 
 					}
-					this.show[page] = true
-				
-				} else this.show.sent = false
+				} 
 			},
+			immediate: true
 			
 		},	
 	}	
