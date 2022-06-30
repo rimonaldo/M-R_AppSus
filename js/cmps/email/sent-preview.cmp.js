@@ -6,23 +6,8 @@ export default {
     props: [],
     template: `
     <section class="sent">
-
-
         <ul>
-        <!-- <li  v-for="email in emails" :class="{read:email.isRead}">
-            <div class="actions">
-                <input  type="checkbox" v-model="email.isRead">
-                <input  :class="{star:email.isStarred}" type="checkbox" >
-            </div>
-            <router-link :to="'/email/'+email.id">
-                <span >{{email.sentBy.fullname}}</span>
-                <span >{{email.subject}}</span>
-                <span >{{email.body}}</span>
-                <span>18:06</span>
-            </router-link>
-            <button @click.stop="remove(email.id)">x</button>
-        </li> -->
-            <email-preview :emails="emails" @remove=""></email-preview>
+            <email-preview :emails="emails"  @remove="removeEmail"/>
         </ul>
     </section>
 `,
@@ -33,10 +18,14 @@ export default {
         };
     },
     methods: {
+        removeEmail(key, emailId){
+            console.log('credentials from child',key, emailId);         
+            this.$emit('remove', { key, emailId })
+        },
         remove(id){
           emailService.remove(emailService.SENT_KEY,id)
 				.then(()=>{
-					console.log('deleted');
+					console.log('sent deleted');
 					const idx = this.emails.findIndex((email)=> email.id === id)
 					this.emails.splice(idx,1)
                     
@@ -64,11 +53,5 @@ export default {
             },
             immediate: true
         },
-        emails(newEmails, oldEmails) {
-            // console.log('old:', oldEmails);
-            // console.log('new:',newEmails);
-            
-        }
-        
     }
 }

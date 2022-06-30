@@ -1,23 +1,23 @@
-.list {
+.email-list {
     width: 100%;
     line-height: 2rem;
 }
 
-.list ul.mail li {
+.email-list ul.mail li {
     border-bottom: 1px black solid;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.list a{
+.email-list a{
     /* border: 1px black solid; */
     display: flex;
     justify-content: space-between;
     width: 90%;
 }
 
-.list .read{
+.email-list .read{
     background-color: #c2dbff;
 }
 

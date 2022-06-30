@@ -3,10 +3,10 @@ import { utilService } from '../main-app-service/util-service.js'
 import { storageService } from '../main-app-service/async-storage-service.js'
 
 
-const EMAILS_KEY = 'emails'
+const EMAILS_KEY = 'inbox'
+const SENT_KEY = 'sent'
 const GMAILS_KEY = 'gemails'
 const RECIVED_KEY = 'recived-emails'
-const SENT_KEY = 'sent-emails'
 const loggedinUser = {
 	email: 'user@appsus.com',
 	fullname: 'Mahatma Appsus',

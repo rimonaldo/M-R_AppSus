@@ -20,7 +20,7 @@ export default {
         <!-- <email-folder-list></email-folder-list> -->
         <div class="email-container">
             <email-side-menu></email-side-menu>
-            <section class="list">
+            <section class="email-list">
                 <ul>
                     <li>
                         <div>
