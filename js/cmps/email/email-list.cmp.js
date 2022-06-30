@@ -13,8 +13,8 @@ export default {
 					<input type="checkbox">
 				</div>
 			</li>
-                <email-preview @remove="removeEmail" v-if="show.inbox"/>   
-				<router-view v-if="show.sent"></router-view>
+                <email-preview v-if="emails" @remove="removeEmail" v-if="show.inbox" :emails="emails"/>   
+				<sent-preview  v-if="show.sent"></sent-preview>
         </ul>
     </section>
 `,

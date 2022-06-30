@@ -1,5 +1,6 @@
 import { emailService } from '../../services/email-service/email-service.js'
 import { appService } from '../../services/main-app-service/main-app-service.js'
+import emailPreview from './email-preview.cmp.js';
 
 export default {
     props: [],
@@ -8,7 +9,7 @@ export default {
 
 
         <ul>
-        <li  v-for="email in emails" :class="{read:email.isRead}">
+        <!-- <li  v-for="email in emails" :class="{read:email.isRead}">
             <div class="actions">
                 <input  type="checkbox" v-model="email.isRead">
                 <input  :class="{star:email.isStarred}" type="checkbox" >
@@ -20,7 +21,8 @@ export default {
                 <span>18:06</span>
             </router-link>
             <button @click.stop="remove(email.id)">x</button>
-        </li>
+        </li> -->
+            <email-preview :emails="emails" @remove=""></email-preview>
         </ul>
     </section>
 `,
@@ -37,7 +39,7 @@ export default {
 					console.log('deleted');
 					const idx = this.emails.findIndex((email)=> email.id === id)
 					this.emails.splice(idx,1)
-                  
+                    
 				})
 		
         }
@@ -48,7 +50,10 @@ export default {
     },
     mounted() { },
     unmounted() { },
-    components: {},
+    components: {
+        emailPreview,
+
+    },
     watch: {
         '$route.params': {
             handler() {

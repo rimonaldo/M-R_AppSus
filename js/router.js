@@ -21,19 +21,22 @@ const routes = [
 				path: ':emailId',
 				component: emailDetails,
 			},
-			{
-				path: 'compose',
-				component: emailCompose,
-				children: [
-					{
-						path: ':composeId',
-						component: emailCompose
-					}
-				]
-			},
+			
 			{
 				path: 'show/:show',
-				component: sentPreview
+				component: sentPreview,
+				children:[
+					{
+						path: 'compose',
+						component: emailCompose,
+						children: [
+							{
+								path: ':composeId',
+								component: emailCompose
+							}
+						]
+					},
+				]
 			},
 			
 

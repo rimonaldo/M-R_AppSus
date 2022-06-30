@@ -11,7 +11,8 @@ export default {
                 <div class="action-btns">
                     <div class="min-max">-</div>
                     <div class="full">^</div>
-                    <router-link :to="'/email/show/'+'inbox'"> <div class="close">x</div> </router-link>
+                    <!-- <router-link :to="'/email/show/'+'inbox'"> </router-link> -->
+                    <div @click="$emit('close')" class="close">x</div> 
                 </div>   
             </header>
 
@@ -44,13 +45,12 @@ export default {
             console.log(this.newEmail.subject);
         },
         send(){
+            this.$emit('close');
             console.log('sent');
             emailService.save(emailService.SENT_KEY,this.newEmail)
                 .then((email)=>{
-                    console.log('theres ur promise', email);
-                    
-                })
-           
+                    console.log('theres ur promise', email);    
+                }) 
         }
     },
     computed: {},
