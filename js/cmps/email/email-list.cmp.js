@@ -14,8 +14,6 @@ export default {
 				</div>
 			</li>
                 <email-preview @remove="removeEmail" v-if="!showSent"/>   
-				
-				
 				<router-view></router-view>
         </ul>
     </section>
@@ -31,10 +29,8 @@ export default {
 		removeEmail(id){
 			emailService.remove(emailService.EMAILS_KEY,id)
 				.then(()=>{
-					console.log('deleted');
 					const idx = this.emails.findIndex((email)=> email.id === id)
-					this.emails.splice(idx,1)
-					
+					this.emails.splice(idx,1)	
 				})
 		}
 	},
@@ -53,21 +49,11 @@ export default {
 	watch: {
 		'$route.params': {
 			handler() {	
-				// if (this.$route.params.sent){
-				// 	console.log('this.$route.params.sent',this.$route.params.sent);
-				// 	this.showSent = true
-				// } else{	
-				// 	this.showSent = false
-				// }
 				if (this.$route.params.show){
 					this.showSent = true
 				} else this.showSent = false
-
-				
 			},
 			
-		},
-	
-	}
-	
+		},	
+	}	
 }
