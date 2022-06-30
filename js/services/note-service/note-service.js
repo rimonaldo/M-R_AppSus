@@ -22,25 +22,25 @@ const gNotes = [
 			backgroundColor: '#00d',
 		},
 	},
-	// {
-	// 	id: 'n103',
-	// 	type: 'note-todos',
-	// 	info: {
-	// 		label: 'Get my stuff together',
-	// 		todos: [
-	// 			{txt: 'Driving liscence', doneAt: null},
-	// 			{txt: 'Coding power', doneAt: 187111111},
-	// 		],
-	// 	},
-	// },
 	{
-		id: 'n10aassd',
-		type: 'note-video',
+		id: 'n103',
+		type: 'note-todos',
 		info: {
-			url: 'https://www.youtube.com/watch?v=mzvk0fWtCs0',
-			title: 'the best song in the world',
+			label: 'Get my stuff together',
+			todos: [
+				{txt: 'Driving liscence', doneAt: null},
+				{txt: 'Coding power', doneAt: 187111111},
+			],
 		},
 	},
+	// {
+	// 	id: 'n10aassd',
+	// 	type: 'note-video',
+	// 	info: {
+	// 		url: 'https://www.youtube.com/watch?v=mzvk0fWtCs0',
+	// 		title: 'the best song in the world',
+	// 	},
+	// },
 ]
 
 export const noteService = {

@@ -1,18 +1,20 @@
 export default {
 	props: ['notes'],
 	template: `
-<label >
-Note title
-<input v-model="title"  type="text">
-</label>
-	<input 
-	v-model="value"
- type="text"
- placeholder="new note"
- >
-  <button @click="chooseTxt">txt</button>
-  <button @click="chooseImg">img</button>
-  <button @click="createNote">create</button>
+	<section>
+		<label >
+			Note title
+			<input v-model="title"  type="text">
+		</label>
+		<input 
+		v-model="value"
+		type="text"
+		placeholder="new note"
+		>
+		<button @click="chooseTxt">txt</button>
+		<button @click="chooseImg">img</button>
+		<button @click="createNote">create</button>
+	</section>
 `,
 	data() {
 		return {

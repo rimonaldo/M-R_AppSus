@@ -1,8 +1,7 @@
 export default {
 	template: `
 	<section v-if="info">
-
-		<!-- <video :src="https://www.youtube.com/watch?v=mzvk0fWtCs0"></video> -->
+		<video id="movie" src="https://www.youtube.com/embed/mzvk0fWtCs0" height="600px" width="1300px" controls autoplay></video>
 		<h2>{{info.title}}</h2>
 		<button @click="deleteNote">X</button>
 	</section>

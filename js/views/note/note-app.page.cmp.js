@@ -1,6 +1,7 @@
 import {utilService} from '../../services/main-app-service/util-service.js'
 import {noteService} from '../../services/note-service/note-service.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
+import {eventBus} from '../../services/main-app-service/eventBus-service.js'
 import {storageService} from '../../services/main-app-service/async-storage-service.js'
 
 import noteAdd from '../../cmps/note/note-create-cmp.js'
@@ -21,6 +22,7 @@ export default {
 				v-if="notes"
 				@removeNote="deleteNote($event,id )"
 				 @setNote="setNotes($event,ans )" 
+				 
 				  :notes="notes" >
 				</note-list>
         <note-compose></note-compose>
@@ -52,9 +54,10 @@ export default {
 
 		deleteNote(id) {
 			appService.remove(noteService.NOTES_KEY, id)
-			storageService.query(noteService.NOTES_KEY)
 			appService.query(noteService.NOTES_KEY).then((notes) => {
 				this.notes = notes
+				const idx = this.notes.findIndex((note) => note.id === id)
+				this.notes.splice(idx, 1)
 			})
 		},
 	},
@@ -62,6 +65,11 @@ export default {
 	created() {
 		appService.query(noteService.NOTES_KEY).then((notes) => {
 			this.notes = notes
+		})
+	},
+	mounted() {
+		eventBus.on('doneTodo', (data) => {
+			console.log('data:', data)
 		})
 	},
 

@@ -2,6 +2,7 @@ import notePreview from '../../cmps/note/note-preview.cmp.js'
 import noteVideo from './note-types/note-video.js'
 import noteImg from '../../cmps/note/note-types/note-img.js'
 import noteTxt from '../../cmps/note/note-types/note-txt.js'
+import noteTodos from './note-types/note-todo.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
 import {noteService} from '../../services/note-service/note-service.js'
 
@@ -10,10 +11,11 @@ export default {
 	template: `
     <section >
         <ul>
-            <li v-for="(note,idx) in notes" :key="note.id" class="note">
+            <li v-for="(note,idx) in notes" :key="note.id" v-if="notes" class="note">
             <component :is="note.type"  
                         :info="note.info" 
 												:note="note"
+												:id="id"
 												@deleteNote="deleteNote($event,id)"
                         @setVal="setAns($event, idx)"
 												class="note-container">
@@ -34,6 +36,7 @@ export default {
 		noteImg,
 		noteTxt,
 		noteVideo,
+		noteTodos,
 	},
 	data() {
 		return {
@@ -56,10 +59,5 @@ export default {
 	},
 	computed: {},
 
-	mounted() {
-		const id = this.$route.params.noteId
-		appService.get(noteService.NOTES_KEY, id).then((note) => {
-			this.note = note
-		})
-	},
+	mounted() {},
 }

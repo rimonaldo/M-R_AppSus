@@ -2,7 +2,7 @@ import noteActions from '../note-actions.cmp.js'
 
 export default {
 	template: `
-			<section \>
+			<section v-if="info">
 											<img  class="note-photo" :src="imgUrl"  />
 											<h2>{{info.title}}</h2>
 <button @click="deleteNote">X</button>
