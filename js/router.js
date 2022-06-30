@@ -24,7 +24,7 @@ const routes = [
 			{
 				path: 'compose',
 				component: emailCompose,
-				children:[
+				children: [
 					{
 						path: ':composeId',
 						component: emailCompose
@@ -36,9 +36,10 @@ const routes = [
 				component: sentPreview
 			},
 			
+
 		],
 	},
-	
+
 	{
 		path: '/note',
 		component: noteApp,
