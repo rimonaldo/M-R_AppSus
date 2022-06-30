@@ -1,3 +1,6 @@
+import {emailService} from '../../services/email-service/email-service.js'
+import {appService} from '../../services/main-app-service/main-app-service.js'
+
 export default {
     props: [],
     template: `
@@ -19,7 +22,7 @@ export default {
             </div>
 
             <div class="bottom action-btns">
-                <button class="send">
+                <button @click="logEmail" class="send">
                     <span>send</span>
                     <span></span>
                 </button>
@@ -29,11 +32,24 @@ export default {
     </section>
 `,
     data() {
-        return {};
+        return {
+            email:null,
+
+        };
     },
-    methods: {},
+    methods: {
+        logEmail(){
+
+        }
+    },
     computed: {},
-    created() { },
+    created() { 
+        appService.get(emailService.SENT_KEY)
+            .then((sent)=>{
+                console.log(sent);
+            })
+        this.mail = emailService.getNewEmail()
+    },
     mounted() { },
     unmounted() { },
     components: {},
