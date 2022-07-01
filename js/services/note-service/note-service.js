@@ -169,7 +169,6 @@ const gNotes = [
 	},
 	{
 		id: 'n10atgrjytask3',
-		isPinned: false,
 		type: 'note-todos',
 		info: {
 			label: 'Sorry that you feel that way',
@@ -183,14 +182,18 @@ const gNotes = [
 			bgc: '#d8cedf',
 		},
 	},
-	// {
-	// 	id: 'n10aassd',
-	// 	type: 'note-video',
-	// 	info: {
-	// 		url: 'https://www.youtube.com/watch?v=mzvk0fWtCs0',
-	// 		title: 'the best song in the world',
-	// 	},
-	// },
+	{
+		id: 'n10aassd',
+		isPinned: false,
+		type: 'note-video',
+		info: {
+			url: 'https://www.youtube.com/embed/hFFopPPrGiE',
+			title: 'my video',
+		},
+		style: {
+			bgc: '#d8cedf',
+		},
+	},
 ]
 
 export const noteService = {

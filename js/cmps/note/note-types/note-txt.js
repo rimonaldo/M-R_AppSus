@@ -1,29 +1,36 @@
 import noteActions from '../note-actions.cmp.js'
+import {eventBus} from '.././.././../services/main-app-service/eventBus-service.js'
 
 export default {
 	template: `
 <section class="note-txt" v-if="info">
 	<p>{{info.title}}</p>
-	<textarea :style="{height:textareaHight +'px' }" :placeholder=" noteTxt" required  @keyup="reSize"></textarea>
-	<note-actions  :note="note"></note-actions>
-in</button> -->
+	<textarea
+		:style="{height:textareaHight +'px' }"
+		:placeholder=" noteTxt"
+		required
+		@keyup="reSize"
+	></textarea>
+	<note-actions :note="note"></note-actions>
 </section>
+
 `,
 	components: {
 		noteActions,
+		eventBus,
 	},
 	props: ['info', 'note'],
 	data() {
 		return {
 			val: '',
-			textareaHight: 300,
+			textareaHight: 200,
 		}
 	},
 	methods: {
 		reSize(ev) {
 			this.val = ev.target.value
 			this.textareaHight = ev.target.scrollHeight
-			this.$emit('setVal', {val: this.val, hight: this.textareaHight})
+			eventBus.emit('setVal', {val: this.val, hight: this.textareaHight})
 		},
 	},
 

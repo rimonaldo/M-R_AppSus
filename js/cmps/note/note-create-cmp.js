@@ -1,21 +1,15 @@
 export default {
 	props: ['notes'],
 	template: `
-	<section v-if="notes"	>
-	
-			<input  placeholder="Title" v-model="title"  type="text">
-		
-		<input 
-		v-model="value"
-		type="text"
-		placeholder="New Note"
-		>
-<div class="buttons">
-	<button @click="chooseTxt">txt</button>
-	<button @click="chooseImg">img</button>
-	<button @click="chooseTodo">Todo</button>
-</div>
-	</section>
+<section v-if="notes">
+	<input placeholder="Title" v-model="title" type="text" />
+	<input v-model="value" type="text" placeholder="New Note" />
+	<div class="buttons">
+		<button @click="chooseTxt">txt</button>
+		<button @click="chooseImg">img</button>
+		<button @click="chooseTodo">Todo</button>
+	</div>
+</section>
 `,
 	data() {
 		return {
