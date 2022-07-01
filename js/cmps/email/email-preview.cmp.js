@@ -16,26 +16,21 @@ export default {
                 <span >{{email.body}}</span>
                 <span>18:06</span>
             </router-link>
-			<button @click.stop="remove(email.id)" @click="">x</button>
+			<button @click.stop="remove(key,email.id)">x</button>
         </li>
     </section>
 `,
 	data() {
 		return {
-			
+			key: null,
 		}
 	},
 	methods: {
 		log() {
 			console.log(this.email);
 		},
-		remove(id) {
-			emailService.remove(emailService.EMAILS_KEY, id)
-				.then(() => {
-					console.log('deleted');
-					const idx = this.emails.findIndex((email) => email.id === id)
-					this.emails.splice(idx, 1)
-				})
+		remove(key, id) {
+			this.$emit('remove', { key, id })
 		}
 	},
 	computed: {},
@@ -44,17 +39,15 @@ export default {
 	mounted() { },
 	unmounted() { },
 	components: {
-	
+
 	},
-	// watch: {
-	// 	'$route.params': {
-	// 		handler() {
-	// 			emailService.query(emailService.EMAILS_KEY)
-	// 				.then((sent) => {
-	// 					this.emails = sent
-	// 				})
-	// 		},
-	// 		immediate: true
-	// 	}
-	// }
+	watch: {
+		'$route.params': {
+			handler() {
+				this.key = this.$route.params.show
+				console.log('key is',this.key);
+			},
+			immediate: true
+		}
+	}
 }
