@@ -2,7 +2,7 @@ import { emailService } from '../../services/email-service/email-service.js'
 
 
 export default {
-    props: [],
+    props: ['email'],
     template: `
     <section class="details" >
         <h1>Details</h1>    
@@ -21,8 +21,7 @@ export default {
 `,
     data() {
         return {
-            email: null,
-            key:null,
+            
         };
     },
     methods: {},
@@ -30,12 +29,7 @@ export default {
     created() {
 
     },
-    mounted() {
-        console.log(this.$route.params.emailId);
-        const id = this.$route.params.emailId
-        emailService.get('inbox', id)
-            .then(email => { this.email = email })
-    },
+    mounted() {},
     unmounted() { },
     components: {
 
