@@ -1,5 +1,5 @@
 import { emailService } from '../../services/email-service/email-service.js'
-import { appService } from '../../services/main-app-service/main-app-service.js'
+
 
 export default {
     props: [],
@@ -22,6 +22,7 @@ export default {
     data() {
         return {
             email: null,
+            key:null,
         };
     },
     methods: {},
@@ -32,7 +33,7 @@ export default {
     mounted() {
         console.log(this.$route.params.emailId);
         const id = this.$route.params.emailId
-        appService.get(emailService.EMAILS_KEY, id)
+        emailService.get('inbox', id)
             .then(email => { this.email = email })
     },
     unmounted() { },

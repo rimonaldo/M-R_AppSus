@@ -22,8 +22,8 @@ export default {
 `,
 	data() {
 		return {
+			key:'inbox',
 			emails: null,
-			// sent:null,
 			read: null,
 			show: {
 				inbox: false,
@@ -35,18 +35,20 @@ export default {
 		}
 	},
 	methods: {
-		removeEmail(key,emailId) {
-			console.log('email credentials', key , emailId);
-			// if(key === 'sent'){
-			// 	key = emailService.SENT_KEY
-			// } else{
-			// 	key = emailService.EMAILS_KEY
-			// }
-			// emailService.remove(key, emailId)
-			// 	.then(() => {
-			// 		const idx = this.emails.findIndex((email) => email.id === id)
-			// 		this.emails.splice(idx, 1)
-			// 	})
+		removeEmail(email) {
+			const { key, id } = email
+			let emails = ''
+			emailService.query((key))
+				.then((emailsPrm) => { emails = emailsPrm })
+				.then(()=>{
+
+					emailService.remove(key, id)
+						.then(() => {
+							const idx = emails.findIndex((email) => email.id === id)
+							this.emails.splice(idx, 1)
+						})
+				})
+
 		}
 	},
 	computed: {},
@@ -69,15 +71,15 @@ export default {
 				const page = this.$route.params.show
 				const emailId = this.$route.params.emailId
 				if (page) {
+					this.key = this.$route.params.show
 					for (let pageToShow in this.show) {
 						pageToShow === page ? this.show[pageToShow] = true : this.show[pageToShow] = false
 					}
 				} else {
-					emailService.get(emailService.EMAILS_KEY, emailId)
+					emailService.get(this.key, emailId)
 						.then((email) => {
-							console.log(email);
+							console.log('email',email);
 							this.read = email
-							console.log('this.read', this.read);
 						})
 				}
 			},

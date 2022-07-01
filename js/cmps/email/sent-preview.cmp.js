@@ -18,24 +18,16 @@ export default {
         };
     },
     methods: {
-        removeEmail(key, emailId){
-            console.log('credentials from child',key, emailId);         
-            this.$emit('remove', { key, emailId })
-        },
-        remove(id){
-          emailService.remove(emailService.SENT_KEY,id)
-				.then(()=>{
-					console.log('sent deleted');
-					const idx = this.emails.findIndex((email)=> email.id === id)
-					this.emails.splice(idx,1)
-                    
-				})
-		
-        }
+        removeEmail(email) {
+            const { key, id } = email
+            const idx = this.emails.findIndex((email) => email.id === id)
+            this.emails.splice(idx, 1)
+            this.$emit('remove', { key, id })
+        }, 
     },
     computed: {},
     created() {
-       
+
     },
     mounted() { },
     unmounted() { },
@@ -46,10 +38,10 @@ export default {
     watch: {
         '$route.params': {
             handler() {
-              emailService.query(emailService.SENT_KEY)
-                .then((sent) => {
-                    this.emails = sent
-                })
+                emailService.query(emailService.SENT_KEY)
+                    .then((sent) => {
+                        this.emails = sent
+                    })
             },
             immediate: true
         },

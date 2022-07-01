@@ -29,8 +29,8 @@ export default {
 		log() {
 			console.log(this.email);
 		},
-		remove(key, emailId) {
-			this.$emit('remove', { key, emailId })
+		remove(key, id) {
+			this.$emit('remove', { key, id })
 		}
 	},
 	computed: {},

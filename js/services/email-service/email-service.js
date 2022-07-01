@@ -137,8 +137,9 @@ function _createSentEmails() {
 
 
 function _createSentEmail(subject, body, to) {
+	const id = utilService.makeId()
 	return {
-		id: null,
+		id ,
 		subject,
 		body,
 		isRead: false,
@@ -150,7 +151,7 @@ function _createSentEmail(subject, body, to) {
 
 
 
-saveGmails
+// saveGmails
 function saveGmails() {
 	let gmails = {
 		sent: [_createSentEmail(), _createSentEmail()],
