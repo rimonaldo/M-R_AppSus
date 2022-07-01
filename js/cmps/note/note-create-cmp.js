@@ -41,13 +41,12 @@ export default {
 		},
 		chooseTodo() {
 			this.type = 'note-todos'
+
 			this.info = {
-				info: {
-					label: this.title,
-					todos: [{txt: this.value, doneAt: new Date()}],
-				},
+				label: this.title,
+				todos: [{txt: this.value, doneAt: new Date()}],
 			}
-			let ans = {type: this.type, info: this.info}
+			let ans = {type: this.type, info: this.info, isPinned: false}
 			console.log('ans:', ans)
 			this.$emit('newNote', ans)
 		},

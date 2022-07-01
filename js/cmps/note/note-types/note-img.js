@@ -1,28 +1,24 @@
 import noteActions from '../note-actions.cmp.js'
+import {eventBus} from '../../../services/main-app-service/eventBus-service.js'
 
 export default {
 	template: `
 			<section v-if="info">
-											<img  class="note-photo" :src="imgUrl"  />
-											<h2>{{info.title}}</h2>
-<button @click="deleteNote">X</button>
-
-
+				<img  class="note-photo" :src="imgUrl"  />
+				<h2>{{info.title}}</h2>
+				
+				<note-actions :key="note.id"  :note="note"></note-actions>
 			</section>
 			`,
 	props: ['info', 'note'],
 	components: {
 		noteActions,
+		eventBus,
 	},
 	data() {
 		return {}
 	},
-	methods: {
-		deleteNote(ev) {
-			let id = this.note.id
-			this.$emit('deleteNote', id)
-		},
-	},
+	methods: {},
 	computed: {
 		imgUrl() {
 			var url = this.info.url

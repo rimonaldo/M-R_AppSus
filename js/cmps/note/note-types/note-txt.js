@@ -5,8 +5,8 @@ export default {
 <section class="note-txt" v-if="info">
 	<p>{{info.title}}</p>
 	<textarea :style="{height:textareaHight +'px' }" :placeholder=" noteTxt" required  @keyup="reSize"></textarea>
-	
-	<button @click="deleteNote">X</button>
+	<note-actions  :note="note"></note-actions>
+in</button> -->
 </section>
 `,
 	components: {
@@ -24,11 +24,6 @@ export default {
 			this.val = ev.target.value
 			this.textareaHight = ev.target.scrollHeight
 			this.$emit('setVal', {val: this.val, hight: this.textareaHight})
-		},
-
-		deleteNote(ev) {
-			let id = this.note.id
-			this.$emit('deleteNote', id)
 		},
 	},
 

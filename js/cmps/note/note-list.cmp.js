@@ -14,9 +14,11 @@ export default {
                         :info="note.info" 
 												:note="note"
 												:id="id"
+												:style="{backgroundColor: note.style.bgc}"
 												@deleteNote="deleteNote($event,id)"
                         @setVal="setAns($event, idx)"
 												class="note-container">
+												
                     </component>
             </div>
 				
@@ -45,9 +47,6 @@ export default {
 			this.idx = idx
 			let res = {ans, idx: this.idx}
 			this.$emit('setNote', res)
-		},
-		deleteNote(id) {
-			this.$emit('removeNote', id)
 		},
 	},
 	computed: {},

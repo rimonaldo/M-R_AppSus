@@ -6,7 +6,7 @@ const gNotes = [
 	{
 		id: 'n10ax1',
 		type: 'note-txt',
-		isPinned: true,
+		isPinned: false,
 		info: {
 			txt: `It must be getting early
 			Clocks are running late
@@ -15,21 +15,27 @@ const gNotes = [
 			`,
 			title: 'My Note!',
 		},
+
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'n10asxc2',
 		type: 'note-img',
+		isPinned: false,
 		info: {
 			url: 'https://upload.wikimedia.org/wikipedia/en/1/1c/LightningBoltSkull.gif',
 			title: 'Bobi and Me',
 		},
 		style: {
-			backgroundColor: '#00d',
+			bgc: '#d8cedf',
 		},
 	},
 	{
 		id: 'n1asfc03',
 		type: 'note-todos',
+		isPinned: false,
 		info: {
 			label: 'Get my stuff together',
 			todos: [
@@ -39,11 +45,14 @@ const gNotes = [
 				{txt: 'The Best Of', doneAt: 187111111},
 			],
 		},
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'nasfvca101',
 		type: 'note-txt',
-		isPinned: true,
+		isPinned: false,
 		info: {
 			txt: `Dawn is breaking everywhere
 			Light a candle, curse the glare
@@ -52,21 +61,26 @@ const gNotes = [
 			`,
 			title: 'My Note!',
 		},
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'n10yjyrjw2',
 		type: 'note-img',
+		isPinned: false,
 		info: {
 			url: 'http://cdn.shopify.com/s/files/1/0182/2915/products/GFRegularPosterforWebHighSize.png?v=1618940642',
 			title: 'Bobi and Me',
 		},
 		style: {
-			backgroundColor: '#00d',
+			bgc: '#d8cedf',
 		},
 	},
 	{
 		id: 'n1fsghdfghjn03',
 		type: 'note-todos',
+		isPinned: false,
 		info: {
 			label: 'I will get byr',
 			todos: [
@@ -78,11 +92,14 @@ const gNotes = [
 				{txt: 'Coding covers ', doneAt: 187111111},
 			],
 		},
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'njlhjlf,i101',
 		type: 'note-txt',
-		isPinned: true,
+		isPinned: false,
 		info: {
 			txt: `I will get by
 			I will get by
@@ -91,21 +108,26 @@ const gNotes = [
 			`,
 			title: 'My Note!',
 		},
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'n10arehartfhym2',
 		type: 'note-img',
+		isPinned: false,
 		info: {
 			url: 'https://ca-times.brightspotcdn.com/dims4/default/6a36f97/2147483647/strip/true/crop/2048x1632+0+0/resize/840x669!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fac%2F28%2F44c51c04417e357c9e733424a01b%2Fla-et-ms-grateful-dead-members-plan-final-show-001',
 			title: 'Bobi and Me',
 		},
 		style: {
-			backgroundColor: '#00d',
+			bgc: '#d8cedf',
 		},
 	},
 	{
 		id: 'n1raeha03',
 		type: 'note-todos',
+		isPinned: false,
 		info: {
 			label: ' Merlinus Ambrosius',
 			todos: [
@@ -113,11 +135,14 @@ const gNotes = [
 				{txt: 'Roman consul', doneAt: 187111111},
 			],
 		},
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'n1reatHAerh01',
 		type: 'note-txt',
-		isPinned: true,
+		isPinned: false,
 		info: {
 			txt: `I see you got your list out
 			Say your piece and get out
@@ -126,20 +151,25 @@ const gNotes = [
 			`,
 			title: 'My Note!',
 		},
+		style: {
+			bgc: '#d8cedf',
+		},
 	},
 	{
 		id: 'nerahJNHAtej102',
 		type: 'note-img',
+		isPinned: false,
 		info: {
 			url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-UrsRt6y3OkAOLtOZaTb_TxFr-UAcd_kR4Q&usqp=CAU',
 			title: 'Bobi and Me',
 		},
 		style: {
-			backgroundColor: '#00d',
+			bgc: '#d8cedf',
 		},
 	},
 	{
 		id: 'n10atgrjytask3',
+		isPinned: false,
 		type: 'note-todos',
 		info: {
 			label: 'Sorry that you feel that way',
@@ -148,6 +178,9 @@ const gNotes = [
 				{txt: 'Every silver linings got a', doneAt: 187111111},
 				{txt: 'Touch of grey', doneAt: 187111111},
 			],
+		},
+		style: {
+			bgc: '#d8cedf',
 		},
 	},
 	// {

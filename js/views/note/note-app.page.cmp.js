@@ -50,14 +50,14 @@ export default {
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
 
-		deleteNote(id) {
-			appService.remove(noteService.NOTES_KEY, id)
-			appService.query(noteService.NOTES_KEY).then((notes) => {
-				this.notes = notes
-				const idx = this.notes.findIndex((note) => note.id === id)
-				this.notes.splice(idx, 1)
-			})
-		},
+		// deleteNote(id) {
+		// 	appService.remove(noteService.NOTES_KEY, id)
+		// 	appService.query(noteService.NOTES_KEY).then((notes) => {
+		// 		this.notes = notes
+		// 		const idx = this.notes.findIndex((note) => note.id === id)
+		// 		this.notes.splice(idx, 1)
+		// 	})
+		// },
 	},
 	computed: {},
 	created() {
@@ -66,6 +66,14 @@ export default {
 		})
 	},
 	mounted() {
+		eventBus.on('deleteNote', (data) => {
+			appService.remove(noteService.NOTES_KEY, data)
+			appService.query(noteService.NOTES_KEY).then((notes) => {
+				this.notes = notes
+				const idx = this.notes.findIndex((note) => note.id === data)
+				this.notes.splice(idx, 1)
+			})
+		})
 		eventBus.on('doneTodo', (data) => {
 			console.log(' this.notes:', this.notes)
 			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
@@ -84,10 +92,19 @@ export default {
 		})
 
 		eventBus.on('changeTodo', (data) => {
-			console.log('data:', data)
 			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
 			this.notes[noteIdx].info.todos[data.idx].txt = data.txt
 
+			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
+		})
+		eventBus.on('pinTodo', (data) => {
+			console.log('data:', data)
+			const noteIdx = this.notes.findIndex((note) => note.id === data)
+			this.notes[noteIdx].isPinned = !this.notes[noteIdx].isPinned
+			this.notes.sort((a, b) => Number(b.isPinned) - a.isPinned)
+			console.log('this.notes:', this.notes)
+		})
+		eventBus.on('bgcNote', (data) => {
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
 	},
