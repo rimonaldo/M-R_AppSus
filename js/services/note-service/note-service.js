@@ -77,41 +77,7 @@ const gNotes = [
 			bgc: '#d8cedf',
 		},
 	},
-	{
-		id: 'n1fsghdfghjn03',
-		type: 'note-todos',
-		isPinned: false,
-		info: {
-			label: 'I will get byr',
-			todos: [
-				{txt: 'Driving liscence', doneAt: null},
-				{txt: 'Grateful  power', doneAt: 187111111},
-				{txt: 'have  Closet', doneAt: null},
-				{txt: 'minimum power', doneAt: 187111111},
-				{txt: 'specifics  liscence', doneAt: null},
-				{txt: 'Coding covers ', doneAt: 187111111},
-			],
-		},
-		style: {
-			bgc: '#d8cedf',
-		},
-	},
-	{
-		id: 'njlhjlf,i101',
-		type: 'note-txt',
-		isPinned: false,
-		info: {
-			txt: `I will get by
-			I will get by
-			I will get by
-			I will survive
-			`,
-			title: 'My Note!',
-		},
-		style: {
-			bgc: '#d8cedf',
-		},
-	},
+
 	{
 		id: 'n10arehartfhym2',
 		type: 'note-img',
@@ -124,21 +90,7 @@ const gNotes = [
 			bgc: '#d8cedf',
 		},
 	},
-	{
-		id: 'n1raeha03',
-		type: 'note-todos',
-		isPinned: false,
-		info: {
-			label: ' Merlinus Ambrosius',
-			todos: [
-				{txt: 'Medieval legend', doneAt: null},
-				{txt: 'Roman consul', doneAt: 187111111},
-			],
-		},
-		style: {
-			bgc: '#d8cedf',
-		},
-	},
+
 	{
 		id: 'n1reatHAerh01',
 		type: 'note-txt',
@@ -167,21 +119,7 @@ const gNotes = [
 			bgc: '#d8cedf',
 		},
 	},
-	{
-		id: 'n10atgrjytask3',
-		type: 'note-todos',
-		info: {
-			label: 'Sorry that you feel that way',
-			todos: [
-				{txt: 'The only thing there is to say', doneAt: null},
-				{txt: 'Every silver linings got a', doneAt: 187111111},
-				{txt: 'Touch of grey', doneAt: 187111111},
-			],
-		},
-		style: {
-			bgc: '#d8cedf',
-		},
-	},
+
 	{
 		id: 'n10aassd',
 		isPinned: false,
