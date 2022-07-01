@@ -1,17 +1,12 @@
 import {eventBus} from '../../../services/main-app-service/eventBus-service.js'
 export default {
 	template: `
-	
-	<div  v-if="todo">
-		<input type="text"
-		v-model="val"
-		:placeholder="displayTodo">
-<!-- {{displayTodo}} -->
-<div class="buttons">
-
-	<button @click="doneTodo">Done</button>
-	<button @click="changeTodo">Change</button>
-</div>
+<div v-if="todo">
+	<input type="text" v-model="val" :placeholder="displayTodo" />
+	<div class="buttons">
+		<button @click="doneTodo">Done</button>
+		<button @click="changeTodo">Change</button>
+	</div>
 </div>
 `,
 

@@ -1,33 +1,30 @@
+import noteActions from '../note-actions.cmp.js'
 export default {
 	template: `
 	<section v-if="info">
-		<video id="movie" src="https://www.youtube.com/embed/mzvk0fWtCs0" height="600px" width="1300px" controls autoplay></video>
-		<h2>{{info.title}}</h2>
-		<button @click="deleteNote">X</button>
+	<iframe
+			width="336"
+			height="189"
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen
+			:src="info.url"
+			></iframe>
+
+		<note-actions  :note="note"></note-actions>
 	</section>
 
 `,
+	components: {
+		noteActions,
+	},
 	props: ['info', 'note'],
 	data() {
-		return {
-			// info: this.info,
-		}
+		return {}
 	},
-	created() {
-		console.log('this.info:', this.info)
-		// this.info
-	},
-	methods: {
-		deleteNote(ev) {
-			let id = this.note.id
-			this.$emit('deleteNote', id)
-		},
-	},
-	computed: {
-		// imgUrl() {
-		// var url = this.info.url
-		// return url
-		// },
-	},
+	created() {},
+	methods: {},
+	computed: {},
 	unmounted() {},
 }

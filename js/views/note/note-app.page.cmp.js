@@ -11,19 +11,15 @@ import noteList from '../../cmps/note/note-list.cmp.js'
 
 export default {
 	template: `
-    <section class="main-layout  ">
-			<note-nav></note-nav>
-        <note-filter></note-filter>
-				<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
-        <note-list 
-				class="list"
-				v-if="notes"
-				@removeNote="deleteNote($event,id )"
-				 @setNote="setNotes($event,ans )" 
-				 
-				  :notes="notes" >
-				</note-list>
-    </section>
+  <section class="main-layout">
+	<note-nav></note-nav>
+	<note-filter></note-filter>
+	<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
+		<note-list class="list" v-if="notes" @setNote="setNotes($event,ans )" :notes="notes">
+
+	</note-list>
+</section>
+
 `,
 	components: {
 		noteFilter,
@@ -49,15 +45,6 @@ export default {
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
-
-		// deleteNote(id) {
-		// 	appService.remove(noteService.NOTES_KEY, id)
-		// 	appService.query(noteService.NOTES_KEY).then((notes) => {
-		// 		this.notes = notes
-		// 		const idx = this.notes.findIndex((note) => note.id === id)
-		// 		this.notes.splice(idx, 1)
-		// 	})
-		// },
 	},
 	computed: {},
 	created() {

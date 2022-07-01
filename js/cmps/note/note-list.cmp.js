@@ -8,21 +8,23 @@ import {noteService} from '../../services/note-service/note-service.js'
 export default {
 	props: ['notes'],
 	template: `
-    <section v-if="notes " >
-            <div v-for="(note,idx) in notes" :key="note.id" >
-            <component :is="note.type"  
-                        :info="note.info" 
-												:note="note"
-												:id="id"
-												:style="{backgroundColor: note.style.bgc}"
-												@deleteNote="deleteNote($event,id)"
-                        @setVal="setAns($event, idx)"
-												class="note-container">
-												
-                    </component>
-            </div>
-				
-    </section>
+<section v-if="notes ">
+	<div v-for="(note,idx) in notes">
+		<component
+		class="grid-cube"
+			:is="note.type"
+			:info="note.info"
+			:note="note"
+			:key="note.id"
+			:id="id"
+			:style="{backgroundColor: note.style.bgc}"
+			@setVal="setAns($event, idx)"
+			class="note-container"
+		>
+		</component>
+	</div>
+</section>
+  
 `,
 
 	components: {

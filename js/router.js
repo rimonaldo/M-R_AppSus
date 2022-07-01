@@ -7,7 +7,6 @@ import emailDetails from './cmps/email/email-details.cmp.js'
 import emailCompose from './cmps/email/email-compose.cmp.js'
 import sentPreview from './cmps/email/sent-preview.cmp.js'
 
-
 const routes = [
 	{
 		path: '/',
@@ -21,37 +20,29 @@ const routes = [
 				path: ':emailId',
 				component: emailDetails,
 			},
-			
+
 			{
 				path: 'show/:show',
 				component: sentPreview,
-				children:[
+				children: [
 					{
 						path: 'compose',
 						component: emailCompose,
 						children: [
 							{
 								path: ':composeId',
-								component: emailCompose
-							}
-						]
+								component: emailCompose,
+							},
+						],
 					},
-				]
+				],
 			},
-			
-
 		],
 	},
 
 	{
 		path: '/note',
 		component: noteApp,
-		children: [
-			{
-				path: ':noteId',
-				component: noteList,
-			},
-		],
 	},
 ]
 
