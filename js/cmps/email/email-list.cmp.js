@@ -51,37 +51,34 @@ export default {
 				})
 		},
 		removeEmail(email) {
-			const id = email.id
-			email.id = null
 			const key = email.status
-			console.log(email.status);
+			const id = email.id
+			const idx = this.emailsToShow.findIndex((email) => email.id === id)
+			this.emailsToShow.splice(idx, 1)
+			// id = null for save
+			email.id = null
 			if (email.status === 'trash') {
 				emailService.query(emailService.TRASH_KEY)
 					.then(() => {
-						emailService.remove(emailService.TRASH_KEY, email).then()
+						emailService.remove(emailService.TRASH_KEY, email)
 					})
 			} else {
 				console.log('email is deleted', email);
 				emailService.save(emailService.TRASH_KEY, email)
 					.then(() => {
-						const idx = this.emailsToShow.findIndex((email) => email.id === id)
-						this.emailsToShow.splice(idx, 1)
-					})
-					.then(() =>{
 						emailService.remove(key, id)
 					})
-					email.status = 'trash'
+				email.status = 'trash'
 			}
 
 		}
 	},
 	computed: {},
 	created() {
-		appService.query(emailService.EMAILS_KEY)
+		emailService.query(emailService.EMAILS_KEY)
 			.then((emails) => {
-				console.log(emails);
 				emails.filter((email) => {
-					if (email.status !== 'trash') {
+					if (email.status === 'inbox') {
 						this.emailsToShow.push(email)
 					}
 				})
