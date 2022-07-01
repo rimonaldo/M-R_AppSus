@@ -11,27 +11,27 @@ export default {
 	props: [],
 	template: `
     <section class="email-list" >
-        <ul v-if="emails" class="mail">
+        <ul v-if="emailsToShow" class="mail">
             <li>
 				<div class="btns">
 					<input type="checkbox">
 				</div>
 			</li>
 
-                <email-preview v-if="emails" @remove="removeEmail"
-				v-if="show.inbox" :emails="emails"/>   
+                <email-preview v-if="emailsToShow" @remove="removeEmail"
+				v-if="show.inbox" :emails="emailsToShow"/>   
 				<star-preview v-if="show.starred" @remove="removeEmail"/>
 				<sent-preview  v-if="show.sent" @remove="removeEmail"/>
 				<draft-preview  v-if="show.draft" @remove="removeEmail"/>
-				<trash-preview  v-if="show.trash" />
+				<trash-preview  v-if="show.trash" @remove="removeEmail"/>
 				<email-details v-if="read" :email="read" />
         </ul>
     </section>
 `,
 	data() {
 		return {
-			key:'inbox',
-			emails: [],
+			key: 'inbox',
+			emailsToShow: [],
 			read: null,
 			show: {
 				inbox: false,
@@ -43,26 +43,35 @@ export default {
 		}
 	},
 	methods: {
-		removeEmail(email) {
-			const { key, id } = email
-			let emails = ''
-			emailService.query((key))
-				.then((emailsPrm) => { emails = emailsPrm })
-				.then(()=>{
-					emailService.get(key,id)
-						.then((email)=>{
-							email.status = 'trash'
-							console.log(email);
-							const idx = emails.findIndex((email) => email.id === id)
-							this.emails.splice(idx, 1)
-							emailService.save('inbox',email)
-						})
-					// emailService.remove(key, id)
-					// 	.then(() => {
-					// 		const idx = emails.findIndex((email) => email.id === id)
-					// 		this.emails.splice(idx, 1)
-					// 	})
+		readEmailById(emailId) {
+			emailService.get(this.key, emailId)
+				.then((email) => {
+					console.log('email', email)
+					this.read = email
 				})
+		},
+		removeEmail(email) {
+			const id = email.id
+			email.id = null
+			const key = email.status
+			console.log(email.status);
+			if (email.status === 'trash') {
+				emailService.query(emailService.TRASH_KEY)
+					.then(() => {
+						emailService.remove(emailService.TRASH_KEY, email).then()
+					})
+			} else {
+				console.log('email is deleted', email);
+				emailService.save(emailService.TRASH_KEY, email)
+					.then(() => {
+						const idx = this.emailsToShow.findIndex((email) => email.id === id)
+						this.emailsToShow.splice(idx, 1)
+					})
+					.then(() =>{
+						emailService.remove(key, id)
+					})
+					email.status = 'trash'
+			}
 
 		}
 	},
@@ -71,12 +80,12 @@ export default {
 		appService.query(emailService.EMAILS_KEY)
 			.then((emails) => {
 				console.log(emails);
-				emails.filter((email)=>{
-					if(email.status !== 'trash'){
-						this.emails.push(email)
+				emails.filter((email) => {
+					if (email.status !== 'trash') {
+						this.emailsToShow.push(email)
 					}
 				})
-				this.emails = emails
+				this.emailsToShow = emails
 			})
 	},
 	mounted() { },
@@ -88,11 +97,12 @@ export default {
 		starPreview,
 		draftPreview,
 		trashPreview
-		
+
 	},
 	watch: {
 		'$route.params': {
 			handler() {
+				this.page = this.$route.params.show
 				const page = this.$route.params.show
 				const emailId = this.$route.params.emailId
 				if (page) {
@@ -101,11 +111,7 @@ export default {
 						pageToShow === page ? this.show[pageToShow] = true : this.show[pageToShow] = false
 					}
 				} else {
-					emailService.get(this.key, emailId)
-						.then((email) => {
-							console.log('email',email);
-							this.read = email
-						})
+					this.readEmailById(emailId)
 				}
 			},
 			immediate: true,

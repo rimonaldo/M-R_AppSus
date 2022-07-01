@@ -24,12 +24,11 @@ export default {
     methods: {
         removeEmail(email) {
             console.log(email);
-            const key = this.key
+            // const key = this.key
             const id = email.id
-            console.log('credentials are\n', key, id);
             const idx = this.emailsToShow.findIndex((email) => email.id === id)
             this.emailsToShow.splice(idx, 1)
-            this.$emit('remove', { key, id })
+            this.$emit('remove', email)
         },
         
         filterBy(filter) {

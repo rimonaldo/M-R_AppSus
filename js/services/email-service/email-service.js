@@ -5,6 +5,7 @@ import { storageService } from '../main-app-service/async-storage-service.js'
 
 const EMAILS_KEY = 'inbox'
 const SENT_KEY = 'sent'
+const TRASH_KEY = 'trash'
 const STARRED_KEY = 'starred'
 const loggedinUser = {
 	email: 'user@appsus.com',
@@ -13,34 +14,50 @@ const loggedinUser = {
 _createSentEmails()
 _createEmails()
 _createStars()
-
+createTrash()
 
 export const emailService = {
 	EMAILS_KEY,
 	SENT_KEY,
+	TRASH_KEY,
 	loggedinUser,
-	getEmptyEmail,
+
 	getNextEemailId,
 	getPrevEemailId,
-	createEmail,
 	getNewEmail,
 	query,
 	get,
 	remove,
 	save,
 	composeEmail,
-	saveEmails,
-	saveSentEmails,
-	getStars,
-	saveStar,
 
 
 }
 
-// getNewEmail()
+
+function _createTrash(){
+	// const id = utilService.makeId()
+	return {
+		id:null,
+		subject:'im a trashy',
+		body:'dump me',
+		isRead: false,
+		sentAt: Date.now(),
+		sentBy: {
+			email: 'momo@gmail.com',
+			fullname: 'momo'
+		},
+		
+		isStarred: false,
+		status:'trash',
+		isTrashed:true,
+		
+		
+	}
+}
 
 function composeEmail() {
-	return  _createEmptyEmail()
+	return  _composeEmail()
 }
 
 function getNewEmail() {
@@ -55,50 +72,6 @@ function _createStars(){
 }
 
 
-function getStars(){
-	return utilService.loadFromStorage(STARRED_KEY)
-}
-
-function saveStar(email){
-	let stars = utilService.loadFromStorage(STARRED_KEY) || []
-	stars.push(email)
-	utilService.saveToStorage(STARRED_KEY,stars)
-}
-
-function createEmail(title, msg, user = 'puki') {
-	let email = getEmptyEmail()
-	email.title = title
-	email.msg = msg
-	email.user = user
-	save(email.id)
-}
-
-function getNextEemailId(emailId) {
-	return storageService.query(EMAILS_KEY).then((emails) => {
-		const idx = emails.findIndex((email) => email.id === emailId)
-		return idx < emails.length - 1 ? emails[idx + 1].id : emails[0].id
-	})
-}
-
-function getPrevEemailId(emailId) {
-	return storageService.query(EMAILS_KEY).then((emails) => {
-		const idx = emails.findIndex((email) => email.id === emailId)
-		return idx < emails.length - 1 || idx >= 0 ? emails[idx - 1].id : emails[0].id
-	})
-}
-
-function getEmptyEmail() {
-	const id = utilService.makeId()
-	return {
-		id,
-		subject,
-		body,
-		isRead: false,
-		sentAt: Date.now(),
-		to: 'momo@momo.com',
-
-	}
-}
 
 function _createEmails() {
 	let email = utilService.loadFromStorage(EMAILS_KEY)
@@ -113,32 +86,9 @@ function _createEmails() {
 	return email;
 }
 
-
-
-function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!', to = 'momo@momo.com') {
-	const id = utilService.makeId()
-	return {
-		id,
-		subject,
-		body,
-		isRead: false,
-		sentAt: Date.now(),
-		sentBy: {
-			email: to,
-			fullname: to.split('@')[0]
-		},
-		to,
-		isStarred: false,
-		
-	}
-}
-
-
-
-
-
 function _createSentEmails() {
 	let email = utilService.loadFromStorage(SENT_KEY) || {}
+	
 	if (!email || !email.length) {
 		email = [];
 		email.push(_createSentEmail());
@@ -150,7 +100,39 @@ function _createSentEmails() {
 	return email;
 }
 
-function _createEmptyEmail(){
+function createTrash(){
+	let emails = utilService.loadFromStorage(TRASH_KEY) || {}
+	if (!emails || !emails.length) {
+		emails = [];
+		emails.push(_createTrash())
+		emails.push(_createTrash())
+		emails.push(_createTrash())
+		emails.push(_createTrash())
+		emails.push(_createTrash())
+		utilService.saveToStorage(TRASH_KEY, emails);
+	}
+}
+
+function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!', to = 'momo@momo.com') {
+	const id = utilService.makeId()
+	return {
+		id,
+		subject,
+		body,
+		isRead: false,
+		sentAt: Date.now(),
+		sentBy: {
+			email: to,
+			fullname: 'momo'
+		},
+		to,
+		isStarred: false,
+		status:'inbox',
+		
+	}
+}
+
+function _composeEmail(){
 	return {
 		id:null,
 		subject:null,
@@ -160,10 +142,11 @@ function _createEmptyEmail(){
 		sentBy: loggedinUser,
 		to: null,
 		isStarred:false,
+		status:'draft'
 	}
 }
 
-function _createSentEmail(subject, body, to) {
+function _createSentEmail(subject, body, to = null) {
 	const id = utilService.makeId()
 	return {
 		id,
@@ -172,8 +155,9 @@ function _createSentEmail(subject, body, to) {
 		isRead: false,
 		sentAt: Date.now(),
 		sentBy: loggedinUser,
-		to: null,
+		to,
 		isStarred:false,
+		status:'sent'
 
 	}
 }
@@ -200,18 +184,20 @@ function save(entityType, newEntity) {
 	else return storageService.post(entityType, newEntity)
 }
 
-function saveEmails(emails) {
-	return storageService.post(EMAILS_KEY, emails)
+function saveMany(entityType,newEntities){
+	
 }
 
-function saveSentEmails(emails) {
-	return storageService.post(SENT_KEY, emails)
+function getNextEemailId(emailId) {
+	return storageService.query(EMAILS_KEY).then((emails) => {
+		const idx = emails.findIndex((email) => email.id === emailId)
+		return idx < emails.length - 1 ? emails[idx + 1].id : emails[0].id
+	})
 }
 
-// const criteria = {
-// 	status: { inbox: false, sent: false, trash: false, draft: true },
-// 	txt: 'puki',
-// 	isRead: false,
-// 	isStarred: false,
-// 	lables: ['important'],
-// }
+function getPrevEemailId(emailId) {
+	return storageService.query(EMAILS_KEY).then((emails) => {
+		const idx = emails.findIndex((email) => email.id === emailId)
+		return idx < emails.length - 1 || idx >= 0 ? emails[idx - 1].id : emails[0].id
+	})
+}

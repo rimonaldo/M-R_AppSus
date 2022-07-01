@@ -5,11 +5,14 @@ export default {
 	props: ['emails', 'class'],
 	template: `
     <section class="preview" >
-        <li   v-for="email in emails" 
-		:class="[{read:email.isRead},{drafts:email.status === 'draft'},{trashed:email.status === 'trash'} ]">
+        <li  v-for="email in emails" 
+		:class="[{read:email.isRead},{drafts:email.status === 'draft'},
+		{trashed:email.status === 'trash'},{trashed:email.isTrashed}]">
+
             <div class="actions" >
                 <input  type="checkbox" v-model="email.isRead">                
-				<div class="stars" :class="{hide:email.status === 'draft'||'trash'}">
+				<div class="stars" :class="{hide:email.status === 'trash'}">
+				<!-- <div class="stars"> -->
 					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>
 					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
 				</div>
@@ -20,7 +23,7 @@ export default {
                 <span >{{email.body}}</span>
                 <span>18:06</span>
             </router-link>
-			<button @click.stop="remove(key,email.id)">x</button>
+			<button @click.stop="remove(email)">x</button>
         </li>
     </section>
 `,
@@ -35,15 +38,13 @@ export default {
 			console.log(log);
 		},
 		toggleStar(email) {
-			// console.log(email);
 			email.status = this.key
-
 			email.isStarred = !email.isStarred
 			emailService.save(this.key, email).then()
 
 		},
-		remove(key, id) {
-			this.$emit('remove', { key, id })
+		remove(email) {
+			this.$emit('remove', email)
 		}
 	},
 	computed: {},

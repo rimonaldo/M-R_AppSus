@@ -19,11 +19,10 @@ export default {
     },
     methods: {
         removeEmail(email) {
-            console.log(email);
-            const { key, id } = email
+            const id = email.id
             const idx = this.emailsToShow.findIndex((email) => email.id === id)
             this.emailsToShow.splice(idx, 1)
-            this.$emit('remove', { key, id })
+            this.$emit('remove', email)
         }, 
     },
     computed: {},
