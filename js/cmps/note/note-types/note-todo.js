@@ -38,12 +38,15 @@ export default {
 	props: ['info', 'note'],
 	data() {
 		return {
-			todos: this.info.todos,
+			todos: null,
 			value: null,
 		}
 	},
 
-	created() {},
+	created() {
+		console.log(this.info)
+		// this.todos = this.info.todos
+	},
 
 	methods: {
 		deleteNote(ev) {
@@ -60,6 +63,9 @@ export default {
 	},
 
 	computed: {},
+	mounted() {
+		// this.todos = this.info.todos
+	},
 
 	unmounted() {},
 }

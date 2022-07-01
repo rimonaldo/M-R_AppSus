@@ -44,6 +44,8 @@ export default {
 		},
 		cerateNote(note) {
 			let x = note.info
+			console.log(' note.info-todos:', note.info.todos)
+
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
