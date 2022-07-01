@@ -23,8 +23,6 @@ export default {
     },
     methods: {
         removeEmail(email) {
-            console.log(email);
-            // const key = this.key
             const id = email.id
             const idx = this.emailsToShow.findIndex((email) => email.id === id)
             this.emailsToShow.splice(idx, 1)

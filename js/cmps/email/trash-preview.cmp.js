@@ -4,7 +4,6 @@ import { emailService } from "../../services/email-service/email-service.js";
 export default {
     props: [],
     template: `
-    <h1>trash</h1>
     <email-preview v-if="emailsToShow" :emails="emailsToShow" 
     :class="'trashed'" @remove="removeEmail"/>
 `,

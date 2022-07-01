@@ -184,10 +184,6 @@ function save(entityType, newEntity) {
 	else return storageService.post(entityType, newEntity)
 }
 
-function saveMany(entityType,newEntities){
-	
-}
-
 function getNextEemailId(emailId) {
 	return storageService.query(EMAILS_KEY).then((emails) => {
 		const idx = emails.findIndex((email) => email.id === emailId)
