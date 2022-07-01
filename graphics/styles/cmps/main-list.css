@@ -2,6 +2,7 @@
     width: 100%;
     line-height: 2rem;
     /* padding-inline-start: 0.2rem; */
+    margin-top: 1rem;
 }
 
 .email-list ul.mail li {
@@ -22,11 +23,21 @@
     background-color: #c2dbff;
 }
 
+.email-list .actions , .email-list .btns {
+    padding-inline-start: 0.7rem;
+
+   width: 70px;
+  
+
+}
+
 .email-list .actions {
-    padding-inline-start: 0.5rem;
-    width: 5rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+}
+
+.email-list .actions div ,  .email-list .btns div:not(first-child){
+    margin-inline-start: 0.7rem;
 
 }
 
@@ -60,7 +71,7 @@
 }
 .star.checked::before {
     font-family: fa-solid;
-    color: rgb(255, 255, 80);
+    color: rgb(255, 219, 142);
 }
 .email-list .star-bottom.checked::before{
     -webkit-text-stroke-width: 3px;
