@@ -15,7 +15,8 @@ export default {
 	<note-nav></note-nav>
 	<note-filter></note-filter>
 	<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
-	<note-list class="list" v-if="notes" @setNote="setNotes($event,ans )" :notes="notes">
+		<note-list class="list" v-if="notes" @setNote="setNotes($event,ans )" :notes="notes">
+
 	</note-list>
 </section>
 
