@@ -1,26 +1,69 @@
 .email-list {
     width: 100%;
     line-height: 2rem;
+    /* padding-inline-start: 0.2rem; */
 }
 
 .email-list ul.mail li {
-    border-bottom: 1px black solid;
+    border-bottom: 1px rgb(238, 237, 237) solid;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.email-list a{
+.email-list a {
     /* border: 1px black solid; */
     display: flex;
     justify-content: space-between;
     width: 90%;
 }
 
-.email-list .read{
+.email-list .read {
     background-color: #c2dbff;
 }
 
-.star{
-    border: 5px yellow solid;
+.email-list .actions {
+    padding-inline-start: 0.5rem;
+    width: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+
 }
+
+.email-list .actions >*{
+    cursor: pointer;
+}
+
+.email-list .stars{
+    position: relative;
+}
+
+.email-list .star::before {
+    font-family: fa-regular;
+    content: "\f005";
+    font-size: 1rem;
+    position: relative;
+    bottom: 1px;
+    /* opacity: 0; */
+    transition: 0.2s;
+
+}
+
+.email-list .star-bottom::before {
+    font-family: fa-regular;
+    content: "\f005";
+    position: absolute;
+    bottom: 1px;
+    opacity: 0;
+    transition: 0.2s;
+
+}
+.star.checked::before {
+    font-family: fa-solid;
+    color: rgb(255, 255, 80);
+}
+.email-list .star-bottom.checked::before{
+    -webkit-text-stroke-width: 3px;
+    opacity: 100;
+}
+

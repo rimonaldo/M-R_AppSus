@@ -7,8 +7,11 @@ export default {
     <section class="preview" >
         <li  v-for="email in emails" :class="{read:email.isRead}">
             <div class="actions">
-                <input  type="checkbox" v-model="email.isRead">
-                <input @click="log" :class="{star:email.isStarred}" type="checkbox" >
+                <input  type="checkbox" v-model="email.isRead">                
+				<div class="stars">
+				<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>
+				<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
+				</div>
             </div>
             <router-link :to="'/email/'+email.id">
                 <span >{{email.sentBy.fullname}}</span>
@@ -26,8 +29,13 @@ export default {
 		}
 	},
 	methods: {
-		log() {
-			console.log(this.email);
+		log(log) {
+			
+			console.log(log);
+		},
+		toggleStar(email){
+			email.isStarred = !email.isStarred
+			emailService.saveStar(email)
 		},
 		remove(key, id) {
 			this.$emit('remove', { key, id })

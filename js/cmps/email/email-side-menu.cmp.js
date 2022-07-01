@@ -4,15 +4,16 @@ export default {
     <section class="side-menu">
         
         <router-link :to="'/email/show/'+'inbox'">
-        <div class="inbox">
-            <span>inbox</span>
-            
-        </div>
+            <div class="inbox">
+                <span>inbox</span>  
+            </div>
         </router-link>
         
-        <div class="starred">
-            <span>Starred</span>
-        </div>
+        <router-link :to="'/email/show/'+'starred'">
+            <div class="starred">
+                <span>Starred</span>
+            </div>
+        </router-link>
         
         <router-link :to="'/email/show/'+'sent'">
         <div class="sent">

@@ -3,18 +3,21 @@ import { appService } from '../../services/main-app-service/main-app-service.js'
 import emailPreview from './email-preview.cmp.js'
 import sentPreview from './sent-preview.cmp.js'
 import emailDetails from './email-details.cmp.js'
+import starPreview from './star-preview.cmp.js'
 export default {
 	props: [],
 	template: `
     <section class="email-list" >
-        <ul  class="mail" v-if="emails">
+        <ul v-if="emails" class="mail">
             <li>
 				<div class="btns">
 					<input type="checkbox">
 				</div>
 			</li>
+
                 <email-preview v-if="emails" @remove="removeEmail"
-				 v-if="show.inbox" :emails="emails"/>   
+				v-if="show.inbox" :emails="emails"/>   
+				<star-preview v-if="show.starred"/>
 				<sent-preview  v-if="show.sent" @remove="removeEmail"/>
 				<email-details v-if="read" :email="read" />
         </ul>
@@ -63,6 +66,7 @@ export default {
 		emailPreview,
 		sentPreview,
 		emailDetails,
+		starPreview,
 
 	},
 	watch: {

@@ -9,7 +9,7 @@ export default {
         <router-link to="/email"><button>back</button></router-link>
         <div v-if="email">
             <div class="subject">{{email.subject}}</div>
-            <span>{{email.sentBy}}</span>
+            <span>{{email.sentBy.fullname}}</span>
             <div class="body">{{email.body}}</div>
             <div class="action-btns">
                 <button class="replay">Reply</button>
@@ -21,7 +21,7 @@ export default {
 `,
     data() {
         return {
-            
+
         };
     },
     methods: {},
