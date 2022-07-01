@@ -2,15 +2,15 @@ import { emailService } from '../../services/email-service/email-service.js'
 import { appService } from '../../services/main-app-service/main-app-service.js'
 
 export default {
-	props: ['emails'],
+	props: ['emails', 'class'],
 	template: `
     <section class="preview" >
-        <li  v-for="email in emails" :class="{read:email.isRead}">
-            <div class="actions">
+        <li   v-for="email in emails" :class="[{read:email.isRead},{drafts:email.status === 'draft'}]">
+            <div class="actions" >
                 <input  type="checkbox" v-model="email.isRead">                
-				<div class="stars">
-				<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>
-				<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
+				<div class="stars" :class="{hide:email.status === 'draft'}">
+					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>
+					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
 				</div>
             </div>
             <router-link :to="'/email/'+email.id">
@@ -30,22 +30,16 @@ export default {
 	},
 	methods: {
 		log(log) {
-			
+
 			console.log(log);
 		},
-		toggleStar(email){
+		toggleStar(email) {
 			// console.log(email);
-			if(email.status !== "starred"){
-				email.status = this.key 
-				console.log('not in starred\n', email.status);
-			} else{
-				return
-			}
+			email.status = this.key
+
 			email.isStarred = !email.isStarred
-			emailService.save(this.key,email)
-				.then((email)=>{
-					// console.log(email);
-				})
+			emailService.save(this.key, email).then()
+
 		},
 		remove(key, id) {
 			this.$emit('remove', { key, id })
@@ -53,8 +47,10 @@ export default {
 	},
 	computed: {},
 	created() {
+		console.log(this.class);	
 	},
-	mounted() { },
+	mounted() { 
+	},
 	unmounted() { },
 	components: {
 
@@ -63,7 +59,7 @@ export default {
 		'$route.params': {
 			handler() {
 				this.key = this.$route.params.show
-				console.log('key is',this.key);
+				console.log('key is', this.key);
 			},
 			immediate: true
 		}

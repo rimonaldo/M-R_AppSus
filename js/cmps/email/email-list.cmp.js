@@ -4,6 +4,8 @@ import emailPreview from './email-preview.cmp.js'
 import sentPreview from './sent-preview.cmp.js'
 import emailDetails from './email-details.cmp.js'
 import starPreview from './star-preview.cmp.js'
+import draftPreview from './draft-preview.cmp.js'
+
 export default {
 	props: [],
 	template: `
@@ -19,6 +21,7 @@ export default {
 				v-if="show.inbox" :emails="emails"/>   
 				<star-preview v-if="show.starred" @remove="removeEmail"/>
 				<sent-preview  v-if="show.sent" @remove="removeEmail"/>
+				<draft-preview  v-if="show.draft" @remove="removeEmail"/>
 				<email-details v-if="read" :email="read" />
         </ul>
     </section>
@@ -32,7 +35,7 @@ export default {
 				inbox: false,
 				starred: false,
 				sent: false,
-				drafts: false,
+				draft: false,
 				trash: false
 			}
 		}
@@ -67,7 +70,8 @@ export default {
 		sentPreview,
 		emailDetails,
 		starPreview,
-
+		draftPreview,
+		
 	},
 	watch: {
 		'$route.params': {
@@ -86,6 +90,7 @@ export default {
 							this.read = email
 						})
 				}
+				// console.log('show\n',this.show);
 			},
 			immediate: true,
 		},

@@ -53,6 +53,9 @@ export default {
     computed: {},
     created() {
         this.newEmail = emailService.composeEmail()
+        this.newEmail.status = "draft"
+        emailService.save(emailService.SENT_KEY , this.newEmail)
+        console.log(this.newEmail);
     },
     mounted() { },
     unmounted() { },

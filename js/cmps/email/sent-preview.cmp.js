@@ -1,5 +1,4 @@
 import { emailService } from '../../services/email-service/email-service.js'
-import { appService } from '../../services/main-app-service/main-app-service.js'
 import emailPreview from './email-preview.cmp.js';
 
 export default {
@@ -7,13 +6,14 @@ export default {
     template: `
     <section class="sent">
         <ul>
-            <email-preview :emails="emails"  @remove="removeEmail"/>
+            <email-preview :emails="emailsToShow "  @remove="removeEmail"/>
         </ul>
     </section>
 `,
     data() {
         return {
-            emails: null,
+            emailsToShow: [],
+
 
         };
     },
@@ -40,7 +40,11 @@ export default {
             handler() {
                 emailService.query(emailService.SENT_KEY)
                     .then((sent) => {
-                        this.emails = sent
+                        sent.filter((email)=>{
+                            if(email.status !== 'draft'){
+                                this.emailsToShow.push(email)
+                            }
+                        })
                     })
             },
             immediate: true

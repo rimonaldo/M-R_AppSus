@@ -42,7 +42,6 @@ export default {
                             this.emailsToShow.push(email)
                         }
                     })
-                    console.log(this.emailsToShow);
                 })
         },
     },
@@ -56,7 +55,6 @@ export default {
                         this.emailsToShow.push(email)
                     }
                 })
-                console.log(this.emailsToShow);
             })
     },
     mounted() { },

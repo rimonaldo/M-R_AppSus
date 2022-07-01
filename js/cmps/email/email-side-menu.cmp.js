@@ -16,22 +16,28 @@ export default {
         </router-link>
         
         <router-link :to="'/email/show/'+'sent'">
-        <div class="sent">
-            <span>Sent</span>
-        </div>
+            <div class="sent">
+                <span>Sent</span>
+            </div>
         </router-link>
         
-        <div class="drafts">
-            <span>Drafts</span>
-        </div>
+        <router-link :to="'/email/show/'+'draft'">
+            <div class="draft">
+                <span>Drafts</span>
+            </div>
+        </router-link>
         
-        <div class="notes">
-            <span>Notes</span>            
-        </div>
+        <router-link :to="'/email/show/'+'note'">
+            <div class="notes">
+                <span>Notes</span>
+            </div>
+        </router-link>
         
-        <div class="trash">
-            <span>Trash</span>
-        </div>
+        <router-link :to="'/email/show/'+'trash'">
+            <div class="trash">
+                <span>Trash</span>
+            </div>
+        </router-link>
     </section>
 `,
     data() {
