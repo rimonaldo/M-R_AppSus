@@ -5,10 +5,11 @@ export default {
 	props: ['emails', 'class'],
 	template: `
     <section class="preview" >
-        <li   v-for="email in emails" :class="[{read:email.isRead},{drafts:email.status === 'draft'}]">
+        <li   v-for="email in emails" 
+		:class="[{read:email.isRead},{drafts:email.status === 'draft'},{trashed:email.status === 'trash'} ]">
             <div class="actions" >
                 <input  type="checkbox" v-model="email.isRead">                
-				<div class="stars" :class="{hide:email.status === 'draft'}">
+				<div class="stars" :class="{hide:email.status === 'draft'||'trash'}">
 					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>
 					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
 				</div>

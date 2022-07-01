@@ -9,16 +9,24 @@ export default {
 `,
     data() {
         return {
-            emailsToShow:[],
+            emailsToShow: [],
         };
     },
-    methods: {},
+    methods: {
+        removeEmail(email) {
+            const key = emailService.SENT_KEY
+            const id = email.id
+            const idx = this.emailsToShow.findIndex((email) => email.id === id)
+            this.emailsToShow.splice(idx, 1)
+            this.$emit('remove', { key, id })
+        },
+    },
     computed: {},
-    created() { 
+    created() {
         emailService.query((emailService.SENT_KEY))
-            .then((emails)=>{
-                emails.filter((email)=>{
-                    if(email.status === 'draft'){
+            .then((emails) => {
+                emails.filter((email) => {
+                    if (email.status === 'draft') {
                         this.emailsToShow.push(email)
                     }
                 })

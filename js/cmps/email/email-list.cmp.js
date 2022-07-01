@@ -5,6 +5,7 @@ import sentPreview from './sent-preview.cmp.js'
 import emailDetails from './email-details.cmp.js'
 import starPreview from './star-preview.cmp.js'
 import draftPreview from './draft-preview.cmp.js'
+import trashPreview from './trash-preview.cmp.js'
 
 export default {
 	props: [],
@@ -22,6 +23,7 @@ export default {
 				<star-preview v-if="show.starred" @remove="removeEmail"/>
 				<sent-preview  v-if="show.sent" @remove="removeEmail"/>
 				<draft-preview  v-if="show.draft" @remove="removeEmail"/>
+				<trash-preview  v-if="show.trash" />
 				<email-details v-if="read" :email="read" />
         </ul>
     </section>
@@ -29,7 +31,7 @@ export default {
 	data() {
 		return {
 			key:'inbox',
-			emails: null,
+			emails: [],
 			read: null,
 			show: {
 				inbox: false,
@@ -47,21 +49,35 @@ export default {
 			emailService.query((key))
 				.then((emailsPrm) => { emails = emailsPrm })
 				.then(()=>{
-
-					emailService.remove(key, id)
-						.then(() => {
+					emailService.get(key,id)
+						.then((email)=>{
+							email.status = 'trash'
+							console.log(email);
 							const idx = emails.findIndex((email) => email.id === id)
 							this.emails.splice(idx, 1)
+							emailService.save('inbox',email)
 						})
+					// emailService.remove(key, id)
+					// 	.then(() => {
+					// 		const idx = emails.findIndex((email) => email.id === id)
+					// 		this.emails.splice(idx, 1)
+					// 	})
 				})
 
 		}
 	},
 	computed: {},
 	created() {
-		appService.query(emailService.EMAILS_KEY).then((emails) => {
-			this.emails = emails
-		})
+		appService.query(emailService.EMAILS_KEY)
+			.then((emails) => {
+				console.log(emails);
+				emails.filter((email)=>{
+					if(email.status !== 'trash'){
+						this.emails.push(email)
+					}
+				})
+				this.emails = emails
+			})
 	},
 	mounted() { },
 	unmounted() { },
@@ -71,6 +87,7 @@ export default {
 		emailDetails,
 		starPreview,
 		draftPreview,
+		trashPreview
 		
 	},
 	watch: {
