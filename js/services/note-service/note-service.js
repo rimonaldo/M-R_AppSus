@@ -228,13 +228,14 @@ function getPrevNoteId(noteId) {
 
 function getEmptyNote(type, info) {
 	let id = utilService.makeId()
-
+	let style = {bgc: '#d8cedf'}
 	return {
 		type,
 		id,
 		isPinned: false,
 		info,
 		crateAt: Date.now(),
+		style,
 	}
 }
 

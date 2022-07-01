@@ -14,7 +14,9 @@ textarea {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	max-width: 420px;
+	/* max-width: 420px; */
+	max-width: 500px;
+	width: fit-content;
 	text-align: center;
 	background-color: rgba(110, 110, 110, 0.421);
 	border-radius: 15px;
@@ -30,11 +32,15 @@ textarea {
 
 .list {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 	grid-auto-rows: minmax(min-content, min-content);
-	grid-gap: 10px;
-
+	grid-gap: 20px;
 	padding: 3%;
+}
+.grid-cube {
+	justify-self: center;
+	align-self: center;
+	/* align-items: center; */
 }
 .note-add {
 	display: flex;
