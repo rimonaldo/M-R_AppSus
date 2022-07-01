@@ -5,15 +5,14 @@ import { storageService } from '../main-app-service/async-storage-service.js'
 
 const EMAILS_KEY = 'inbox'
 const SENT_KEY = 'sent'
-const GMAILS_KEY = 'gemails'
-const RECIVED_KEY = 'recived-emails'
+const STARRED_KEY = 'starred'
 const loggedinUser = {
 	email: 'user@appsus.com',
 	fullname: 'Mahatma Appsus',
 }
 _createSentEmails()
 _createEmails()
-
+_createStars()
 
 
 export const emailService = {
@@ -32,6 +31,8 @@ export const emailService = {
 	composeEmail,
 	saveEmails,
 	saveSentEmails,
+	getStars,
+	saveStar,
 
 
 }
@@ -39,11 +40,29 @@ export const emailService = {
 // getNewEmail()
 
 function composeEmail() {
-	return _createSentEmail()
+	return  _createEmptyEmail()
 }
 
 function getNewEmail() {
 	console.log('new:', _createSentEmail());
+}
+
+function _createStars(){
+	let stars = utilService.loadFromStorage(STARRED_KEY) || []
+	if(stars){
+		utilService.saveToStorage(STARRED_KEY,stars)
+	}
+}
+
+
+function getStars(){
+	return utilService.loadFromStorage(STARRED_KEY)
+}
+
+function saveStar(email){
+	let stars = utilService.loadFromStorage(STARRED_KEY) || []
+	stars.push(email)
+	utilService.saveToStorage(STARRED_KEY,stars)
 }
 
 function createEmail(title, msg, user = 'puki') {
@@ -82,7 +101,7 @@ function getEmptyEmail() {
 }
 
 function _createEmails() {
-	let email = utilService.loadFromStorage(EMAILS_KEY);
+	let email = utilService.loadFromStorage(EMAILS_KEY)
 	if (!email || !email.length) {
 		email = [];
 		email.push(_createEmail());
@@ -96,7 +115,7 @@ function _createEmails() {
 
 
 
-function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!', to = null) {
+function _createEmail(subject = 'Miss you!', body = 'Would love to catch up sometimes!', to = 'momo@momo.com') {
 	const id = utilService.makeId()
 	return {
 		id,
@@ -104,25 +123,22 @@ function _createEmail(subject = 'Miss you!', body = 'Would love to catch up some
 		body,
 		isRead: false,
 		sentAt: Date.now(),
-		sentBy: 'momo@momo.com',
+		sentBy: {
+			email: to,
+			fullname: to.split('@')[0]
+		},
 		to,
+		isStarred: false,
+		
 	}
 }
 
 
 
-const criteria = {
-	status: { inbox: false, sent: false, trash: false, draft: true },
-	txt: 'puki',
-	isRead: false,
-	isStarred: false,
-	lables: ['important'],
-}
-
 
 
 function _createSentEmails() {
-	let email = utilService.loadFromStorage(SENT_KEY) || {};
+	let email = utilService.loadFromStorage(SENT_KEY) || {}
 	if (!email || !email.length) {
 		email = [];
 		email.push(_createSentEmail());
@@ -134,31 +150,34 @@ function _createSentEmails() {
 	return email;
 }
 
-
+function _createEmptyEmail(){
+	return {
+		id:null,
+		subject:null,
+		body:null,
+		isRead: false,
+		sentAt: Date.now(),
+		sentBy: loggedinUser,
+		to: null,
+		isStarred:false,
+	}
+}
 
 function _createSentEmail(subject, body, to) {
 	const id = utilService.makeId()
 	return {
-		id ,
+		id,
 		subject,
 		body,
 		isRead: false,
 		sentAt: Date.now(),
 		sentBy: loggedinUser,
-		to,
+		to: null,
+		isStarred:false,
+
 	}
 }
 
-
-
-// saveGmails
-function saveGmails() {
-	let gmails = {
-		sent: [_createSentEmail(), _createSentEmail()],
-		recived: utilService.loadFromStorage(EMAILS_KEY)
-	}
-	utilService.saveToStorage(GMAILS_KEY, gmails)
-}
 
 // returns a promise
 function query(entityType) {
@@ -181,10 +200,18 @@ function save(entityType, newEntity) {
 	else return storageService.post(entityType, newEntity)
 }
 
-function saveEmails(emails){
+function saveEmails(emails) {
 	return storageService.post(EMAILS_KEY, emails)
 }
 
-function saveSentEmails(emails){
+function saveSentEmails(emails) {
 	return storageService.post(SENT_KEY, emails)
 }
+
+// const criteria = {
+// 	status: { inbox: false, sent: false, trash: false, draft: true },
+// 	txt: 'puki',
+// 	isRead: false,
+// 	isStarred: false,
+// 	lables: ['important'],
+// }

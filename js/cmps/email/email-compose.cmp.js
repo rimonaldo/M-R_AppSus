@@ -1,65 +1,61 @@
-import {emailService} from '../../services/email-service/email-service.js'
-import {appService} from '../../services/main-app-service/main-app-service.js'
+import { emailService } from '../../services/email-service/email-service.js'
+import { appService } from '../../services/main-app-service/main-app-service.js'
 
 export default {
     props: [],
     template: `
     <section class="compose">
         <div class="new-email">
+
             <header class="header">
                 <span>New Message</span>
                 <div class="action-btns">
                     <div class="min-max">-</div>
                     <div class="full">^</div>
-                    <!-- <router-link :to="'/email/show/'+'inbox'"> </router-link> -->
                     <div @click="$emit('close')" class="close">x</div> 
                 </div>   
             </header>
-
+       
             <div  class="inputs">
                 <input placeholder="Recipiants" type="text" v-model="newEmail.to">
                 <input  placeholder="Subject" type="text" v-model="newEmail.subject">
                 <textarea v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
             </div>
 
-            <div class="bottom action-btns">
-                <router-link :to="'/email/show/'+'inbox'">
+            <router-link :to="'/email/show/'+'inbox'">
+                <div class="bottom action-btns">
                     <button @click="send" class="send">
                         <span>send</span>
-                        <span></span>
                     </button>
-                </router-link>
-            </div>
-        </div>
+                </div>
+            </router-link>
 
+        </div>
     </section>
 `,
     data() {
         return {
             newEmail: null
-            
+
         };
     },
     methods: {
-        log(){
-            console.log(this.newEmail.subject);
+        log() {
+
         },
-        send(){
+        send() {
+            this.newEmail.status = 'sent'
+            emailService.save(emailService.SENT_KEY, this.newEmail).then()
+    
             this.$emit('close');
-            console.log('sent');
-            emailService.save(emailService.SENT_KEY,this.newEmail)
-                .then((email)=>{
-                    console.log('theres ur promise', email);    
-                }) 
         }
     },
     computed: {},
-    created() { 
-
+    created() {
         this.newEmail = emailService.composeEmail()
-        
+        this.newEmail.status = "draft"
+        emailService.save(emailService.SENT_KEY , this.newEmail)
         console.log(this.newEmail);
-       
     },
     mounted() { },
     unmounted() { },

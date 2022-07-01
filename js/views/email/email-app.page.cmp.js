@@ -35,10 +35,10 @@ export default {
                 </ul>
                 <email-list></email-list>
                 
-                    <div @click="compose=!compose" class="compose-icon" ></div>
+                <div @click="compose=!compose" class="compose-icon" ></div>
                     
                 </section>
-                <email-compose v-if="compose" @close="closeCompose"/>
+                <email-compose v-if="compose" @close="closeCompose"/>   
                 <!-- <router-view></router-view> -->
         </div>
     </section>

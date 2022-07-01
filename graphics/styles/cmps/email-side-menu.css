@@ -41,7 +41,7 @@
     font-family: fa-regular;
     content: "\f1d8";
 }
-.side-menu .drafts::before{
+.side-menu .draft::before{
     font-family: fa-regular;
     content: "\f07b";
 }
