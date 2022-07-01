@@ -22,11 +22,13 @@ export default {
                 <textarea v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
             </div>
 
-            <div class="bottom action-btns">
-                <button @click="send" class="send">
-                    <span>send</span>
-                </button>
-            </div>
+            <router-link :to="'/email/show/'+'inbox'">
+                <div class="bottom action-btns">
+                    <button @click="send" class="send">
+                        <span>send</span>
+                    </button>
+                </div>
+            </router-link>
 
         </div>
     </section>
@@ -42,11 +44,9 @@ export default {
 
         },
         send() {
-            emailService.save(emailService.SENT_KEY, this.newEmail)
-                .then((email) => {
-                    console.log('theres ur promise', email);
-                })
-            console.log('sent');
+            this.newEmail.status = 'sent'
+            emailService.save(emailService.SENT_KEY, this.newEmail).then()
+    
             this.$emit('close');
         }
     },

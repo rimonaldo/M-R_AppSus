@@ -90,7 +90,6 @@ export default {
 							this.read = email
 						})
 				}
-				// console.log('show\n',this.show);
 			},
 			immediate: true,
 		},
