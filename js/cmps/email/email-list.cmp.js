@@ -17,7 +17,7 @@ export default {
 
                 <email-preview v-if="emails" @remove="removeEmail"
 				v-if="show.inbox" :emails="emails"/>   
-				<star-preview v-if="show.starred"/>
+				<star-preview v-if="show.starred" @remove="removeEmail"/>
 				<sent-preview  v-if="show.sent" @remove="removeEmail"/>
 				<email-details v-if="read" :email="read" />
         </ul>

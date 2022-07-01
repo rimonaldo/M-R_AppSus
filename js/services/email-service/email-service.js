@@ -128,6 +128,8 @@ function _createEmail(subject = 'Miss you!', body = 'Would love to catch up some
 			fullname: to.split('@')[0]
 		},
 		to,
+		isStarred: false,
+		
 	}
 }
 
@@ -136,7 +138,7 @@ function _createEmail(subject = 'Miss you!', body = 'Would love to catch up some
 
 
 function _createSentEmails() {
-	let email = utilService.loadFromStorage(SENT_KEY) || {};
+	let email = utilService.loadFromStorage(SENT_KEY) || {}
 	if (!email || !email.length) {
 		email = [];
 		email.push(_createSentEmail());
@@ -156,7 +158,8 @@ function _createEmptyEmail(){
 		isRead: false,
 		sentAt: Date.now(),
 		sentBy: loggedinUser,
-		to: null
+		to: null,
+		isStarred:false,
 	}
 }
 
@@ -169,7 +172,9 @@ function _createSentEmail(subject, body, to) {
 		isRead: false,
 		sentAt: Date.now(),
 		sentBy: loggedinUser,
-		to: null
+		to: null,
+		isStarred:false,
+
 	}
 }
 

@@ -34,8 +34,18 @@ export default {
 			console.log(log);
 		},
 		toggleStar(email){
+			// console.log(email);
+			if(email.status !== "starred"){
+				email.status = this.key 
+				console.log('not in starred\n', email.status);
+			} else{
+				return
+			}
 			email.isStarred = !email.isStarred
-			emailService.saveStar(email)
+			emailService.save(this.key,email)
+				.then((email)=>{
+					// console.log(email);
+				})
 		},
 		remove(key, id) {
 			this.$emit('remove', { key, id })
