@@ -14,7 +14,6 @@ export default {
 	<button @click="chooseTxt">txt</button>
 	<button @click="chooseImg">img</button>
 	<button @click="chooseTodo">Todo</button>
-	<button @click="createNote">create</button>
 </div>
 	</section>
 `,
@@ -31,10 +30,14 @@ export default {
 		chooseTxt() {
 			this.type = 'note-txt'
 			this.info = {txt: this.value, title: this.title}
+			let ans = {type: this.type, info: this.info}
+			this.$emit('newNote', ans)
 		},
 		chooseImg() {
 			this.type = 'note-img'
 			this.info = {url: this.value, title: this.title}
+			let ans = {type: this.type, info: this.info}
+			this.$emit('newNote', ans)
 		},
 		chooseTodo() {
 			this.type = 'note-todos'
@@ -44,9 +47,8 @@ export default {
 					todos: [{txt: this.value, doneAt: new Date()}],
 				},
 			}
-		},
-		createNote() {
 			let ans = {type: this.type, info: this.info}
+			console.log('ans:', ans)
 			this.$emit('newNote', ans)
 		},
 	},
