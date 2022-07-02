@@ -7,8 +7,8 @@ export default {
 		<h2>{{info.title}}</h2>
 		<iframe
 		:src="info.url"
-		width="400"
-		height="300"
+		width="300"
+		height="200"
 		style="border: 0"
 		allowfullscreen=""
 		loading="lazy"

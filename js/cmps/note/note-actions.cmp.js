@@ -2,11 +2,13 @@ import {eventBus} from '../../services/main-app-service/eventBus-service.js'
 
 export default {
 	template: `
-<button @click="pin">pin</button>
-<button @click="deleteNote">X</button>
-<button @click="copyNote">copy</button>
-<input v-model="note.style.bgc" type="color" @input="changeBgc" />
-<input v-model="note.style.color" type="color" @input="changeColor" />
+	<section>
+		<button @click="pin">pin</button>
+		<button @click="deleteNote">X</button>
+		<button @click="copyNote">copy</button>
+		<input v-model="note.style.bgc" type="color" @input="changeBgc" />
+		<input v-model="note.style.color" type="color" @input="changeColor" />
+	</section>
 
 `,
 	computed: {
