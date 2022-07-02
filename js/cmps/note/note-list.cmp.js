@@ -11,15 +11,14 @@ export default {
 <section v-if="notes ">
 	<div v-for="(note,idx) in notes">
 		<component
-		class="grid-cube"
+		class="grid-cube note-container"
 			:is="note.type"
 			:info="note.info"
 			:note="note"
 			:key="note.id"
-			:id="id"
+			:id="note.id"
 			:style="{backgroundColor: note.style.bgc}"
 			@setVal="setAns($event, idx)"
-			class="note-container"
 		>
 		</component>
 	</div>

@@ -2,7 +2,13 @@ import {eventBus} from '../../../services/main-app-service/eventBus-service.js'
 export default {
 	template: `
 <div v-if="todo">
-	<input type="text" v-model="val" :placeholder="displayTodo" />
+	<input
+		v-if="	note"
+ type="text"
+  v-model="val" 
+	:placeholder="displayTodo"
+	:style="{backgroundColor:note.style.bgc }"
+	 />
 	<div class="buttons">
 		<button @click="doneTodo">Done</button>
 		<button @click="changeTodo">Change</button>
@@ -10,7 +16,7 @@ export default {
 </div>
 `,
 
-	props: ['todo', 'idx', 'id'],
+	props: ['todo', 'idx', 'id', 'note'],
 	data() {
 		return {
 			val: null,
