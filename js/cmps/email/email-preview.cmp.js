@@ -23,16 +23,17 @@ export default {
 			<!-- +email.id -->
 				<router-link :class="{unread:email.isUnread}" @click.stop="readEmail(email)" v-if="" :to="'/email/show/'+'read/'+email.id">
 
+						<div class="email-info">
+							<span class="fname">{{email.sentBy.fullname}}</span>
+							<span class="subject" >{{email.subject}}</span>
+							<span class ="body" >{{email.body}}</span>
+						</div>
 						
-						<span class="fname">{{email.sentBy.fullname}}</span>
-						<span class="subject" >{{email.subject}}</span>
-						<span >{{email.body}}</span>
 						<span>18:06</span>
-	
-				</router-link>
-			</div>
-			<button v-if="isTrash" @click.stop="recycle(email)">v</button> |
-			<button @click.stop="remove(email)">x</button>
+					</router-link>
+				</div>
+			<button v-if="isTrash" @click.stop="recycle(email)">v</button> 
+			<button class="trash" @click.stop="remove(email)"></button>
         </li>
 
 		
