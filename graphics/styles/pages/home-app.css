@@ -1,0 +1,35 @@
+.hero{
+    /* border: 1px black solid; */
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.hero-container{
+    /* border: 1px black solid; */
+}
+
+.hero span{
+    font-size: 3rem;
+    
+}
+
+
+.hero-img{
+    width: 500px; 
+    /* border: 1px black solid; */
+    
+}
+
+.hero .second{
+    position: relative;
+    top: 12rem;
+    left: 30rem;
+    width: 10rem;
+}
+
+
+.hero-container{
+    margin: 0 auto;
+    width: 50%;
+}

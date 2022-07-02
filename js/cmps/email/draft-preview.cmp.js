@@ -8,32 +8,6 @@ export default {
     <email-preview v-if="emailsToShow" :emails="emailsToShow" 
     :class="'drafts'" @remove="removeEmail"/>
 
-    <!-- <section class="preview" >
-        <li  v-for="email in emailsToShow" 
-		:class="[{select:email.isSelected},{drafts:email.status === 'draft'},
-		{trashed:email.status === 'trash'},{trashed:email.isTrashed},]">
-
-            <div class="actions" >
-                <input  type="checkbox" v-model="email.isSelected">                
-				<div class="stars" :class="{hide:email.status === 'trash'}
-				,{hide:email.status === 'draft'}">
-					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>
-					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
-				</div>
-            </div>
-			+email.id
-            <router-link :to="'/email/show/'+'draft/'+'compose/'+email.id">
-                <span >{{email.sentBy.fullname}}</span>
-                <span >{{email.subject}}</span>
-                <span >{{email.body}}</span>
-                <span>18:06</span>
-                <email-compose v-if="draftToEdit" :draft="draftToEdit" @close="closeCompose"/>
-            </router-link>
-
-			<button @click.stop="removeEmail(email)">x</button>
-
-        </li>
-    </section> -->
 `,
     data() {
         return {
@@ -49,7 +23,7 @@ export default {
             email.status = 'sent'
             this.$emit('remove', email)
         },
-        closeCompose(){
+        closeCompose() {
 
         },
     },
@@ -70,26 +44,26 @@ export default {
         emailPreview,
         emailCompose
     },
-    watch:{
+    watch: {
         draftToAdd: {
-			// the callback will be called immediately after the start of the observation
-			handler(draft, oldVal) {
-				// do your stuff
-				console.log('val of draft in draft page is : \n', draft);
-			}
-		},
+            // the callback will be called immediately after the start of the observation
+            handler(draft, oldVal) {
+                // do your stuff
+                console.log('val of draft in draft page is : \n', draft);
+            }
+        },
         '$route.params': {
-			handler() {
-				console.log('this.$route.params:\n', this.$route.params);
+            handler() {
+                console.log('this.$route.params:\n', this.$route.params);
                 const draftId = this.$route.params.composeId
-                emailService.get(emailService.SENT_KEY,draftId )
-                    .then((draft)=>{
+                emailService.get(emailService.SENT_KEY, draftId)
+                    .then((draft) => {
                         console.log('and the draft is: \n', draft);
                         this.draftToEdit = draft
                     })
                 // this.draftToEdit = this.$route.params.composeId
-			},
-			immediate: true,
-		},
+            },
+            immediate: true,
+        },
     }
 }
