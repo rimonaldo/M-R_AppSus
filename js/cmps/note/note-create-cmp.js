@@ -3,7 +3,7 @@ export default {
 	template: `
 <section v-if="notes">
 	<input placeholder="Title" v-model="title" type="text" />
-	<input v-model="value" type="text" placeholder="New Note" />
+	<input v-model="value" type="text" placeholder="note/ imgUrl/ videoUrl" />
 	<div class="buttons">
 		<button @click="chooseTxt">txt</button>
 		<button @click="chooseImg">img</button>

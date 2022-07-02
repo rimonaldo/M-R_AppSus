@@ -30,6 +30,12 @@ export default {
 	data() {
 		return {
 			notes: null,
+			unsubscribeDelete: null,
+			unsubscribeDoneTodo: null,
+			unsubscribeAddTodo: null,
+			unsubscribeChangeTodo: null,
+			unsubscribePinTodo: null,
+			unsubscribeBgc: null,
 		}
 	},
 	methods: {
@@ -51,9 +57,8 @@ export default {
 		appService.query(noteService.NOTES_KEY).then((notes) => {
 			this.notes = notes
 		})
-	},
-	mounted() {
-		eventBus.on('deleteNote', (data) => {
+
+		this.unsubscribeDelete = eventBus.on('deleteNote', (data) => {
 			appService.remove(noteService.NOTES_KEY, data)
 			appService.query(noteService.NOTES_KEY).then((notes) => {
 				this.notes = notes
@@ -61,14 +66,14 @@ export default {
 				this.notes.splice(idx, 1)
 			})
 		})
-		eventBus.on('doneTodo', (data) => {
+		this.unsubscribeDoneTodo = eventBus.on('doneTodo', (data) => {
 			console.log(' this.notes:', this.notes)
 			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
 			const currentNoteTodos = this.notes[noteIdx].info.todos
 			currentNoteTodos.splice(data.idx, 1)
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
-		eventBus.on('addTodo', (data) => {
+		this.unsubscribeAddTodo = eventBus.on('addTodo', (data) => {
 			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
 			const currentNote = this.notes[noteIdx]
 			const obj = {txt: data.txt, doneAt: new Date()}
@@ -78,23 +83,30 @@ export default {
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
 
-		eventBus.on('changeTodo', (data) => {
+		this.unsubscribeChangeTodo = eventBus.on('changeTodo', (data) => {
 			const noteIdx = this.notes.findIndex((note) => note.id === data.id)
 			this.notes[noteIdx].info.todos[data.idx].txt = data.txt
 
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
-		eventBus.on('pinTodo', (data) => {
-			console.log('data:', data)
+		this.unsubscribePinTodo = eventBus.on('pinTodo', (data) => {
 			const noteIdx = this.notes.findIndex((note) => note.id === data)
 			this.notes[noteIdx].isPinned = !this.notes[noteIdx].isPinned
 			this.notes.sort((a, b) => Number(b.isPinned) - a.isPinned)
 			console.log('this.notes:', this.notes)
 		})
-		eventBus.on('bgcNote', (data) => {
+		this.unsubscribeBgc = eventBus.on('bgcNote', (data) => {
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
 	},
+	mounted() {},
 
-	unmounted() {},
+	unmounted() {
+		this.unsubscribeDelete()
+		this.unsubscribeDoneTodo()
+		this.unsubscribeAddTodo()
+		this.unsubscribeChangeTodo()
+		this.unsubscribePinTodo()
+		this.unsubscribeBgc()
+	},
 }
