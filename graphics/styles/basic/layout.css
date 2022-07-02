@@ -3,6 +3,7 @@
 .main-layout{
     min-height: 95vh;
     background-color: rgb(255, 255, 255);
+    
 }
 
 
@@ -11,4 +12,5 @@
     /* border: 1px red solid; */
     max-width: 100%;
     justify-content: flex-start;
+    padding: 0 0.5rem;
 }

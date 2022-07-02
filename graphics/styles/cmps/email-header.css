@@ -4,7 +4,7 @@
 
 .header.email-nav {
     position: relative;
-
+    padding: 0 1rem;
 }
 
 .header.email-nav .open-side{
@@ -59,9 +59,12 @@
     display: flex;
     font-family: fa-solid;
     color: #9b9da0;
+    /* border: 1px black solid; */
+    
 }
 .header .side-actions > *{
     cursor: pointer;
+    margin: 0 0.5rem;
 }
 
 .header .side-actions .about::before{
