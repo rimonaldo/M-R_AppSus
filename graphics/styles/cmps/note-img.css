@@ -1,0 +1,35 @@
+.note-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	/* max-width: 420px; */
+	max-width: 500px;
+	width: fit-content;
+	text-align: center;
+	height: fit-content;
+	background-color: rgba(110, 110, 110, 0.421);
+	border-radius: 15px;
+	padding: 20px;
+	padding-top: 20px;
+	padding-left: 20px;
+}
+
+.note-container > * input {
+	border: none;
+	text-transform: capitalize;
+	color: black;
+	text-align: center;
+}
+.note-container > div {
+	border: 1px solid black;
+}
+
+.note-container > * textarea {
+	border: none;
+}
+
+.actions-container button {
+	background-color: aliceblue;
+	padding: 0.5em;
+	cursor: pointer;
+}

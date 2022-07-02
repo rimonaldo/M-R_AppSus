@@ -1,0 +1,24 @@
+.note-add {
+	display: flex;
+	height: 100%;
+	padding: 1em;
+	background-color: rgba(207, 207, 207, 0.464);
+}
+.note-add * > button {
+	display: inline-block;
+	margin: 3px;
+	border-radius: 4px;
+	background-color: #4f4e4e;
+	border: none;
+	color: #a8a8a8;
+	text-align: center;
+	font-size: 1rem;
+	padding: 0.3rem;
+	cursor: pointer;
+}
+
+.note-add > input {
+	text-transform: capitalize;
+	text-align: center;
+	margin-right: 8px;
+}

@@ -3,7 +3,7 @@ export default {
 	template: `
 	<section v-if="info">
 	<iframe
-			width="336"
+			width="300"
 			height="189"
 			title="YouTube video player"
 			frameborder="0"

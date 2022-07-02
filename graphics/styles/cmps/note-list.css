@@ -8,24 +8,13 @@ textarea {
 	padding: 15px;
 	outline: none;
 	resize: none;
+	border: none;
+	font-family: 'Comic Sans MS';
 	border-radius: 10px;
 }
-.note-container {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	/* max-width: 420px; */
-	max-width: 500px;
-	width: fit-content;
-	text-align: center;
-	background-color: rgba(110, 110, 110, 0.421);
-	border-radius: 15px;
-	padding: 20px;
-	padding-top: 20px;
-	padding-left: 20px;
-}
+
 .note-photo {
-	max-width: 100%;
+	max-width: 300px;
 	max-height: 100%;
 	object-fit: contain;
 }
@@ -37,33 +26,14 @@ textarea {
 	grid-gap: 20px;
 	padding: 3%;
 }
-.grid-cube {
-	justify-self: center;
-	align-self: center;
-	/* align-items: center; */
-}
-.note-add {
+.list > * {
 	display: flex;
-	height: 100%;
-	padding: 1em;
-	background-color: rgba(207, 207, 207, 0.464);
-}
-.note-add * > button {
-	display: inline-block;
-	margin: 3px;
-	border-radius: 4px;
-	background-color: #4f4e4e;
-	border: none;
-	color: #a8a8a8;
-	text-align: center;
-	font-size: 1rem;
-	padding: 0.3rem;
-	transition: all 0ss;
-	cursor: pointer;
+	justify-content: center;
 }
 
-.note-add input {
+.grid-cube {
 }
+
 .list * > button {
 	display: inline-block;
 	margin: 3px;
