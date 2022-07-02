@@ -3,9 +3,7 @@ import {eventBus} from '../../services/main-app-service/eventBus-service.js'
 export default {
 	template: `
 	<section>
-		<button @click="pin">pin</button>
-		<button @click="deleteNote">X</button>
-		<button @click="copyNote">copy</button>
+		
 		
 	<div class="pallets">
 	<div class="color-input">
@@ -13,18 +11,14 @@ export default {
 			<div class="color-icon"></div>
 		</div>
 
-		<div class="color-input">
-			<input v-model="note.style.color" type="color" @input="changeBgc" />
-			<div class="color-icon"></div>
-		</div>
-
+	.
 	</div>
 
 		<button :class="classy"@click="isPinnd" @click="pin">📌</button>
 		<button @click="deleteNote">❌</button>
 		<button @click="copyNote">📑</button>
-		<input v-model="note.style.bgc" type="color" @input="changeBgc" />
-		<input v-model="note.style.color" type="color" @input="changeColor"  class="color-input"/>
+		<!-- <input v-model="note.style.bgc" type="color" @input="changeBgc" />
+		<input v-model="note.style.color" type="color" @input="changeColor"  class="color-input"/> -->
 	</section>
 
 `,
