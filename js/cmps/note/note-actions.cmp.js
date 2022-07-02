@@ -3,20 +3,22 @@ import {eventBus} from '../../services/main-app-service/eventBus-service.js'
 export default {
 	template: `
 	<section>
-		<button @click="pin">pin</button>
-		<button @click="deleteNote">X</button>
-		<button @click="copyNote">copy</button>
+		<button :class="classy"@click="isPinnd" @click="pin">📌</button>
+		<button @click="deleteNote">❌</button>
+		<button @click="copyNote">📑</button>
 		<input v-model="note.style.bgc" type="color" @input="changeBgc" />
-		<input v-model="note.style.color" type="color" @input="changeColor" />
+		<input v-model="note.style.color" type="color" @input="changeColor"  class="color-input"/>
 	</section>
 
 `,
-	computed: {
+	components: {
 		eventBus,
 	},
 	props: ['note'],
 	data() {
-		return {}
+		return {
+			classy: null,
+		}
 	},
 	created() {},
 	methods: {
@@ -28,6 +30,10 @@ export default {
 		pin() {
 			let id = this.note.id
 			eventBus.emit('pinTodo', id)
+		},
+		isPinnd() {
+			console.log('this.note.isPinned:', this.note.isPinned)
+			if (this.note.isPinned) this.classy = 'pined'
 		},
 
 		changeBgc() {
@@ -42,6 +48,7 @@ export default {
 			let id = this.note.id
 			eventBus.emit('copyNote', id)
 		},
+		computed: {},
 	},
 	unmounted() {},
 }

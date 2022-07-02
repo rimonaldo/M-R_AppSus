@@ -10,8 +10,8 @@ export default {
 	:style="{backgroundColor:note.style.bgc }"
 	 />
 	<div class="buttons">
-		<button @click="doneTodo">Done</button>
-		<button @click="changeTodo">Change</button>
+		<button @click="doneTodo">❌</button>
+		<button @click="changeTodo">🗃️</button>
 	</div>
 </div>
 `,
