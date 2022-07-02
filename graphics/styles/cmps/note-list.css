@@ -98,7 +98,7 @@ textarea {
 	
 }
 
-.pallets .color-icon:first-child::before{
+.pallets .color-icon.second::before{
 	font-family: fa-solid;
 	content:"\f53f" ;
 	color: rgb(184, 113, 113);
