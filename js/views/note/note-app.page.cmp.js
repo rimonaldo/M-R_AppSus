@@ -6,14 +6,12 @@ import {storageService} from '../../services/main-app-service/async-storage-serv
 
 import noteAdd from '../../cmps/note/note-create-cmp.js'
 import noteNav from '../../cmps/note/note-nav-cmp.js'
-import noteFilter from '../../cmps/note/note-filter.cmp.js'
 import noteList from '../../cmps/note/note-list.cmp.js'
 
 export default {
 	template: `
   <section class="main-layout">
 	<note-nav></note-nav>
-	<note-filter></note-filter>
 	<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
 		<note-list class="list" v-if="notes" @setNote="setNotesTxt($event,ans )" :notes="notesForDisplay">
 
@@ -22,7 +20,6 @@ export default {
 
 `,
 	components: {
-		noteFilter,
 		noteList,
 		noteNav,
 		noteAdd,
