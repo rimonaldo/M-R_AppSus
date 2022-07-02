@@ -4,6 +4,47 @@ import {storageService} from '../main-app-service/async-storage-service.js'
 const NOTES_KEY = 'notes'
 const gNotes = [
 	{
+		id: 'nerahJNHAtej102',
+		type: 'note-img',
+		isPinned: false,
+		info: {
+			url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-UrsRt6y3OkAOLtOZaTb_TxFr-UAcd_kR4Q&usqp=CAU',
+			title: 'Bobi and Me',
+		},
+		style: {
+			bgc: '#d8cedf',
+			color: '#000000',
+		},
+	},
+
+	{
+		id: 'n10aassd',
+		isPinned: false,
+		type: 'note-video',
+		info: {
+			url: 'https://www.youtube.com/embed/hFFopPPrGiE',
+			title: 'my video',
+		},
+		style: {
+			bgc: '#55d09b',
+			color: '#000000',
+		},
+	},
+
+	{
+		id: 'n10aassd',
+		isPinned: false,
+		type: 'note-map',
+		info: {
+			url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.361048929129!2d34.79012768482978!3d32.05948208119463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b71d3251013%3A0xf0063ca2d3229c98!2z15zXlCDXkteV15XXkNeo15PXmdeUIDE1LCDXqtecINeQ15HXmdeRLdeZ16TXlQ!5e0!3m2!1siw!2sil!4v1656751341295!5m2!1siw!2sil',
+			title: 'my home',
+		},
+		style: {
+			bgc: '#3d42d1d5',
+			color: '#000000',
+		},
+	},
+	{
 		id: 'n10ax1',
 		type: 'note-txt',
 		isPinned: false,
@@ -17,7 +58,7 @@ const gNotes = [
 		},
 
 		style: {
-			bgc: '#d8cedf',
+			bgc: '#85f218fd',
 			color: '#000000',
 		},
 	},
@@ -65,7 +106,7 @@ const gNotes = [
 			title: 'My Note!',
 		},
 		style: {
-			bgc: '#d8cedf',
+			bgc: '#3d42d1d5',
 			color: '#000000',
 		},
 	},
@@ -78,7 +119,7 @@ const gNotes = [
 			title: 'Bobi and Me',
 		},
 		style: {
-			bgc: '#d8cedf',
+			bgc: '#3d42d1d5',
 			color: '#000000',
 		},
 	},
@@ -108,47 +149,6 @@ const gNotes = [
 			But it's alright
 			`,
 			title: 'My Note!',
-		},
-		style: {
-			bgc: '#d8cedf',
-			color: '#000000',
-		},
-	},
-	{
-		id: 'nerahJNHAtej102',
-		type: 'note-img',
-		isPinned: false,
-		info: {
-			url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-UrsRt6y3OkAOLtOZaTb_TxFr-UAcd_kR4Q&usqp=CAU',
-			title: 'Bobi and Me',
-		},
-		style: {
-			bgc: '#d8cedf',
-			color: '#000000',
-		},
-	},
-
-	{
-		id: 'n10aassd',
-		isPinned: false,
-		type: 'note-video',
-		info: {
-			url: 'https://www.youtube.com/embed/hFFopPPrGiE',
-			title: 'my video',
-		},
-		style: {
-			bgc: '#d8cedf',
-			color: '#000000',
-		},
-	},
-
-	{
-		id: 'n10aassd',
-		isPinned: false,
-		type: 'note-map',
-		info: {
-			url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.361048929129!2d34.79012768482978!3d32.05948208119463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b71d3251013%3A0xf0063ca2d3229c98!2z15zXlCDXkteV15XXkNeo15PXmdeUIDE1LCDXqtecINeQ15HXmdeRLdeZ16TXlQ!5e0!3m2!1siw!2sil!4v1656751341295!5m2!1siw!2sil',
-			title: 'my home',
 		},
 		style: {
 			bgc: '#d8cedf',

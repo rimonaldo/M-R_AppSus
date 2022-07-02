@@ -7,7 +7,7 @@
 	width: fit-content;
 	text-align: center;
 	height: fit-content;
-	background-color: rgba(110, 110, 110, 0.421);
+	background-color: #85f218fd;
 	border-radius: 15px;
 	padding: 20px;
 	padding-top: 20px;
@@ -27,9 +27,16 @@
 .note-container > * textarea {
 	border: none;
 }
+.color-input ::before {
+	font-family: fa-solid;
+	content: '\f01c';
+}
 
 .actions-container button {
 	background-color: aliceblue;
 	padding: 0.5em;
 	cursor: pointer;
+}
+.pined {
+	background-color: rgb(217, 0, 0);
 }

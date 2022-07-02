@@ -14,7 +14,7 @@ export default {
 		 :style="{backgroundColor:note.style.bgc }"
 		  />
 	</label>
-	<button @click="addTodo">Add</button>
+	<button @click="addTodo">➕</button>
 	<section v-if="note" class="Todos">
 		<ul>
 			<li v-for="(todo,idx) in todos" :key="note.id">
