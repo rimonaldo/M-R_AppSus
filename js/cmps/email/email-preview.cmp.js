@@ -24,8 +24,8 @@ export default {
 				<router-link :class="{unread:email.isUnread}" @click.stop="readEmail(email)" v-if="" :to="'/email/show/'+'read/'+email.id">
 
 						
-						<span  >{{email.sentBy.fullname}}</span>
-						<span >{{email.subject}}</span>
+						<span class="fname">{{email.sentBy.fullname}}</span>
+						<span class="subject" >{{email.subject}}</span>
 						<span >{{email.body}}</span>
 						<span>18:06</span>
 	

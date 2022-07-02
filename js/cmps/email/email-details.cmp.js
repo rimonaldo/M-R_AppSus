@@ -7,7 +7,7 @@ export default {
     <section class="details" >
        <div class="details-preview">
 
-        <router-link :to="'/email/show/'+'inbox'"><button>back</button></router-link>
+        <!-- <router-link :to="'/email/show/'+'inbox'"><button>back</button></router-link> -->
         <div v-if="email">
             <div class="subject">{{email.subject}}</div>
             <br>
@@ -17,8 +17,8 @@ export default {
             </div>
             <div class="body">{{email.body}}</div>
             <div class="action-btns">
-                <button class="replay">Reply</button>
-                <button class="forward">Forward</button>
+                <button class="replay"> <span class="reply"></span> Reply</button>
+                <button class=""><span class ="forward"></span>Forward</button>
             </div>
         </div>
        </div>
