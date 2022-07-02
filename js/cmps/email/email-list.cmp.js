@@ -6,6 +6,7 @@ import emailDetails from './email-details.cmp.js'
 import starPreview from './star-preview.cmp.js'
 import draftPreview from './draft-preview.cmp.js'
 import trashPreview from './trash-preview.cmp.js'
+import emailCompose from './email-compose.cmp.js'
 
 export default {
 	props: [],
@@ -25,6 +26,7 @@ export default {
 				<draft-preview  v-if="show.draft" @remove="removeEmail"/>
 				<trash-preview  v-if="show.trash" @remove="removeEmail"/>
 				<email-details v-if="read" :email="read" />
+				<!-- <email-compose v-if="isDraftEdit" :draft="draftToEdit" @close="closeCompose"> -->
         </ul>
     </section>
 `,
@@ -33,6 +35,8 @@ export default {
 			key: 'inbox',
 			emailsToShow: [],
 			read: null,
+			isDraftEdit: false,
+			draftToEdit:null,
 			show: {
 				inbox: false,
 				starred: false,
@@ -71,7 +75,10 @@ export default {
 					})
 				email.status = 'trash'
 			}
-
+		},
+		closeCompose(status){
+			console.log(status);
+			this.isDraftEdit = false
 		}
 	},
 	computed: {},
@@ -94,23 +101,38 @@ export default {
 		emailDetails,
 		starPreview,
 		draftPreview,
-		trashPreview
+		trashPreview,
+		emailCompose,
 
 	},
 	watch: {
 		'$route.params': {
 			handler() {
 				this.page = this.$route.params.show
-				const page = this.$route.params.show
+				const page = this.page
 				const emailId = this.$route.params.emailId
-				if (page) {
+				console.log('this is page:\n' , this.$route.params);
+				if (page && page !== 'read') {
+					this.read = null
 					this.key = this.$route.params.show
 					for (let pageToShow in this.show) {
 						pageToShow === page ? this.show[pageToShow] = true : this.show[pageToShow] = false
 					}
-				} else {
-					this.readEmailById(emailId)
-				}
+					this.$emit('dontRead')
+				} 
+				else {
+					let keys = ['inbox','sent']
+					keys.forEach((key)=>{
+						emailService.get(key, emailId)
+							.then((email) => {
+								console.log('email', email)
+								if(email){
+									this.read = email
+								}
+							})
+					})
+					
+				}	
 			},
 			immediate: true,
 		},

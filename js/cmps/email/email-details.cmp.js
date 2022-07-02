@@ -6,7 +6,7 @@ export default {
     template: `
     <section class="details" >
         <h1>Details</h1>    
-        <router-link to="/email"><button>back</button></router-link>
+        <router-link :to="'/email/show/'+'inbox'"><button>back</button></router-link>
         <div v-if="email">
             <div class="subject">{{email.subject}}</div>
             <span>{{email.sentBy.fullname}}</span>

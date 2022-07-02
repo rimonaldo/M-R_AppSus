@@ -17,7 +17,7 @@ const routes = [
 		component: emailApp,
 		children: [
 			{
-				path: ':emailId',
+				path: 'show/:show/:emailId',
 				component: emailDetails,
 			},
 
