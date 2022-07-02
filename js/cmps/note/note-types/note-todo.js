@@ -7,13 +7,18 @@ export default {
  <section v-if="info" class="note-todo">
 	<label>
 		My Todos
-		<input v-model="value" type="text" :placeholder="info.label" />
+		<input 
+		v-model="value"
+		 type="text" 
+		 :placeholder="info.label "
+		 :style="{backgroundColor:note.style.bgc }"
+		  />
 	</label>
 	<button @click="addTodo">Add</button>
 	<section v-if="note" class="Todos">
 		<ul>
 			<li v-for="(todo,idx) in todos" :key="note.id">
-				<note-todos :idx="idx" :todo="todo" :id="note.id"></note-todos>
+				<note-todos :idx="idx" :note="note" :todo="todo" :id="note.id"></note-todos>
 			</li>
 		</ul>
 	</section>
