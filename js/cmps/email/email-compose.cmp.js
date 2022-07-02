@@ -19,9 +19,9 @@ export default {
             <div  class="inputs">
                 <input placeholder="Recipiants" type="text" v-model="newEmail.to">
                 <input  placeholder="Subject" type="text" v-model="newEmail.subject">
-                <textarea v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
+                <textarea @input="saveDraft" v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
             </div>
-
+            
             <router-link :to="'/email/show/'+'inbox'">
                 <div class="bottom action-btns">
                     <button @click="send" class="send">
@@ -43,10 +43,12 @@ export default {
         log() {
 
         },
+        saveDraft(){
+            emailService.save(emailService.SENT_KEY, this.newEmail)
+        },
         send() {
             this.newEmail.status = 'sent'
-            emailService.save(emailService.SENT_KEY, this.newEmail).then()
-    
+            emailService.save(emailService.SENT_KEY, this.newEmail)   
             this.$emit('close');
         }
     },

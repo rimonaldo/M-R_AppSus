@@ -66,6 +66,7 @@ export default {
 				console.log('email is deleted', email);
 				emailService.save(emailService.TRASH_KEY, email)
 					.then(() => {
+						console.log('deleted credentials:\n', key, id);
 						emailService.remove(key, id)
 					})
 				email.status = 'trash'
