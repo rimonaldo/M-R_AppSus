@@ -1,11 +1,12 @@
 import { emailService } from '../../services/email-service/email-service.js'
 import { appService } from '../../services/main-app-service/main-app-service.js'
+import emailCompose from './email-compose.cmp.js'
 
 export default {
 	props: ['emails', 'class'],
 	template: `
     <section class="preview" >
-        <li  v-for="email in emails" 
+        <li  v-for="email in emails" @click="editDraft"
 		:class="[{read:email.isRead},{drafts:email.status === 'draft'},
 		{trashed:email.status === 'trash'},{trashed:email.isTrashed}]">
 
@@ -17,7 +18,8 @@ export default {
 					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star"></span>
 				</div>
             </div>
-            <router-link :to="'/email/'+email.id">
+			<!-- +email.id -->
+            <router-link :to="'/email/show/'+'read/'+email.id">
                 <span >{{email.sentBy.fullname}}</span>
                 <span >{{email.subject}}</span>
                 <span >{{email.body}}</span>
@@ -30,6 +32,8 @@ export default {
 	data() {
 		return {
 			key: null,
+			isEditDraft:false,
+
 		}
 	},
 	methods: {
@@ -37,6 +41,10 @@ export default {
 
 			console.log(log);
 		},
+		editDraft(){
+			
+		},
+
 		toggleStar(email) {
 			email.status = this.key
 			email.isStarred = !email.isStarred
@@ -55,6 +63,7 @@ export default {
 	},
 	unmounted() { },
 	components: {
+		emailCompose,
 
 	},
 	watch: {

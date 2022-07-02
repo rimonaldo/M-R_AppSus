@@ -14,11 +14,11 @@ export default {
     },
     methods: {
         removeEmail(email) {
-            const key = emailService.SENT_KEY
             const id = email.id
             const idx = this.emailsToShow.findIndex((email) => email.id === id)
             this.emailsToShow.splice(idx, 1)
-            this.$emit('remove', { key, id })
+            email.status = 'sent'
+            this.$emit('remove', email)
         },
     },
     computed: {},

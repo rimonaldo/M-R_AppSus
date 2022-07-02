@@ -2,7 +2,7 @@ import { emailService } from '../../services/email-service/email-service.js'
 import { appService } from '../../services/main-app-service/main-app-service.js'
 
 export default {
-    props: [],
+    props: ['draft'],
     template: `
     <section class="compose">
         <div class="new-email">
@@ -12,16 +12,16 @@ export default {
                 <div class="action-btns">
                     <div class="min-max">-</div>
                     <div class="full">^</div>
-                    <div @click="$emit('close')" class="close">x</div> 
+                    <div @click="$emit('close', 'close')" class="close">x</div> 
                 </div>   
             </header>
        
             <div  class="inputs">
                 <input placeholder="Recipiants" type="text" v-model="newEmail.to">
                 <input  placeholder="Subject" type="text" v-model="newEmail.subject">
-                <textarea v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
+                <textarea @input="saveDraft" v-model="newEmail.body" name="" id="" cols="30" rows="10"></textarea>
             </div>
-
+            
             <router-link :to="'/email/show/'+'inbox'">
                 <div class="bottom action-btns">
                     <button @click="send" class="send">
@@ -43,15 +43,20 @@ export default {
         log() {
 
         },
+        saveDraft(){
+            emailService.save(emailService.SENT_KEY, this.newEmail)
+        },
         send() {
             this.newEmail.status = 'sent'
-            emailService.save(emailService.SENT_KEY, this.newEmail).then()
-    
+            emailService.save(emailService.SENT_KEY, this.newEmail)   
             this.$emit('close');
         }
     },
     computed: {},
     created() {
+        if(this.draft){
+            console.log('editing this draft:\n', this.draft);
+        }
         this.newEmail = emailService.composeEmail()
         this.newEmail.status = "draft"
         emailService.save(emailService.SENT_KEY , this.newEmail)

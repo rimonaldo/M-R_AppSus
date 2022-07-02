@@ -33,22 +33,27 @@ export default {
             
                     </li>
                 </ul>
-                <email-list></email-list>
-                
+                <email-list @dontRead="dontRead"/>
+
                 <div @click="compose=!compose" class="compose-icon" ></div>
                     
                 </section>
-                <email-compose v-if="compose" @close="closeCompose"/>   
+                <email-compose v-if="compose || isDraftEdit" @close="closeCompose"/>   
                 <!-- <router-view></router-view> -->
         </div>
     </section>
 `,
     data() {
         return {
-            compose:false
+            compose:false,
+            isDraftEdit:false,
+
         };
     },
     methods: {
+        dontRead(){
+            console.log('please close');
+        },
         closeCompose(){
            this.compose = false
         },
