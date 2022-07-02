@@ -15,7 +15,7 @@ export default {
 
 		<div class="color-input">
 			<input v-model="note.style.color" type="color" @input="changeBgc" />
-			<div class="color-icon"></div>
+			<div class="color-icon second"></div>
 		</div>
 
 	</div>
