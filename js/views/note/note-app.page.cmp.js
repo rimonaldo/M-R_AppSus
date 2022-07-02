@@ -15,7 +15,7 @@ export default {
 	<note-nav></note-nav>
 	<note-filter></note-filter>
 	<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
-		<note-list class="list" v-if="notes" @setNote="setNotes($event,ans )" :notes="notesForDisplay">
+		<note-list class="list" v-if="notes" @setNote="setNotesTxt($event,ans )" :notes="notesForDisplay">
 
 	</note-list>
 </section>
@@ -45,9 +45,8 @@ export default {
 		}
 	},
 	methods: {
-		setNotes(ans) {
-			this.notes[ans.idx].info.txt = ans.ans
-
+		setNotesTxt(ans) {
+			this.notes[ans.idx].info.txt = ans.ans.val
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
 		cerateNote(note) {
@@ -55,18 +54,13 @@ export default {
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
-		// setFilter(filterBy) {
-		// 	this.filterBy = filterBy
-		// },
 	},
 
 	computed: {
 		notesForDisplay() {
 			var notes = this.notes
 			const regex = new RegExp(this.filterBy.title.title, 'i')
-			console.log('filterBy.title:', this.filterBy.title)
 			notes = notes.filter((note) => regex.test(note.info.title))
-			console.log('notes:', notes)
 			return notes
 		},
 	},
@@ -116,7 +110,8 @@ export default {
 			this.notes.sort((a, b) => Number(b.isPinned) - a.isPinned)
 			console.log('this.notes:', this.notes)
 		})
-		this.unsubscribeBgc = eventBus.on('bgcNote', (data) => {
+		this.unsubscribeBgc = eventBus.on('setNote', (data) => {
+			console.log('data:', data)
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
 

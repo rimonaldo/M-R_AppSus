@@ -141,6 +141,20 @@ const gNotes = [
 			color: '#000000',
 		},
 	},
+
+	{
+		id: 'n10aassd',
+		isPinned: false,
+		type: 'note-map',
+		info: {
+			url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.361048929129!2d34.79012768482978!3d32.05948208119463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b71d3251013%3A0xf0063ca2d3229c98!2z15zXlCDXkteV15XXkNeo15PXmdeUIDE1LCDXqtecINeQ15HXmdeRLdeZ16TXlQ!5e0!3m2!1siw!2sil!4v1656751341295!5m2!1siw!2sil',
+			title: 'my home',
+		},
+		style: {
+			bgc: '#d8cedf',
+			color: '#000000',
+		},
+	},
 ]
 
 export const noteService = {

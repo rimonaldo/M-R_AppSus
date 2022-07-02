@@ -9,7 +9,6 @@ export default {
 		:style="{height:textareaHight +'px',backgroundColor:note.style.bgc ,color:note.style.color }"
 		:placeholder=" noteTxt"
 		required
-	
 		@keyup="reSize"
 	></textarea>
 	<note-actions :note="note"></note-actions>
@@ -31,7 +30,7 @@ export default {
 		reSize(ev) {
 			this.val = ev.target.value
 			this.textareaHight = ev.target.scrollHeight
-			eventBus.emit('setVal', {val: this.val, hight: this.textareaHight})
+			this.$emit('setVal', {val: this.val, hight: this.textareaHight})
 		},
 	},
 

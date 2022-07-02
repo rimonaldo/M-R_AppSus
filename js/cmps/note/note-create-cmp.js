@@ -3,12 +3,13 @@ export default {
 	template: `
 <section v-if="notes">
 	<input placeholder="Title" v-model="title" type="text" />
-	<input v-model="value" type="text" placeholder="note/ imgUrl/ videoUrl" />
+	<input v-model="value" type="text" placeholder="note" />
 	<div class="buttons">
 		<button @click="chooseTxt">txt</button>
 		<button @click="chooseImg">img</button>
 		<button @click="chooseTodo">Todo</button>
 		<button @click="chooseVideo">Video</button>
+		<button @click="chooseMap">map</button>
 	</div>
 </section>
 `,
@@ -48,6 +49,14 @@ export default {
 			this.type = 'note-video'
 			let endUrl = this.value.substr(this.value.lastIndexOf('/') + 1)
 			let url = `https://www.youtube.com/embed/${endUrl}`
+			this.info = {url, title: this.title}
+			let ans = {type: this.type, info: this.info}
+			this.$emit('newNote', ans)
+		},
+		chooseMap() {
+			this.type = 'note-map'
+			let urlArr = this.value.split('"')
+			let url = urlArr[1]
 			this.info = {url, title: this.title}
 			let ans = {type: this.type, info: this.info}
 			this.$emit('newNote', ans)

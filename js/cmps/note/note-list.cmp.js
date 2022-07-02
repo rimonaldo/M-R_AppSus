@@ -2,6 +2,7 @@ import noteVideo from './note-types/note-video.js'
 import noteImg from '../../cmps/note/note-types/note-img.js'
 import noteTxt from '../../cmps/note/note-types/note-txt.js'
 import noteTodos from './note-types/note-todo.js'
+import noteMap from './note-types/note-map.js'
 import {appService} from '../../services/main-app-service/main-app-service.js'
 import {noteService} from '../../services/note-service/note-service.js'
 
@@ -32,6 +33,7 @@ export default {
 		noteTxt,
 		noteVideo,
 		noteTodos,
+		noteMap,
 	},
 	data() {
 		return {
@@ -43,7 +45,6 @@ export default {
 	created() {},
 	methods: {
 		setAns(ans, idx) {
-			console.log('ans:', ans)
 			this.answers[idx].txt = ans.val
 			this.idx = idx
 			let res = {ans, idx: this.idx}
