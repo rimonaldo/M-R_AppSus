@@ -23,6 +23,7 @@ textarea {
 	padding: 20px;
 	padding-top: 20px;
 	padding-left: 20px;
+	
 }
 .note-photo {
 	max-width: 100%;
@@ -36,11 +37,16 @@ textarea {
 	grid-auto-rows: minmax(min-content, min-content);
 	grid-gap: 20px;
 	padding: 3%;
+	
+	
 }
+
+
 .grid-cube {
 	justify-self: center;
 	align-self: center;
 	/* align-items: center; */
+	
 }
 .note-add {
 	display: flex;

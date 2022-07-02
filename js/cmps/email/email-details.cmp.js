@@ -5,17 +5,23 @@ export default {
     props: ['email'],
     template: `
     <section class="details" >
-        <h1>Details</h1>    
+       <div class="details-preview">
+
         <router-link :to="'/email/show/'+'inbox'"><button>back</button></router-link>
         <div v-if="email">
             <div class="subject">{{email.subject}}</div>
-            <span>{{email.sentBy.fullname}}</span>
+            <br>
+            <div class="info">
+                <span class ="sender-fname">{{email.sentBy.fullname}}</span>
+                <span class ="sender-email">{{email.sentBy.email}}</span>
+            </div>
             <div class="body">{{email.body}}</div>
             <div class="action-btns">
                 <button class="replay">Reply</button>
                 <button class="forward">Forward</button>
             </div>
         </div>
+       </div>
        
     </section>
 `,

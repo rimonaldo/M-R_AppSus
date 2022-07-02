@@ -5,11 +5,61 @@
     /* margin: 1rem auto; */
 
     width: 100%;
-    height: 90vh;
+    /* height: 90vh; */
     position: absolute;
     top: 5vh;
     left: 0;
     text-align: center;
     padding: 0 5rem;
 
+    
+}
+
+
+
+.details-preview{
+    border: 1px rgb(224, 224, 224) solid;
+    width: 80vw;
+    margin: 0 auto;
+    min-height: 70vh;
+    
+    display: flex;
+    flex-direction: column;  
+    margin-top: 0.5em;  
+}
+.details-preview .subject{
+    /* border: 1px black solid; */
+    position: absolute;
+    font-size: 2rem;
+
+}
+
+.details-preview .info{
+
+    /* border: 1px red solid; */
+    display: flex;
+    width: 50%;
+    /* justify-content: space-around; */
+    margin-inline-start: .1rem;
+    
+}
+
+
+.details-preview .sender-fname{
+    /* border: 1px black solid; */
+    font-weight: 700;
+}
+
+.details-preview .sender-email{
+    margin-inline-start: 1rem;
+    font-size: 0.7rem;
+    color: gray;
+}
+
+.details-preview .body{
+
+    /* border: 1px black solid; */
+    margin: 0 auto;
+    min-height: 60vh;
+    text-align: start;
 }
