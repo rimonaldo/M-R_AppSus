@@ -9,7 +9,7 @@ export default {
             <div class="filterBy">
                 <span @click="filterBy('inbox')">inbox | </span>
                 <span @click="filterBy('sent')">sent | </span>
-                <span @click="filterBy('draft')">draft | </span>
+
             </div>
         </li>
         <email-preview v-if="emailsToShow" :emails="emailsToShow" @remove="removeEmail"/>
