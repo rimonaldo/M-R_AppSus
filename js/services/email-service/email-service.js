@@ -121,7 +121,7 @@ function _createEmail(subject = 'Miss you!', body = 'Would love to catch up some
 		id,
 		subject,
 		body,
-		isRead: false,
+		isUnread: true,
 		sentAt: Date.now(),
 		sentBy: {
 			email: to,

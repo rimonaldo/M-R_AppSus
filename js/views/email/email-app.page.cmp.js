@@ -19,7 +19,7 @@ export default {
         <!-- <email-filter></email-filter> -->
         <!-- <email-folder-list></email-folder-list> -->
         <div class="email-container">
-            <email-side-menu></email-side-menu>
+            <email-side-menu/>
             <section class="email-list">
                 <ul>
                     <li>
@@ -33,31 +33,34 @@ export default {
             
                     </li>
                 </ul>
-                <email-list @dontRead="dontRead"/>
+                <email-list :draftToAdd="'draftToAdd'" :test="'test'"/>
 
                 <div @click="compose=!compose" class="compose-icon" ></div>
-                    
+               
                 </section>
-                <email-compose v-if="compose || isDraftEdit" @close="closeCompose"/>   
+                <email-compose v-if="compose || isDraftEdit"
+                @addDraft="addDraft" @close="closeCompose" /> 
                 <!-- <router-view></router-view> -->
         </div>
     </section>
 `,
     data() {
         return {
-            compose:false,
-            isDraftEdit:false,
-
+            compose: false,
+            isDraftEdit: false,
+            draftToAdd:null,
+            
         };
     },
     methods: {
-        dontRead(){
-            console.log('please close');
+        addDraft(draft){
+            this.draftToAdd = draft
+            console.log('draft added!', this.draftToAdd);
         },
-        closeCompose(){
-           this.compose = false
+        closeCompose() {
+            this.compose = false
         },
-        sendMail(){
+        sendMail() {
             this.compose = false
         }
     },
@@ -71,6 +74,7 @@ export default {
         emailList,
         emailPreview,
         emailCompose,
-        emailSideMenu, 
+        emailSideMenu,
+
     },
 }

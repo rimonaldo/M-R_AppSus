@@ -35,7 +35,7 @@ export default {
 `,
     data() {
         return {
-            newEmail: null
+            newEmail:null
 
         };
     },
@@ -55,14 +55,24 @@ export default {
     computed: {},
     created() {
         if(this.draft){
-            console.log('editing this draft:\n', this.draft);
+            // console.log('editing this draft:\n', this.draft);
+            // this.newEmail = this.draft
         }
         this.newEmail = emailService.composeEmail()
         this.newEmail.status = "draft"
         emailService.save(emailService.SENT_KEY , this.newEmail)
-        console.log(this.newEmail);
+        // console.log(this.newEmail);
+        // this.$emit('addDraft', this.newEmail)
     },
     mounted() { },
     unmounted() { },
     components: {},
+    wath:{
+        draft :{
+            immediate: true,
+            handler(newVal,oldVal){
+                console.log('watch on:\n', newVal);
+            }
+        }
+    }
 }
