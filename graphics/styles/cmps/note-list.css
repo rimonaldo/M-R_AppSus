@@ -62,21 +62,26 @@ textarea {
 
 .color-input{
 
-
-	width: 2rem;
-	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* width: 2rem;
+	height: 2rem; */
 	position: relative;
 	
 }
 
 .color-input input{
 	opacity: 0;
+	/* height: 50px;
+	width: 30px; */
+	z-index: 10;
 }
 
 .color-icon{
-
+/* 
 	width: inherit;
-	height: inherit;
+	height: inherit; */
 	position: absolute;
 	top: 0;
 
@@ -86,12 +91,20 @@ textarea {
 	
 }
 
-.color-icon::before{
+.pallets .color-icon::before{
 	font-family: fa-solid;
 	content:"\f53f" ;
 	color: rgb(0, 0, 0);
 	
 }
+
+.pallets .color-icon:first-child::before{
+	font-family: fa-solid;
+	content:"\f53f" ;
+	color: rgb(184, 113, 113);
+	
+}
+
 
 
 .pallets{
