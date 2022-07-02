@@ -1,6 +1,6 @@
 export default {
-    props: [],
-    template: `
+	props: [],
+	template: `
     <section class="side-menu">
         
         <router-link :to="'/email/show/'+'inbox'">
@@ -29,7 +29,7 @@ export default {
         
         <router-link :to="'/email/show/'+'note'">
             <div class="notes">
-                <span>Notes</span>
+            <router-link to="/note">Notes</router-link>
             </div>
         </router-link>
         
@@ -40,15 +40,13 @@ export default {
         </router-link>
     </section>
 `,
-    data() {
-        return {
-
-        };
-    },
-    methods: {},
-    computed: {},
-    created() { },
-    mounted() { },
-    unmounted() { },
-    components: {},
+	data() {
+		return {}
+	},
+	methods: {},
+	computed: {},
+	created() {},
+	mounted() {},
+	unmounted() {},
+	components: {},
 }

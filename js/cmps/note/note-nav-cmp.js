@@ -14,9 +14,14 @@ export default {
               <div class="settings"></div>
               <div class="integration"></div>
           </div>
-      <router-link to="/">
+					<router-link to="/">
           home
       </router-link>
+			<router-link to="/email/show/">
+        
+sdcs
+      </router-link>
+			
   </section>
 `,
 	data() {
