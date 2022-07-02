@@ -15,9 +15,13 @@ export default {
 			<div class="second">carry you</div>
 		</div>
 		<img class="hero-img" src="../../graphics/images/logo.png" >
-        <router-link :to="'/email/show/'+'inbox'">email app</router-link>
-        <br>
-        <router-link to="/note">note app</router-link>
+
+		<div class="links">
+			<router-link class="link-email" :to="'/email/show/'+'inbox'">email app</router-link>
+
+			<router-link class="link-note" to="/note">note app</router-link>
+		</div>
+       
 	  </div>
     </section>
   

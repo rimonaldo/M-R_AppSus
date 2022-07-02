@@ -56,4 +56,46 @@ textarea {
 }
 .buttons {
 	display: flex;
+	
+}
+
+
+.color-input{
+
+
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+	
+}
+
+.color-input input{
+	opacity: 0;
+}
+
+.color-icon{
+
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	top: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+.color-icon::before{
+	font-family: fa-solid;
+	content:"\f53f" ;
+	color: rgb(0, 0, 0);
+	
+}
+
+
+.pallets{
+
+	display: flex;
+	justify-content: space-evenly;
 }

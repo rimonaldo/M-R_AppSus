@@ -29,7 +29,7 @@ export default {
         
         <router-link :to="'/email/show/'+'note'">
             <div class="notes">
-            <router-link to="/note">Notes</router-link>
+                <router-link to="/note"><span>Notes</span></router-link>
             </div>
         </router-link>
         
