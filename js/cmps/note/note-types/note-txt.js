@@ -6,9 +6,10 @@ export default {
 <section class="note-txt" v-if="info">
 	<p>{{info.title}}</p>
 	<textarea
-		:style="{height:textareaHight +'px',backgroundColor:note.style.bgc }"
+		:style="{height:textareaHight +'px',backgroundColor:note.style.bgc ,color:note.style.color }"
 		:placeholder=" noteTxt"
 		required
+	
 		@keyup="reSize"
 	></textarea>
 	<note-actions :note="note"></note-actions>

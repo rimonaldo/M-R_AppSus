@@ -15,7 +15,7 @@ export default {
 	<note-nav></note-nav>
 	<note-filter></note-filter>
 	<note-add class="note-add" :notes="notes" @newNote="cerateNote($event,type)"></note-add>
-		<note-list class="list" v-if="notes" @setNote="setNotes($event,ans )" :notes="notes">
+		<note-list class="list" v-if="notes" @setNote="setNotes($event,ans )" :notes="notesForDisplay">
 
 	</note-list>
 </section>
@@ -30,12 +30,18 @@ export default {
 	data() {
 		return {
 			notes: null,
+			filterBy: {
+				title: '',
+			},
 			unsubscribeDelete: null,
 			unsubscribeDoneTodo: null,
 			unsubscribeAddTodo: null,
 			unsubscribeChangeTodo: null,
 			unsubscribePinTodo: null,
 			unsubscribeBgc: null,
+			unsubscribeCopyNote: null,
+			unsubscribeTxtColorNote: null,
+			unsubscribeFilterBy: null,
 		}
 	},
 	methods: {
@@ -46,16 +52,31 @@ export default {
 		},
 		cerateNote(note) {
 			let x = note.info
-			console.log(' note.info-todos:', note.info.todos)
-
 			this.notes.push(noteService.getEmptyNote(note.type, note.info))
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		},
+		// setFilter(filterBy) {
+		// 	this.filterBy = filterBy
+		// },
 	},
-	computed: {},
+
+	computed: {
+		notesForDisplay() {
+			var notes = this.notes
+			const regex = new RegExp(this.filterBy.title.title, 'i')
+			console.log('filterBy.title:', this.filterBy.title)
+			notes = notes.filter((note) => regex.test(note.info.title))
+			console.log('notes:', notes)
+			return notes
+		},
+	},
+
 	created() {
 		appService.query(noteService.NOTES_KEY).then((notes) => {
 			this.notes = notes
+		})
+		this.unsubscribeFilterBy = eventBus.on('setFilter', (data) => {
+			this.filterBy.title = data
 		})
 
 		this.unsubscribeDelete = eventBus.on('deleteNote', (data) => {
@@ -96,6 +117,18 @@ export default {
 			console.log('this.notes:', this.notes)
 		})
 		this.unsubscribeBgc = eventBus.on('bgcNote', (data) => {
+			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
+		})
+
+		this.unsubscribeTxtColorNote = eventBus.on('txtColorNote', (data) => {
+			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
+		})
+
+		this.unsubscribeCopyNote = eventBus.on('copyNote', (data) => {
+			const idx = this.notes.findIndex((note) => note.id === data)
+			const copyNotes = this.notes.slice(0)
+			const newNote = copyNotes.splice(idx, 1)
+			this.notes.push(newNote[0])
 			utilService.saveToStorage(noteService.NOTES_KEY, this.notes)
 		})
 	},

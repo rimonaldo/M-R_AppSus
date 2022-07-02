@@ -17,7 +17,7 @@ export default {
 			:note="note"
 			:key="note.id"
 			:id="note.id"
-			:style="{backgroundColor: note.style.bgc}"
+			:style="{backgroundColor: note.style.bgc ,color: note.style.color}"
 			@setVal="setAns($event, idx)"
 		>
 		</component>

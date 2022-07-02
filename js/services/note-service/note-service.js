@@ -18,6 +18,7 @@ const gNotes = [
 
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 	{
@@ -30,6 +31,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 	{
@@ -47,6 +49,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 	{
@@ -63,6 +66,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 	{
@@ -75,6 +79,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 
@@ -88,6 +93,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 
@@ -105,6 +111,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 	{
@@ -117,6 +124,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 
@@ -130,6 +138,7 @@ const gNotes = [
 		},
 		style: {
 			bgc: '#d8cedf',
+			color: '#000000',
 		},
 	},
 ]

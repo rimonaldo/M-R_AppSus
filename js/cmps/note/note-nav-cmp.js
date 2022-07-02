@@ -1,10 +1,12 @@
+import {eventBus} from '../../services/main-app-service/eventBus-service.js'
+
 export default {
 	props: [],
 	template: `
   <section  class="header ">
-      <button class="open-side"></button>
+    
           <div class="search">
-              <input type="serach">
+              <input @input="setFilter" v-model="filterBy.title" type="serach">
               <div class="icon"></div>
           </div>
           <div class="side-actions">
@@ -18,16 +20,20 @@ export default {
   </section>
 `,
 	data() {
-		return {}
+		return {
+			filterBy: {
+				title: '',
+			},
+		}
 	},
-	methods: {},
+	methods: {
+		setFilter() {
+			eventBus.emit('setFilter', this.filterBy)
+		},
+	},
 	computed: {},
 	created() {},
-	mounted() {
-		this.email = true
-	},
-	unmounted() {
-		this.email = false
-	},
+	mounted() {},
+	unmounted() {},
 	components: {},
 }
