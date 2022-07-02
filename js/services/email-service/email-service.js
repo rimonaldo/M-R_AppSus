@@ -212,9 +212,9 @@ function _createEmails() {
 		email.push(_createEmail())
 		email.push(_createEmail())
 		email.push(_createEmail())
-		utilService.saveToStorage(EMAILS_KEY, gEmails)
+		utilService.saveToStorage(EMAILS_KEY, email)
 	}
-	return gEmails
+	return email
 }
 
 function _createSentEmails() {
@@ -226,8 +226,8 @@ function _createSentEmails() {
 		email.push(_createSentEmail())
 		email.push(_createSentEmail())
 		email.push(_createSentEmail())
-		utilService.saveToStorage(SENT_KEY, gSentMails)
-		return gSentMails
+		utilService.saveToStorage(SENT_KEY, email)
+		return email
 	}
 }
 

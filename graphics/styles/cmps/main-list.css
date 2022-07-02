@@ -95,7 +95,8 @@
     font-family: fa-regular;
     content: "\f005";
     position: absolute;
-    bottom: 1px;
+    bottom: 1.5px;
+    right: .1px;
     opacity: 0;
     transition: 0.2s;
 

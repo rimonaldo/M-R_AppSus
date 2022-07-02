@@ -7,7 +7,6 @@ export default {
     <section class="main-layout">
 		<app-header></app-header>
       <div class="hero-container">
-        <h1>Home-Page</h1>
 		<div class="hero">
 			Make <span> your</span> life easier,
 			let

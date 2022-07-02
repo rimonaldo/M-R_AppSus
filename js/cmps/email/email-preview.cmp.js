@@ -96,7 +96,11 @@ export default {
 
 		}
 	},
-	computed: {},
+	computed: {
+		body(){
+			return this.email.body.slice(0,100)
+		}
+	},
 	created() {
 		console.log(this.class);
 	},
