@@ -7,11 +7,11 @@ export default {
 	template: `
     <section class="preview" >
         <li  v-for="email in emails" @click="editDraft"
-		:class="[{read:email.isRead},{drafts:email.status === 'draft'},
+		:class="[{selected:email.isSelected},{drafts:email.status === 'draft'},
 		{trashed:email.status === 'trash'},{trashed:email.isTrashed}]">
 
             <div class="actions" >
-                <input  type="checkbox" v-model="email.isRead">                
+                <input  type="checkbox" v-model="email.isSelected">                
 				<div class="stars" :class="{hide:email.status === 'trash'}">
 				<!-- <div class="stars"> -->
 					<span @click="toggleStar(email)" :class="{checked:email.isStarred}" class="star-bottom"></span>

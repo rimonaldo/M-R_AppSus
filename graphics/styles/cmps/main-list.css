@@ -19,7 +19,7 @@
     width: 90%;
 }
 
-.email-list .read {
+.email-list .selected {
     background-color: #c2dbff;
 }
 
@@ -78,3 +78,6 @@
     opacity: 100;
 }
 
+.email-list .isRead{
+    font-weight: 600;
+}

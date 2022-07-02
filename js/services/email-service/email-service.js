@@ -51,6 +51,8 @@ function _createTrash(){
 		isStarred: false,
 		status:'trash',
 		isTrashed:true,
+		isSelected:false,
+		
 		
 		
 	}
@@ -128,6 +130,7 @@ function _createEmail(subject = 'Miss you!', body = 'Would love to catch up some
 		to,
 		isStarred: false,
 		status:'inbox',
+		isSelected:false,
 		
 	}
 }
@@ -142,7 +145,8 @@ function _composeEmail(){
 		sentBy: loggedinUser,
 		to: null,
 		isStarred:false,
-		status:'draft'
+		status:'draft',
+		isSelected:false,
 	}
 }
 
@@ -157,7 +161,8 @@ function _createSentEmail(subject, body, to = null) {
 		sentBy: loggedinUser,
 		to,
 		isStarred:false,
-		status:'sent'
+		status:'sent',
+		isSelected:false,
 
 	}
 }
